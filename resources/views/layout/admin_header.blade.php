@@ -14,7 +14,8 @@
     <script src="{{asset('custom/adminnav.js')}}"></script>
     
     {{-- Tiny MCE Editor --}}
-    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"></script>
+    {{--<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"></script>--}}
+    <script src="https://cdn.tiny.cloud/1/ahqrzywhp6m8zsa7s17galk60h0wfw8vpmz31op7w1q4btmh/tinymce/5/tinymce.min.js"></script>
     <script>tinymce.init({selector:'textarea'});</script>
 </head>
 
