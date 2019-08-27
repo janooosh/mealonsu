@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Review;
-use App\Cuisine;
-use App\Post;
+use App\review;
+use App\cuisine;
+use App\post;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use Illuminate\Http\Request;

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Review;
+use App\review;
 use App\post;
 use Illuminate\Http\Request;
 
