@@ -143,7 +143,7 @@
                                         <span class="border border-info rounded-lg pl-1 pr-1">{{$cuisine->name}}</span>
                                         @endforeach
                                     </p>
-                                    <p class="font-weight-lighter m-0">Adress</p>
+                                    <p class="font-weight-lighter m-0">{{$post->place_adress}}</p>
                                 </div>
                                 <div class="col-3 col-md-2 text-right">
                                     <span class="font-weight-lighter">{{$post->created_at}}</span>
