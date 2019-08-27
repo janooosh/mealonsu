@@ -1,0 +1,42 @@
+/**
+* These lines are to make sure that images in a bootstrap column layout are displayed with an equal height.
+* To apply: (1) add .equal-height to the .row div tag (2) put all <img> in divs with .thumbnail 
+* They must be applied AFTER bootstrap is loaded (-> thus i put them into the custom sheet)
+* Source: https://www.bootply.com/xmhKywKsrb (Accessed: 14.07.2019, 14:19) | Jan
+*/
+@media only screen and (min-width : 481px) {
+    .row.equal-height {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .row.equal-height > [class*='col-'] {
+        display: flex;
+        flex-direction: column;
+    }
+    .row.equal-height.row:after,
+    .row.equal-height.row:before {
+        display: flex;
+    }
+
+    .row.equal-height > [class*='col-'] > .thumbnail,
+    .row.equal-height > [class*='col-'] > .thumbnail > .caption {
+        display: flex;
+        flex: 1 0 auto;
+        flex-direction: column;
+    }
+    .row.equal-height > [class*='col-'] > .thumbnail > .caption > .flex-text {
+        flex-grow: 1;
+    }
+    .row.equal-height > [class*='col-'] > .thumbnail > img {
+        width: 100%;
+        height: 200px; /* force image's height */
+
+        /* force image fit inside it's "box" */
+        -webkit-object-fit: cover;
+           -moz-object-fit: cover;
+            -ms-object-fit: cover;
+             -o-object-fit: cover;
+                object-fit: cover;
+    }
+}
+

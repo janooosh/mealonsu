@@ -1,0 +1,20 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+//Modules
+
+@import'~bootstrap-star-rating/css/star-rating.css';
+    //Fontawesome (Icons)
+@import'~@fortawesome/fontawesome-free/css/all.css';
+
+
+//Plugins (own stuff, integrated in the /plugins folder
+    //Cookie Alert
+@import'../plugins/cookiealert/cookiealert.css';
+

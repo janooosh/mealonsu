@@ -1,0 +1,48 @@
+        /**
+         * 1: IF DRAFT (NEW POST AND EXISTING DRAFT OF A LIVE POST)
+         * -> connection to review is not relevant
+         * -> it's just an update of the draft
+         * 
+         * (A) Update entries
+         * 
+         * 2: IF DRAFT (EXISTING LIVE POST)
+         * -> we assume that edit is on the live version
+         * 
+         * (A) Check if post is currently live
+         *     -- if not, return with an error
+         * (B) Create new post
+         *     -- Store entries
+         *     -- is_draft = true
+         *     -- review_id = review_id of old post
+         * 
+         * (X)  Show in Draft View A Link to the published version
+         * 
+         * 3: IF PUBLISHED (NEW POST)
+         * -> has been a draft so far, no review connected
+         * 
+         * (A) Update entries
+         * (B) Associate new Review
+         * (C) is_draft = 0
+         * 
+         * 4: IF PUBLISHED (EXISTING POST)
+         * -> has been a live post so far
+         * 
+         * (A) Check if post is currently live
+         *      -- if not, return with an error
+         * 
+         * (B) Create A new post
+         *      -- Store entries
+         *      -- is_draft = false
+         *      -- review_id = review_id of old
+         * 
+
+         * NOTE: It is not possible to edit posts that are under review
+         * Under Review posts are:
+         * -> is_approved = 0 AND
+         * -> is_draft = 0 AND
+         * -> is_declined = 0
+
+
+
+         POSTS THAT ARE LIVE
+         */
