@@ -74,7 +74,7 @@
                                     <img src="{{ asset('images/restaurants/food.jpg')}}" class="img-fluid" />
                                 </div>
                                 <div class="col-3 col-md-5">
-                                    <h5>{{$post->restaurant_name}} {{$post->id}}</h5>
+                                    <h5>{{$post->restaurant_name}}</h5>
                                     <p class="font-weight-lighter m-0">Published: {{$post->published}}</p>
                                     <p class="font-weight-lighter m-0">Last Update: {{$post->updated}}</p>
                                 </div>
