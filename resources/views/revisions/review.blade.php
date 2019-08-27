@@ -91,6 +91,27 @@
                     </div>
                 </div>
 
+                {{-- Pricerange --}}
+                <div class="row">
+                    <div class="col-11">
+                        <p>
+                        A menu costs around 
+                        <b>
+                        @if($post->pricerange==1)
+                        < 50
+                        @elseif($post->pricerange==2)
+                        50 - 100
+                        @elseif($post->pricerange==3)
+                        100 - 150
+                        @else
+                        > 150
+                        @endif
+                        </b>
+                        DKK.
+                        </p>
+                    </div>
+                </div>
+
             </div>
 
             {{-- Buttons --}}

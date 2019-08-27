@@ -11,14 +11,16 @@ use \App\Http\Controllers\UserController;
       <li class="nav-item active">
         <a class="nav-link" href="{{route('posts.index')}}">Posts</a>
       </li>
+      @if(UserController::hasRole(2))
       <li class="nav-item">
         <a class="nav-link" href="{{route('revisions.index')}}">Revisions</a>
       </li>
+      @endif
       <li class="nav-item">
         <a class="nav-link" href="{{route('users.profile',auth()->user())}}">My Profile</a>
       </li>
       @if(UserController::isAdmin())
-      <li class="nav-item active">
+      <li class="nav-item">
         <a class="nav-link" href="{{route('cuisines.index')}}">Cuisines</a>
       </li>
       <li class="nav-item">

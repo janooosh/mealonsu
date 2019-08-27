@@ -55,11 +55,15 @@ class UserController extends Controller
         return auth()->user()->roles->contains($role);
     }
     public static function isAdmin() {
-        $user = auth()->user();
         if(auth()->user()->roles->contains(1)) {
             return true;
         }
         return false;
+    }
+
+    public static function hasRole($role_id) {
+        $role = Role::find($role_id);
+        return auth()->user()->roles->contains($role);
     }
 
     public static function isRole(User $user,$role_id) {

@@ -644,7 +644,7 @@ class PostController extends Controller
             'restaurant_name' => 'required|max:30',
             'subtitle' => 'max:60',
             'seo' => 'max:60',
-            'price' => 'required|min:1|max:4', //not required due to publish/draft difference, but we need to theck it before publishing (filter)
+            'price' => 'required|min:0|max:4', //not required due to publish/draft difference, but we need to theck it before publishing (filter)
             'is_vegan' => 'boolean',
             'is_vegetarian' => 'boolean',
             'is_date' => 'boolean',
@@ -735,7 +735,7 @@ class PostController extends Controller
         //Create new entry
         $target->restaurant_name = $request->restaurant_name;
         $target->subtitle = $request->subtitle;
-        $target->price = $request->price;
+        $target->pricerange = $request->price;
         $target->is_vegan = $request->is_vegan;
         $target->is_vegetarian = $request->is_vegetarian;
         $target->is_date = $request->is_date;

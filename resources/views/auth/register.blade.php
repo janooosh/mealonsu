@@ -76,7 +76,7 @@
                             <label for="passkey" class="col-md-4 col-form-label text-md-right">{{ __('Passkey') }}</label>
 
                             <div class="col-md-6">
-                                <input id="passkey" type="text" class="form-control" name="passkey" autocomplete="passkey">
+                                <input id="passkey" type="text" class="form-control @error('passkey') is-invalid @enderror" name="passkey" required autocomplete="passkey">
                                 @error('passkey')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

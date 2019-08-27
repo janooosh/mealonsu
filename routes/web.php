@@ -10,7 +10,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Auth::routes();
+//Auth::routes();
+Auth::routes(['verify' => true]);
 Route::get('/', 'HomeController@index')->name('home');
 
 Route::post('/','HomeController@filter')->name('filter.post');
@@ -27,23 +28,23 @@ Route::get('/editor',function() {
     return view('editor');
 });
 
-Route::get('/users','UserController@index')->name('users.index');
-Route::get('/users/{user}','UserController@profile')->name('users.profile');
-Route::put('/users/{user}','UserController@update')->name('users.update');
-Route::get('/posts/drafts','PostController@index_draft')->name('posts.draft');
-Route::get('/posts/reviews','PostController@index_review')->name('posts.review');
-Route::get('/posts/declined','PostController@index_declined')->name('posts.declined');
-Route::get('/posts/explore/{current_post}','PostController@explorer')->name('posts.explorer');
-Route::resource('posts','PostController');
-Route::resource('cuisines','CuisineController');
+Route::get('/users','UserController@index')->name('users.index')->middleware('verified');
+Route::get('/users/{user}','UserController@profile')->name('users.profile')->middleware('verified');
+Route::put('/users/{user}','UserController@update')->name('users.update')->middleware('verified');
+Route::get('/posts/drafts','PostController@index_draft')->name('posts.draft')->middleware('verified');
+Route::get('/posts/reviews','PostController@index_review')->name('posts.review')->middleware('verified');
+Route::get('/posts/declined','PostController@index_declined')->name('posts.declined')->middleware('verified');
+Route::get('/posts/explore/{current_post}','PostController@explorer')->name('posts.explorer')->middleware('verified');
+Route::resource('posts','PostController')->middleware('verified');
+Route::resource('cuisines','CuisineController')->middleware('verified');
 
 //Revisions
-Route::get('/revisions','RevisionController@index')->name('revisions.index');
-Route::get('/revisions/{post}','RevisionController@review')->name('revisions.review');
-Route::get('/revisions/{post}/decline','RevisionController@decline')->name('revisions.decline');
-Route::get('/revisions/{post}/approve','RevisionController@approve')->name('revisions.approve');
-Route::get('/revisions/{post}/edit','RevisionController@edit')->name('revisions.edit');
-Route::post('/revisions/{post}/new','RevisionController@new')->name('revisions.store');
+Route::get('/revisions','RevisionController@index')->name('revisions.index')->middleware('verified');
+Route::get('/revisions/{post}','RevisionController@review')->name('revisions.review')->middleware('verified');
+Route::get('/revisions/{post}/decline','RevisionController@decline')->name('revisions.decline')->middleware('verified');
+Route::get('/revisions/{post}/approve','RevisionController@approve')->name('revisions.approve')->middleware('verified');
+Route::get('/revisions/{post}/edit','RevisionController@edit')->name('revisions.edit')->middleware('verified');
+Route::post('/revisions/{post}/new','RevisionController@new')->name('revisions.store')->middleware('verified');
 
 //Route::get('admin/posts/edit/{id}','PostController@edit')->name('post.edit');
 

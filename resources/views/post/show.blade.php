@@ -1,3 +1,6 @@
+<?php
+use Carbon\Carbon;
+?>
 @include('layout.header')
 @include('layout.navigation')
 {{-- Header --}}
@@ -76,6 +79,26 @@
                         @else
                             Not very suited for dates
                         @endif
+                        </p>
+                    </div>
+                </div>
+                {{-- Pricerange --}}
+                <div class="row">
+                    <div class="col-11">
+                        <p>
+                        A menu costs around 
+                        <b>
+                        @if($post->pricerange==1)
+                        < 50
+                        @elseif($post->pricerange==2)
+                        50 - 100
+                        @elseif($post->pricerange==3)
+                        100 - 150
+                        @else
+                        > 150
+                        @endif
+                        </b>
+                        DKK.
                         </p>
                     </div>
                 </div>
@@ -231,9 +254,9 @@
         <h3 class="pt-4">About the author </h3>
         <div class="row pt-3">
             <div class="col-10">
-                <h5>Mark Dwain</h5>
-                <p>Published on 23.06.2019 @ 11:13</p>
-                <p class="font-italic">"Coffee, Code & Cookies"</p><br />
+                <h5>{{$post->author->firstname.' '.$post->author->lastname}}</h5>
+                <p>Published on {{Carbon::parse($post->updated_at)->format('d.m.y, h:i')}}</p>
+                
             </div>
         </div>
 

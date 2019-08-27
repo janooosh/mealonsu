@@ -52,7 +52,7 @@ class HomeController extends Controller
         //Validate inputs
         $request->validate([
             'cuisine.*' => 'exists:cuisines,id',
-            'pricerange.*' => 'min:1|max:3',
+            'price' => 'min:1|max:4',
             'is_open' => 'boolean',
             'is_vegan' => 'boolean',
             'is_date' => 'boolean',
@@ -74,12 +74,14 @@ class HomeController extends Controller
         }
 
         //Fill Pricerange
-        if ($request->get('pricerange')) {
-            foreach ($request->get('pricerange') as $p) {
+        if ($request->get('price')>0) {
+            $display_filter->prepend(['pricerange' => $request->get('price')]);
+            $post_filter[] = ['pricerange','=',$request->get('price')];
+            /*foreach ($request->get('pricerange') as $p) {
                 $display_filter->prepend(['pricerange' => $p]);
                 //$filter->prepend(['pricerange'=>$p]);
                 $post_filter[] = ['pricerange','=',$p];
-            }
+            } */
         }
 
         //Fill other options for frontend filter
@@ -108,8 +110,8 @@ class HomeController extends Controller
         $posts = post::where('is_draft',false)
         ->where('is_declined',false)
         ->whereHas('isLive')
-        ->when($request->get('pricerange'), function($query) use($request) {
-            $query->whereIn('pricerange',$request->get('pricerange'));
+        ->when($request->get('price'), function($query) use($request) {
+            $query->where('pricerange',$request->get('price'));
         })
         ->when($request->get('is_vegan'), function($query) {
             $query->where('is_vegan',true);

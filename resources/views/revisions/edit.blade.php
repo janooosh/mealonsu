@@ -298,18 +298,18 @@
         <div class="col-md-12 pl-3">
             <h4>Price for one meal</h4>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" id="price1" type="checkbox" name="price[]" value="1" {{$post->price=='1'?'checked':''}}>
+                <input class="form-check-input" id="price1" type="radio" name="price" value="1" {{$post->pricerange=='1'?'checked':''}}>
                 <label class="form-check-label" for="price1">
                     < 50 DKK</label> </div> <div class="form-check form-check-inline">
-                        <input class="form-check-input" id="price2" type="checkbox" name="price[]" value="2" {{$post->price=='2'?'checked':''}}>
+                        <input class="form-check-input" id="price2" type="radio" name="price" value="2" {{$post->pricerange=='2'?'checked':''}}>
                         <label class="form-check-label" for="price2"> 50 - 100 DKK</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" id="price3" type="checkbox" name="price[]" value="3"{{$post->price=='3'?'checked':''}}>
+                <input class="form-check-input" id="price3" type="radio" name="price" value="3"{{$post->pricerange=='3'?'checked':''}}>
                 <label class="form-check-label" for="price3"> 100 - 150 DKK</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" id="price4" type="checkbox" name="price[]" value="4"{{$post->price=='4'?'checked':''}}>
+                <input class="form-check-input" id="price4" type="radio" name="price" value="4"{{$post->pricerange=='4'?'checked':''}}>
                 <label class="form-check-label" for="price4"> > 150 DKK</label>
             </div>
         </div>
