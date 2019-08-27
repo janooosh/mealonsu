@@ -8,7 +8,7 @@ use Carbon\Carbon;
     <div class="container text-white">
         <h1 class="display-3">{{$post->restaurant_name}}</h1>
         <p>{{$post->subtitle}}</p>
-        <p>Adress</p>
+        <p>{{$post->place_adress}}</p>
         @if($post->social_facebook)
             <a href="{{$post->social_facebook}}" title="Facebook Page of {{$post->restaurant_name}}" target="_blank"><i class="fab fa-facebook"></i></a>
         @endif
