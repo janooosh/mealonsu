@@ -35,6 +35,7 @@ Route::get('/posts/drafts','PostController@index_draft')->name('posts.draft')->m
 Route::get('/posts/reviews','PostController@index_review')->name('posts.review')->middleware('verified');
 Route::get('/posts/declined','PostController@index_declined')->name('posts.declined')->middleware('verified');
 Route::get('/posts/explore/{current_post}','PostController@explorer')->name('posts.explorer')->middleware('verified');
+
 Route::resource('posts','PostController');
 Route::resource('cuisines','CuisineController')->middleware('verified');
 
@@ -49,8 +50,6 @@ Route::post('/revisions/{post}/new','RevisionController@new')->name('revisions.s
 //Route::get('admin/posts/edit/{id}','PostController@edit')->name('post.edit');
 
 //Route::get('/admin/posts','PostController@index')->name('post.index');
-
-
 
 //Route::post('/admin/new','PostController@store')->name('post.store');
 

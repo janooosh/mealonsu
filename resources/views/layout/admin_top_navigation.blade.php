@@ -2,7 +2,7 @@
 use \App\Http\Controllers\UserController;
 ?>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="{{route('home')}}">MEALONSU</a>
+  <a class="navbar-brand pt-2 pb-2" href="{{route('home')}}"><h3>MEALONSU</h3></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>

@@ -1,3 +1,6 @@
+<?php
+use Carbon\carbon;
+?>
 @include('layout.header')
 @include('layout.navigation')
 
@@ -98,29 +101,24 @@
                 <div class="container" id="restaurant_results">
                     {{-- Search Field --}}
                     <div class="row">
-                        <div class="col-md-9">
+                        <div class="col-md-8">
                             <input type="text" class="form-control mb-3" id="search_title" name="search_title" value="{{$search_title}}" placeholder="Search...">
                         </div>
                         <div class="col-md-3">
                             <button type="submit" value="filter_submit" class="btn btn-outline-primary"><i class="fas fa-hamburger mr-2"></i>Apply Filter</button>
+                            
                         </div>
                         {{-- SORTER - Still To-Do --}}
-                            {{--
                         <div class="col-md-1">
                             <button type="button" class="btn btn-dark" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-sort"></i>
                             </button>
                             
                             <div name="sorter" class="dropdown-menu">
-                                <a class="dropdown-item" href="#">Cuisine</a>
-                                <a class="dropdown-item" href="#">Price</a>
-                                <a class="dropdown-item" href="#">Average Rating</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Reset</a>
+                                <button class="dropdown-item" type="submit" name="sort_name">Name</button>
+                                <button class="dropdown-item" type="submit" name="sort_creation">Creation</button>
                             </div>
-                            
                         </div>
-                        --}}
                     </div>
                     <div class="row">
                         <div class="col-md-11">
@@ -146,7 +144,7 @@
                                     <p class="font-weight-lighter m-0">{{$post->place_adress}}</p>
                                 </div>
                                 <div class="col-3 col-md-2 text-right">
-                                    <span class="font-weight-lighter">{{$post->created_at}}</span>
+                                    <span class="font-weight-lighter">{{carbon::parse($post->created_at)->format('d.m.y')}}</span>
                                 </div>
                             </div>
                         </a>

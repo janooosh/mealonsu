@@ -17,12 +17,6 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    //Make sure that only authorized users can access
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function index()
     {
         return $this->index_published();

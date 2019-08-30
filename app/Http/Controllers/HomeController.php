@@ -131,6 +131,12 @@ class HomeController extends Controller
         ->when($request->get('search_title'), function($query) use ($request) {
             return $query->where('restaurant_name','LIKE','%'.$request->get('search_title').'%');
         })
+        ->when($request->has('sort_name'), function ($query) {
+            $query->orderBy('restaurant_name');
+        })
+        ->when($request->has('sort_creation'), function ($query) {
+            $query->orderBy('created_at');
+        })
         ->paginate(5);
 
         //$posts = post::where($post_filter)->paginate(5); 
