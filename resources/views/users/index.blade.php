@@ -26,7 +26,7 @@
                         <th scope="col">Firstname</th>
                         <th scope="col">Lastname</th>
                         <th scope="col">E-Mail</th>
-                        <th scope="col">Posts</th>
+                        <th scope="col">Reviews</th>
                         <th scope="col">Edit</th>
                         <th scope="col">Group</th>
                     </tr>
@@ -39,7 +39,7 @@
                         <td>{{$user->firstname}}</td>
                         <td>{{$user->lastname}}</td>
                         <td>{{$user->email}}</td>
-                        <td>{{count($user->posts)}}</td>
+                        <td>{{count($user->reviews)}}</td>
                         <td><a role="button" class="btn btn-dark btn-round" href="{{route('users.profile', $user)}}">Edit</a></td>
                         <td>
                             @if(count($user->roles)==0)

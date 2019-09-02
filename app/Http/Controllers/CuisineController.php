@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\cuisine;
+use App\post;
 use Illuminate\Http\Request;
 
 class CuisineController extends Controller
@@ -86,6 +87,7 @@ class CuisineController extends Controller
 
         return redirect()->route('cuisines.index')->with('success','Cuisine has been updated.');
     }
+    
 
     /**
      * Remove the specified resource from storage.
@@ -96,5 +98,22 @@ class CuisineController extends Controller
     public function destroy(cuisine $cuisine)
     {
         //
+    }
+
+    public static function review_count(cuisine $cuisine) {
+        $cuisine_ids = [$cuisine->id];
+
+        $posts = post::where('is_draft',false)
+        ->where('is_declined',false)
+        ->whereHas('isLive')
+        ->whereHas('cuisines',function ($query) use ($cuisine_ids) {
+            return $query->whereIn('cuisine_id',$cuisine_ids);
+        })
+        ->get();
+
+        if(empty($posts)) {
+            return 0;
+        }
+        return count($posts);
     }
 }

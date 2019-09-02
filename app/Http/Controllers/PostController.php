@@ -168,7 +168,7 @@ class PostController extends Controller
     public function create()
     {
         $cuisines = Cuisine::all();
-        return view('post.create', compact('cuisines'))->with('info','Lets go');
+        return view('post.create', compact('cuisines'))->with('info', 'Lets go');
     }
 
     /**
@@ -179,21 +179,22 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //Validate
+        //Validate, but only non-drafts
         $validation_errors = PostController::PostValidate($request);
         if (count($validation_errors) > 0) {
             return back()->withInput()->withErrors($validation_errors);
         }
 
+
         //Create A New Post Object, assume Draft
         $newPost = new Post();
         $newPost = PostController::PostAssigner($request, $newPost);
         //$newPost->user_id = Auth::user()->id; //Editor of this version
-        
+
         //Set Maps
         $newPost->place_location = $request->place_location;
-        $newPost->place_name =$request->place_name;
-        $newPost->place_icon =$request->place_icon;
+        $newPost->place_name = $request->place_name;
+        $newPost->place_icon = $request->place_icon;
         $newPost->place_adress = $request->place_adress;
         $newPost->save();
 
@@ -333,7 +334,7 @@ class PostController extends Controller
     public function update(Request $request, post $post)
     {
 
-        //Validate
+        //Validate, but only non-drafts
         $validation_errors = PostController::PostValidate($request);
         if (count($validation_errors) > 0) {
             return back()->withInput()->withErrors($validation_errors);
@@ -393,6 +394,11 @@ class PostController extends Controller
 
                 //Save Entries
                 $post = PostController::PostAssigner($request, $post);
+                //Location
+                $post->place_name = $request->place_name;
+                $post->place_location = $request->place_location;
+                $post->place_adress = $request->place_adress;
+                $post->place_icon = $request->place_icon;
                 $post->save();
                 //Update Cuisines
                 PostController::updateCuisines($request, $post);
@@ -406,6 +412,11 @@ class PostController extends Controller
                 $newPost = PostController::PostAssigner($request, $newPost);
                 $newPost->is_draft = true;
                 $newPost->review_id = $post->review_id;
+                //Location
+                $newPost->place_name = $request->place_name;
+                $newPost->place_location = $request->place_location;
+                $newPost->place_adress = $request->place_adress;
+                $newPost->place_icon = $request->place_icon;
                 $newPost->save();
                 //Update Cuisines
                 PostController::updateCuisines($request, $newPost);
@@ -519,10 +530,10 @@ class PostController extends Controller
     {
 
         //No review yet (just a draft)
-        if(!$current_post->review_id) {
-            return back()->with('warning','This is just an unassociated draft so far. It has not been assigned a review. No history can be displayed. Publish it first.');
+        if (!$current_post->review_id) {
+            return back()->with('warning', 'This is just an unassociated draft so far. It has not been assigned a review. No history can be displayed. Publish it first.');
         }
-        $posts = Post::where('review_id', $current_post->review_id)->orderBy('id','desc')->get();
+        $posts = Post::where('review_id', $current_post->review_id)->orderBy('id', 'desc')->get();
         foreach ($posts as $post) {
             //Published
             if ($post->isLive && $post->is_approved) {
@@ -543,8 +554,7 @@ class PostController extends Controller
             elseif ($post->is_declined) {
                 $post->status = 'Declined';
                 $post->editor = $post->author;
-            }
-            elseif ($post->correction_id) {
+            } elseif ($post->correction_id) {
                 $post->status = 'Corrected';
                 $post->editor = $post->author;
             }
@@ -555,10 +565,39 @@ class PostController extends Controller
             }
             $post->created = Carbon::parse($post->created_at)->format('d.m.y, H:i');
             $post->updated = Carbon::parse($post->updated_at)->format('d.m.y, H:i');
-            
         }
 
         return view('post.explorer', compact('posts', 'current_post'));
+    }
+
+    //Editor View
+    public function all()
+    {
+        //Only Editors allowed, Editor = 2
+        if (!auth()->user()->roles->contains(2)) {
+            return redirect()->route('posts.index')->withErrors('Editor Permissions are required to access this resource.');
+        }
+        //Show an overview of all published reviews
+        $reviews = Review::paginate(5);
+        $search_query = "";
+
+        //Return View
+        return view('post.all', compact('reviews', 'search_query'));
+    }
+
+    public function all_filtered(Request $request)
+    {
+        //Only Editors allowed, Editor = 2
+        if (!auth()->user()->roles->contains(2)) {
+            return redirect()->route('posts.index')->withErrors('Editor Permissions are required to access this resource.');
+        }
+        $search_query = $request->search_query;
+
+        $reviews = Review::whereHas('post', function ($query) use ($search_query) {
+            return $query->where('restaurant_name','LIKE','%'.$search_query.'%');
+        })->paginate(5);
+
+        return view('post.all', compact('reviews', 'search_query'));
     }
 
     public function needs_review_errors()
@@ -744,7 +783,7 @@ class PostController extends Controller
         $target->review_style = $request->review_style;
         $target->review_service = $request->review_service;
         $target->user_id = auth()->user()->id;
-        
+
         return $target;
     }
 
@@ -778,9 +817,9 @@ class PostController extends Controller
         $stats = array();
         $stats['all'] = Post::all()->count();
         $stats['published'] = Post::where('user_id', auth()->user()->id)->where($filter_published)->whereHas('isLive')->count(); //More stuff to do here!"
-        $stats['draft'] = Post::where($filter_draft)->count();
-        $stats['review'] = Post::where($filter_review)->count();
-        $stats['declined'] = Post::where($filter_declined)->count();
+        $stats['draft'] = Post::where('user_id', auth()->user()->id)->where($filter_draft)->count();
+        $stats['review'] = Post::where('user_id', auth()->user()->id)->where($filter_review)->count();
+        $stats['declined'] = Post::where('user_id', auth()->user()->id)->where($filter_declined)->count();
         return $stats;
     }
 

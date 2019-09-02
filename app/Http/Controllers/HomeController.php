@@ -36,6 +36,7 @@ class HomeController extends Controller
             $query->where('is_approved',1);
         }])->get();
 
+
         $posts = Post::where('is_approved',true)
         ->whereHas('isLive')
         ->paginate(5);

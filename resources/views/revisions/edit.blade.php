@@ -79,6 +79,21 @@
                     </div>
                     @enderror
                 </div>
+                <div class="container mt-3">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="pl-3">Edit Location</h4>
+                <p>The following location is currently selected. </p>
+                <p class="font-weight-600 text-xl-left">{{$post->place_name}}, {{$post->place_adress}}</b></p>
+                <p>To change it, please enter a new location. </p>
+                @include('components.map.create')
+                <input type="hidden" class="form-control" id="place_location" name="place_location" value="{{$post->place_location}}">
+                <input type="hidden" class="form-control" id="place_adress" name="place_adress" value="{{$post->place_adress}}">
+                <input type="hidden" class="form-control" id="place_name" name="place_name" value="{{$post->place_name}}">
+                <input type="hidden" class="form-control" id="place_icon" name="place_icon" value="{{$post->place_icon}}">
+            </div>
+        </div>
+    </div>
             </div>
         </div>
         <hr />

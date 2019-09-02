@@ -103,7 +103,7 @@
                     Posts
                 </div>
                 <div class="col-md-9">
-                    {{$user->firstname}} has published {{count($user->posts)}} Posts.
+                    {{$user->firstname}} has published {{count($user->reviews)}} Reviews.
                 </div>
             </div>
         </div>

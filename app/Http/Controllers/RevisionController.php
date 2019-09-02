@@ -170,6 +170,12 @@ class RevisionController extends Controller
             //New Post Object
             $newPost = new Post();
             $newPost = PostController::PostAssigner($request, $newPost);
+            //Location
+            $newPost->place_name = $request->place_name;
+            $newPost->place_location = $request->place_location;
+            $newPost->place_adress = $request->place_adress;
+            $newPost->place_icon = $request->place_icon;
+            //Update Rest
             $newPost->review_id = $post->review->id;
             $newPost->user_id = Auth::user()->id;
             $newPost->is_draft = 0;

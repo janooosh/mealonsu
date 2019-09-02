@@ -5,7 +5,6 @@
     <div class="container text-white">
         <h1 class="display-3">{{$post->restaurant_name}}</h1>
         <p>{{$post->subtitle}}</p>
-        <p>Adress</p>
         @if($post->social_facebook)
         <a href="{{$post->social_facebook}}" title="Facebook Page of {{$post->restaurant_name}}" target="_blank"><i class="fab fa-facebook"></i></a>
         @endif
@@ -20,7 +19,7 @@
 @include('components.messages')
 
 <div class="container-fluid" id="review_section">
-    <div class="alert alert-info" role="alert">
+    <div class="alert alert-info text-center" role="alert">
         <span>
             <p>You are reviewing this post. </p>
         </span>
@@ -130,9 +129,11 @@
         </div>
         {{-- Map --}}
         <div class="col-md-6">
-            <div class="embed-responsive embed-responsive-16by9">
+            @include('components.map.show')
+            <p class="mt-2 text-center" >{{$post->place_name}}, {{$post->place_adress}}</p>
+            {{--<div class="embed-responsive embed-responsive-16by9">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2249.5505644667724!2d12.531604716109225!3d55.679415205116946!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465253bc8f589777%3A0x1e7e22f569fd25c2!2sShakedown+Burger+%26+Shakes!5e0!3m2!1sde!2sdk!4v1562746098919!5m2!1sde!2sdk" width="600" height="450" style="border:0" allowfullscreen></iframe>
-            </div>
+            </div> --}}
         </div>
     </div>
 </div> {{-- Ende dieses Containers --}}

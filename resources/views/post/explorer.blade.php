@@ -6,7 +6,7 @@
         <div class="row p-3">
             <div class="col-md-8">
                 <h1>Explorer</h1>
-                <a href="{{route('posts.index')}}" role="button" class="btn btn-outline-dark btn-sm"><i class="fas fa-arrow-left mr-2"></i>Overview</a>
+                
             </div>
             <div class="col-md-4 text-right">
                 {{-- <a href="{{route('posts.show')}}" role="button" class="btn btn-dark"><i class="fas fa-plus-circle mr-2"></i>View Live Version</a> --}}

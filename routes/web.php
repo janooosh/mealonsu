@@ -28,6 +28,8 @@ Route::get('/editor',function() {
     return view('editor');
 });
 
+Route::get('/posts/all','PostController@all')->name('posts.all')->middleware('verified');
+Route::post('/posts/all','PostController@all_filtered')->name('posts.allfilter')->middleware('verified');
 Route::get('/users','UserController@index')->name('users.index')->middleware('verified');
 Route::get('/users/{user}','UserController@profile')->name('users.profile')->middleware('verified');
 Route::put('/users/{user}','UserController@update')->name('users.update')->middleware('verified');

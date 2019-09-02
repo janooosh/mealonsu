@@ -1,3 +1,8 @@
+<?php
+use App\Http\Controllers\CuisineController;
+
+?>
+
 @include('layout.admin_header')
 @include('layout.admin_top_navigation')
 @include('layout.admin_navigation')
@@ -34,7 +39,7 @@
                     <tr>
                         <td>{{$cuisine->id}}</td>
                         <td>{{$cuisine->name}}</td>
-                        <td>{{count($cuisine->posts)}} posts</td>
+                        <td>{{CuisineController::review_count($cuisine)}} Reviews</td>
                         <td><a href="{{route('cuisines.edit',$cuisine)}}" role="button" class="btn btn-outline-dark btn-sm"><i class="fas fa-pen-square mr-2"></i>Edit</button></td>
                     </tr>
                     @endforeach
