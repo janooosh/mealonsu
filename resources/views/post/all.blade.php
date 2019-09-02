@@ -53,7 +53,7 @@ use Carbon\carbon;
                                 <div class="col-6 col-md-7">
                                     <h5>{{$review->post->restaurant_name}}</h5>
                                     <p class="font-weight-lighter m-0">Created: {{Carbon::parse($review->post->created_at)->format('d.m.y')}}</p>
-                                    <p class="font-weight-lighter m-0">Author: {{$review->post->firstname.' '.$review->post->lastname}}</p>
+                                    <p class="font-weight-lighter m-0">Author: {{$review->post->author->firstname.' '.$review->post->author->lastname}}</p>
                                 </div>
                                 <div class="col-3 col-md-3">
                                     <p><a href="{{route('posts.show',$review->post)}}" title="View" role="button" class="btn btn-outline-primary btn-sm mb-1" target="_blank"><i class="far fa-eye mr-2"></i>View Latest Version</a></p>
