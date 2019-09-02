@@ -19,6 +19,9 @@ class UserController extends Controller
     }
 
     public function profile(User $user) {
+        if(!auth()->user()->email_verified_at) {
+            return redirect()->to('/email/verify');
+        }
         $roles = Role::all();
         $user->isUserAdmin = UserController::isRole($user,1);
         $user->created = Carbon::parse($user->created_at)->format('D, d.m.y');
@@ -27,7 +30,9 @@ class UserController extends Controller
 
     public function update(Request $request, User $user) {
         //Validate Input
-        
+        if(!auth()->user()->email_verified_at) {
+            return redirect()->to('/email/verify');
+        }
         $request->validate([
             'firstname' => ['required', 'string', 'max:255'],
             'lastname' => ['required', 'string', 'max:255'],
@@ -47,7 +52,7 @@ class UserController extends Controller
         }
 
         //No admin
-        return redirect()->route('posts.index')->with('success','Profile Updated');
+        return redirect()->route('users.profile',$user)->with('success','Profile Updated');
     }
 
     public function admin($role_id) {

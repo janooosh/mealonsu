@@ -19,18 +19,27 @@ class PostController extends Controller
 
     public function index()
     {
+        if(!Auth::user()->email_verified_at) {
+            return redirect()->to('/email/verify');
+        }
         return $this->index_published();
         //return PostController::IsOpen();
     }
 
     public function index_show($posts, $status)
     {
+        if(!Auth::user()->email_verified_at) {
+            return redirect()->to('/email/verify');
+        }
         $stats = PostController::stats();
         return view('post.index', compact('posts', 'stats', 'status'));
     }
 
     public function index_published()
     {
+        if(!Auth::user()->email_verified_at) {
+            return redirect()->to('/email/verify');
+        }
         //return Post::where('id',1)->first();
         /*$posts = collect();
         //Current User must be the author of this review (note, not necessarily of the live post as this can be the editor)
@@ -66,6 +75,9 @@ class PostController extends Controller
 
     public function index_draft()
     {
+        if(!Auth::user()->email_verified_at) {
+            return redirect()->to('/email/verify');
+        }
         //User must be associated to this post AND is_draft must be true
         $filter = ['user_id' => auth()->user()->id, 'is_draft' => true];
         $posts = Post::where($filter)->get();
@@ -80,6 +92,9 @@ class PostController extends Controller
 
     public function index_review()
     {
+        if(!Auth::user()->email_verified_at) {
+            return redirect()->to('/email/verify');
+        }
         /**
          * Criteria
          * (1) User must be user of this post
@@ -101,6 +116,9 @@ class PostController extends Controller
     //Declined -> specifically declined, NOT when just updated.
     public function index_declined()
     {
+        if(!Auth::user()->email_verified_at) {
+            return redirect()->to('/email/verify');
+        }
         /**
          * Criteria
          * (1) User must be user of this post
@@ -167,6 +185,9 @@ class PostController extends Controller
      */
     public function create()
     {
+        if(!Auth::user()->email_verified_at) {
+            return redirect()->to('/email/verify');
+        }
         $cuisines = Cuisine::all();
         return view('post.create', compact('cuisines'))->with('info', 'Lets go');
     }
@@ -179,6 +200,9 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        if(!Auth::user()->email_verified_at) {
+            return redirect()->to('/email/verify');
+        }
         //Validate, but only non-drafts
         $validation_errors = PostController::PostValidate($request);
         if (count($validation_errors) > 0) {
@@ -261,6 +285,9 @@ class PostController extends Controller
      */
     public function edit(post $post)
     {
+        if(!Auth::user()->email_verified_at) {
+            return redirect()->to('/email/verify');
+        }
         //Checks, if there is already a draft for this post
         $has_active_draft = false;
 
@@ -333,6 +360,9 @@ class PostController extends Controller
      */
     public function update(Request $request, post $post)
     {
+        if(!Auth::user()->email_verified_at) {
+            return redirect()->to('/email/verify');
+        }
 
         //Validate, but only non-drafts
         $validation_errors = PostController::PostValidate($request);
