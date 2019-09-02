@@ -2,10 +2,10 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <h1 class="pb-3">hello@mealonsu.dk</h1>
-                <button type="button" class="btn btn-outline-light btn-lg"><i class="fa fa-paper-plane mr-2"></i>Contact Us</button>
+                <h1 class="pb-3">mealonsu@gmail.com</h1>
+                <a role="button" class="btn btn-outline-light btn-lg" href="mailto:mealonsu@gmail.com"><i class="fa fa-paper-plane mr-2"></i>Contact Us</a>
             </div>
-            <div class="col-md-6">
+            {{--<div class="col-md-6">
                 <h3 class="pb-3">Sign In to our Newsletter </h3>
                 <div class="row">
                     <div class="col-sm-9">
@@ -15,7 +15,7 @@
                         <button type="button" class="btn btn-outline-light btn-lg"><i class="fa fa-save"></i></button>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 </div>

@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <link rel="stylesheet" href="{{asset('css/custom.css')}}">
     <script src="{{ asset('js/app.js')}}" async></script>
+    <script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/unique-methods/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"></script><script type="text/javascript">window.dojoRequire(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us4.list-manage.com","uuid":"47eeea9aaf7c322111ab29cbc","lid":"3846b56e50","uniqueMethods":true}) })</script>
 </head>
 
 <body>

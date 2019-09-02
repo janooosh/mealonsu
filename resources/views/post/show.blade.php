@@ -253,7 +253,7 @@ use Carbon\Carbon;
         <h3 class="pt-4">About the author </h3>
         <div class="row pt-3">
             <div class="col-10">
-                <h5>{{$post->author->firstname.' '.$post->author->lastname}}</h5>
+                <h5>{{$post->author->firstname}}</h5>
                 <p>Published on {{Carbon::parse($post->updated_at)->format('d.m.y, h:i')}}</p>
                 
             </div>
