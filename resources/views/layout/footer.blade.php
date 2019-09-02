@@ -6,7 +6,7 @@
                 &copy; 2019, MealOnSu
             </div>
             <div class="col-md-4 text-center">
-                Legal | Data Policy | Cookie Policy
+                <a href="{{route('legal')}}">Legal</a> | Data Policy | Cookie Policy
             </div>
             {{--<div class="col-md-4 text-right">
                 <i class="fab fa-facebook"></i>

@@ -28,6 +28,9 @@ Route::get('/mapview',function() {
 Route::get('/editor',function() {
     return view('editor');
 });
+Route::get('/legal', function() {
+    return view('legal');
+})->name('legal');
 
 Route::get('/posts/all','PostController@all')->name('posts.all')->middleware('verified');
 Route::post('/posts/all','PostController@all_filtered')->name('posts.allfilter')->middleware('verified');
