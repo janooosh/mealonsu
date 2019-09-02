@@ -1,3 +1,9 @@
+<?php
+
+use Carbon\carbon;
+
+?>
+
 @include('layout.header')
 @include('layout.navigation')
 {{-- Header --}}
@@ -263,9 +269,8 @@
         <h3 class="pt-4">About the author </h3>
         <div class="row pt-3">
             <div class="col-10">
-                <h5>Mark Dwain</h5>
-                <p>Published on 23.06.2019 @ 11:13</p>
-                <p class="font-italic">"Coffee, Code & Cookies"</p><br />
+                <h5>{{$post->author->firstname}}</h5>
+                <p>Published on {{Carbon::parse($post->created_at)->format('d.m.y')}}</p>
             </div>
         </div>
 
