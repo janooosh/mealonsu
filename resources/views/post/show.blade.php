@@ -142,7 +142,7 @@ use Carbon\Carbon;
 <div class="container">
 
 {{-- Gallery --}}
-<div class="row pb-5 equal-height">
+{{-- <div class="row pb-5 equal-height">
     <div class="col-xs-4 col-md-2">
         <div class="thumbnail">
             <img src="{{ asset('images/restaurants/food.jpg')}}" class="img-fullsize" alt="Responsive image" data-gallery-src="{{asset('images/restaurants/food.jpg')}}">
@@ -173,7 +173,7 @@ use Carbon\Carbon;
             <img src="{{ asset('images/restaurants/res-5.jpg')}}" class="img-fluid img-thumbnail" alt="Responsive image" data-gallery-src="{{ asset('images/restaurants/res-5.jpg')}}">
         </div>
     </div>
-</div>
+</div> --}}
 
 {{-- Review / Categories --}}
 <div class="row">

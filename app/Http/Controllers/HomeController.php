@@ -29,7 +29,7 @@ class HomeController extends Controller
     public function index()
     {
         //Get all cuisines and posts, apply pagination to display 5 results per page
-        $cuisines = Cuisine::all();
+        $cuisines = Cuisine::whereHas('posts')->get();
         //$posts = post::paginate(5);
 
         $reviews = Review::with(['posts'=>function($query) {
