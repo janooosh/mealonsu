@@ -32,6 +32,10 @@ Route::get('/legal', function() {
     return view('legal');
 })->name('legal');
 
+Route::get('/privacy', function() {
+    return view('privacy');
+})->name('privacy');
+
 Route::get('/posts/all','PostController@all')->name('posts.all')->middleware('verified');
 Route::post('/posts/all','PostController@all_filtered')->name('posts.allfilter')->middleware('verified');
 Route::get('/users','UserController@index')->name('users.index')->middleware('verified');
