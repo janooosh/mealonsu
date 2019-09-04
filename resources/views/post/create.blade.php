@@ -130,7 +130,15 @@
                             @enderror
                         </td>
                         <td>
-                            <input type="checkbox" name="mo_closed" class="form-control-input @error('mo_closed') is-invalid @enderror" value="1" {{old('mo_closed')==1?'checked':''}}>
+                            <input type="checkbox" name="mo_closed" class="form-control-input @error('mo_closed') is-invalid @enderror" value="1" 
+                            @if(!is_null(old('mo_closed')))
+                                
+                                @if(old('mo_closed')==1)
+                                checked
+                                @endif
+                            @else
+                            checked
+                            @endif>
                             @error('mo_closed')
                             <div class="invalid-feedback">
                                 {{$message}}
@@ -157,7 +165,16 @@
                             @enderror
                         </td>
                         <td>
-                            <input type="checkbox" name="tu_closed" class="form-control-input @error('tu_closed') is-invalid @enderror" value="1" {{old('tu_closed')==1?'checked':''}}>
+                            <input type="checkbox" name="tu_closed" class="form-control-input @error('tu_closed') is-invalid @enderror" value="1"
+                            @if(!is_null(old('tu_closed')))
+                                
+                                @if(old('tu_closed')==1)
+                                checked
+                                @endif
+                            @else
+                            checked
+                            @endif
+                            >
                             @error('tu_closed')
                             <div class="invalid-feedback">
                                 {{$message}}
@@ -184,7 +201,16 @@
                             @enderror
                         </td>
                         <td>
-                            <input type="checkbox" name="we_closed" class="form-control-input @error('we_closed') is-invalid @enderror" value="1" {{old('we_closed')==1?'checked':''}}>
+                            <input type="checkbox" name="we_closed" class="form-control-input @error('we_closed') is-invalid @enderror" value="1"
+                            @if(!is_null(old('we_closed')))
+                                
+                                @if(old('we_closed')==1)
+                                checked
+                                @endif
+                            @else
+                            checked
+                            @endif
+                            >
                             @error('we_closed')
                             <div class="invalid-feedback">
                                 {{$message}}
@@ -211,7 +237,16 @@
                             @enderror
                         </td>
                         <td>
-                            <input type="checkbox" name="th_closed" class="form-control-input @error('th_closed') is-invalid @enderror" value="1" {{old('th_closed')==1?'checked':''}}>
+                            <input type="checkbox" name="th_closed" class="form-control-input @error('th_closed') is-invalid @enderror" value="1" 
+                            @if(!is_null(old('th_closed')))
+                                
+                                @if(old('th_closed')==1)
+                                checked
+                                @endif
+                            @else
+                            checked
+                            @endif
+                            >
                             @error('th_closed')
                             <div class="invalid-feedback">
                                 {{$message}}
@@ -238,7 +273,16 @@
                             @enderror
                         </td>
                         <td>
-                            <input type="checkbox" name="fr_closed" class="form-control-input @error('fr_closed') is-invalid @enderror" value="1" {{old('fr_closed')==1?'checked':''}}>
+                            <input type="checkbox" name="fr_closed" class="form-control-input @error('fr_closed') is-invalid @enderror" value="1" 
+                            @if(!is_null(old('fr_closed')))
+                                
+                                @if(old('fr_closed')==1)
+                                checked
+                                @endif
+                            @else
+                            checked
+                            @endif
+                            >
                             @error('fr_closed')
                             <div class="invalid-feedback">
                                 {{$message}}
@@ -265,7 +309,16 @@
                             @enderror
                         </td>
                         <td>
-                            <input type="checkbox" name="sa_closed" class="form-control-input @error('sa_closed') is-invalid @enderror" value="1" {{old('sa_closed')==1?'checked':''}}>
+                            <input type="checkbox" name="sa_closed" class="form-control-input @error('sa_closed') is-invalid @enderror" value="1" 
+                            @if(!is_null(old('sa_closed')))
+                                
+                                @if(old('sa_closed')==1)
+                                checked
+                                @endif
+                            @else
+                            checked
+                            @endif
+                            >
                             @error('sa_closed')
                             <div class="invalid-feedback">
                                 {{$message}}
@@ -292,7 +345,16 @@
                             @enderror
                         </td>
                         <td>
-                            <input type="checkbox" name="so_closed" class="form-control-input @error('so_closed') is-invalid @enderror" value="1" {{old('so_closed')==1?'checked':''}}>
+                            <input type="checkbox" name="so_closed" class="form-control-input @error('so_closed') is-invalid @enderror" value="1" 
+                            @if(!is_null(old('so_closed')))
+                                
+                                @if(old('so_closed')==1)
+                                checked
+                                @endif
+                            @else
+                            checked
+                            @endif
+                            >
                             @error('so_closed')
                             <div class="invalid-feedback">
                                 {{$message}}

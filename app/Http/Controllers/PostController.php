@@ -755,37 +755,37 @@ class PostController extends Controller
          */
         if (!$request->mo_closed) {
             if (!$request->mo_from || !$request->mo_to) {
-                $errors[] = "Please update your opening hours for Monday.";
+                $errors[] = "Please update your opening hours for Monday. No opening hours have been provided, thus Monday has been set as closed. Please re-submit.";
             }
         }
         if (!$request->tu_closed) {
             if (!$request->tu_from || !$request->tu_to) {
-                $errors[] = "Please update your opening hours for Tuesday.";
+                $errors[] = "Please update your opening hours for Tuesday.  No opening hours have been provided, thus Tuesday has been set as closed. Please re-submit.";
             }
         }
         if (!$request->we_closed) {
             if (!$request->we_from || !$request->we_to) {
-                $errors[] = "Please update your opening hours for Wednesday.";
+                $errors[] = "Please update your opening hours for Wednesday. No opening hours have been provided, thus Wednesday has been set as closed. Please re-submit.";
             }
         }
         if (!$request->th_closed) {
             if (!$request->th_from || !$request->th_to) {
-                $errors[] = "Please update your opening hours for Thursday.";
+                $errors[] = "Please update your opening hours for Thursday. No opening hours have been provided, thus Thursday has been set as closed. Please re-submit.";
             }
         }
         if (!$request->fr_closed) {
             if (!$request->fr_from || !$request->fr_to) {
-                $errors[] = "Please update your opening hours for Friday.";
+                $errors[] = "Please update your opening hours for Friday. No opening hours have been provided, thus Friday has been set as closed. Please re-submit.";
             }
         }
         if (!$request->sa_closed) {
             if (!$request->sa_from || !$request->sa_to) {
-                $errors[] = "Please update your opening hours for Saturday.";
+                $errors[] = "Please update your opening hours for Saturday. No opening hours have been provided, thus Saturday has been set as closed. Please re-submit.";
             }
         }
         if (!$request->so_closed) {
             if (!$request->so_from || !$request->so_to) {
-                $errors[] = "Please update your opening hours for Sunday.";
+                $errors[] = "Please update your opening hours for Sunday. No opening hours have been provided, thus Sunday has been set as closed. Please re-submit.";
             }
         }
 
