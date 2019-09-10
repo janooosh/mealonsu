@@ -9,9 +9,9 @@
             </div>
         </div>
         <div class="row p-3">
-        <div class="col-md-8">
-            There are {{count($posts)}} posts that need your review.
-        </div>
+            <div class="col-md-8">
+                There are {{count($posts)}} posts that need your review.
+            </div>
         </div>
     </div>
 
@@ -31,7 +31,11 @@
                         <div class="list-group-item list-group-item-action mb-1 shadow-sm">
                             <div class="row">
                                 <div class="col-3 col-md-2">
+                                    @if($post->img_logo)
+                                    <img src="{{ url('images/'.$post->img_logo)}}" class="img-fluid" />
+                                    @else
                                     <img src="{{ asset('images/restaurants/food.jpg')}}" class="img-fluid" />
+                                    @endif
                                 </div>
                                 <div class="col-3 col-md-5">
                                     <h5>{{$post->restaurant_name}}</h5>
@@ -52,11 +56,11 @@
                                 </div>
                                 <div class="col-3 col-md-3">
                                     @if(!$post->is_declined)
-                                        <a href="{{route('revisions.review',$post)}}" title="Review" role="button" class="btn btn-outline-success mb-1"><i class="fas fa-eye mr-2"></i>Review</a>
+                                    <a href="{{route('revisions.review',$post)}}" title="Review" role="button" class="btn btn-outline-success mb-1"><i class="fas fa-eye mr-2"></i>Review</a>
                                     @endif
                                 </div>
-                                </div>
                             </div>
+                        </div>
                         @endforeach
 
                     </div>
