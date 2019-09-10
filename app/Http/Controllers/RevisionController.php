@@ -26,11 +26,10 @@ class RevisionController extends Controller
     //Returns a collection of posts that must be reviewed
     public function to_review()
     {
-        $posts = Post::
-            where('is_draft', false)
+        $posts = Post::where('is_draft', false)
             ->where('is_declined', false)
             ->where('is_approved', false)
-            ->where('correction_id',null)
+            ->where('correction_id', null)
             ->get();
 
         return $posts;
@@ -120,8 +119,8 @@ class RevisionController extends Controller
     public function approve(Post $post)
     {
         $errors = $post->needs_review_errors();
-        
-        
+
+
         if ($errors->isEmpty()) {
             //Find out old review
             $review = $post->review;
@@ -175,6 +174,17 @@ class RevisionController extends Controller
             $newPost->place_location = $request->place_location;
             $newPost->place_adress = $request->place_adress;
             $newPost->place_icon = $request->place_icon;
+
+            //Images from old post
+            $newPost->img_1 = $post->img_1;
+            $newPost->img_2 = $post->img_2;
+            $newPost->img_3 = $post->img_3;
+            $newPost->img_4 = $post->img_4;
+            $newPost->img_5 = $post->img_5;
+            $newPost->img_6 = $post->img_6;
+            $newPost->img_title = $post->img_title;
+            $newPost->img_logo = $post->img_logo;
+
             //Update Rest
             $newPost->review_id = $post->review->id;
             $newPost->user_id = Auth::user()->id;
@@ -193,7 +203,9 @@ class RevisionController extends Controller
             PostController::updateCuisines($request, $newPost);
             //Opening Hours
             OpeningController::new($request, $newPost->id);
-            
+            //update Pictures
+            PostController::updateImages($request,$newPost);
+
             return redirect()->route('revisions.index')->with('success', 'Post approved and published.');
         }
         return redirect()->route('revisions.index')->withErrors($errors);

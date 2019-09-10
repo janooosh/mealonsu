@@ -19,7 +19,7 @@ class PostController extends Controller
 
     public function index()
     {
-        if(!Auth::user()->email_verified_at) {
+        if (!Auth::user()->email_verified_at) {
             return redirect()->to('/email/verify');
         }
         return $this->index_published();
@@ -28,7 +28,7 @@ class PostController extends Controller
 
     public function index_show($posts, $status)
     {
-        if(!Auth::user()->email_verified_at) {
+        if (!Auth::user()->email_verified_at) {
             return redirect()->to('/email/verify');
         }
         $stats = PostController::stats();
@@ -37,7 +37,7 @@ class PostController extends Controller
 
     public function index_published()
     {
-        if(!Auth::user()->email_verified_at) {
+        if (!Auth::user()->email_verified_at) {
             return redirect()->to('/email/verify');
         }
         //return Post::where('id',1)->first();
@@ -75,7 +75,7 @@ class PostController extends Controller
 
     public function index_draft()
     {
-        if(!Auth::user()->email_verified_at) {
+        if (!Auth::user()->email_verified_at) {
             return redirect()->to('/email/verify');
         }
         //User must be associated to this post AND is_draft must be true
@@ -92,7 +92,7 @@ class PostController extends Controller
 
     public function index_review()
     {
-        if(!Auth::user()->email_verified_at) {
+        if (!Auth::user()->email_verified_at) {
             return redirect()->to('/email/verify');
         }
         /**
@@ -116,7 +116,7 @@ class PostController extends Controller
     //Declined -> specifically declined, NOT when just updated.
     public function index_declined()
     {
-        if(!Auth::user()->email_verified_at) {
+        if (!Auth::user()->email_verified_at) {
             return redirect()->to('/email/verify');
         }
         /**
@@ -185,7 +185,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        if(!Auth::user()->email_verified_at) {
+        if (!Auth::user()->email_verified_at) {
             return redirect()->to('/email/verify');
         }
         $cuisines = Cuisine::all();
@@ -200,7 +200,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        if(!Auth::user()->email_verified_at) {
+        if (!Auth::user()->email_verified_at) {
             return redirect()->to('/email/verify');
         }
         //Validate, but only non-drafts
@@ -227,6 +227,10 @@ class PostController extends Controller
 
         //Generate opening hours, if any
         OpeningController::new($request, $newPost->id);
+
+        //Images
+        PostController::updateImages($request, $newPost);
+
         //Publish
         if ($request->action == 'Publish') {
             $newPost->is_draft = false;
@@ -285,7 +289,7 @@ class PostController extends Controller
      */
     public function edit(post $post)
     {
-        if(!Auth::user()->email_verified_at) {
+        if (!Auth::user()->email_verified_at) {
             return redirect()->to('/email/verify');
         }
         //Checks, if there is already a draft for this post
@@ -360,7 +364,7 @@ class PostController extends Controller
      */
     public function update(Request $request, post $post)
     {
-        if(!Auth::user()->email_verified_at) {
+        if (!Auth::user()->email_verified_at) {
             return redirect()->to('/email/verify');
         }
 
@@ -434,6 +438,9 @@ class PostController extends Controller
                 PostController::updateCuisines($request, $post);
                 //Update Opening Hours
                 OpeningController::new($request, $post->id);
+
+                //Update Images
+                PostController::updateImages($request, $post);
             }
 
             //(2) IF DRAFT (LIVE)
@@ -447,11 +454,25 @@ class PostController extends Controller
                 $newPost->place_location = $request->place_location;
                 $newPost->place_adress = $request->place_adress;
                 $newPost->place_icon = $request->place_icon;
+
+                //Images
+                $newPost->img_1 = $post->img_1;
+                $newPost->img_2 = $post->img_2;
+                $newPost->img_3 = $post->img_3;
+                $newPost->img_4 = $post->img_4;
+                $newPost->img_5 = $post->img_5;
+                $newPost->img_6 = $post->img_6;
+                $newPost->img_title = $post->img_title;
+                $newPost->img_logo = $post->img_logo;
+
                 $newPost->save();
                 //Update Cuisines
                 PostController::updateCuisines($request, $newPost);
                 //Update Opening Hours
                 OpeningController::new($request, $newPost->id);
+
+                //Update Images
+                PostController::updateImages($request, $newPost);
             }
             //Action is 'draft', but something is wrong with the post
             else {
@@ -476,6 +497,8 @@ class PostController extends Controller
                 PostController::updateCuisines($request, $post);
                 //Update Opening Hours
                 OpeningController::new($request, $post->id);
+                //Update Images
+                PostController::updateImages($request, $post);
             }
 
             //(5) IF THIS IS A PUBLISH OF A DRAFT OF A LIVE
@@ -488,6 +511,8 @@ class PostController extends Controller
                 PostController::updateCuisines($request, $post);
                 //Update Opening Hours
                 OpeningController::new($request, $post->id);
+                //Update Pictures
+                PostController::updateImages($request, $post);
             }
 
 
@@ -498,10 +523,27 @@ class PostController extends Controller
                 $newPost->review_id = $post->review_id;
                 $newPost->is_draft = false;
                 $newPost->save();
+                //Location
+                $newPost->place_name = $request->place_name;
+                $newPost->place_location = $request->place_location;
+                $newPost->place_adress = $request->place_adress;
+                $newPost->place_icon = $request->place_icon;
+
+                //Images
+                $newPost->img_1 = $post->img_1;
+                $newPost->img_2 = $post->img_2;
+                $newPost->img_3 = $post->img_3;
+                $newPost->img_4 = $post->img_4;
+                $newPost->img_5 = $post->img_5;
+                $newPost->img_6 = $post->img_6;
+                $newPost->img_title = $post->img_title;
+                $newPost->img_logo = $post->img_logo;
                 //Update Cuisines
                 PostController::updateCuisines($request, $newPost);
                 //Update Opening Hours
                 OpeningController::new($request, $newPost->id);
+                //Update Images
+                PostController::updateImages($request,$newPost);
             }
             //Action is 'publish', but something is wrong with the post
             else {
@@ -624,7 +666,7 @@ class PostController extends Controller
         $search_query = $request->search_query;
 
         $reviews = Review::whereHas('post', function ($query) use ($search_query) {
-            return $query->where('restaurant_name','LIKE','%'.$search_query.'%');
+            return $query->where('restaurant_name', 'LIKE', '%' . $search_query . '%');
         })->paginate(5);
 
         return view('post.all', compact('reviews', 'search_query'));
@@ -744,6 +786,14 @@ class PostController extends Controller
             'sa_closed' => 'boolean',
             'su_closed' => 'boolean',
             'cuisine.*' => 'exists:cuisines,id', //Validates cuisine, .* as there are multiple inputs (name = "cuisine[]" in the views)
+            'img_1' => 'image|mimes:jpeg,png,jpg,svg|max:5200',
+            'img_2' => 'image|mimes:jpeg,png,jpg,svg|max:5200',
+            'img_3' => 'image|mimes:jpeg,png,jpg,svg|max:5200',
+            'img_4' => 'image|mimes:jpeg,png,jpg,svg|max:5200',
+            'img_5' => 'image|mimes:jpeg,png,jpg,svg|max:5200',
+            'img_6' => 'image|mimes:jpeg,png,jpg,svg|max:5200',
+            'img_title' => 'image|mimes:jpeg,png,jpg,svg|max:5200',
+            'img_logo' => 'image|mimes:jpeg,png,jpg,svg|max:5200'
         ]);
 
         //Custom Validation, save errors in $errors []
@@ -830,6 +880,88 @@ class PostController extends Controller
          * See the following tutorial about sync() (the above tutorial uses attach): https://laravel.com/docs/5.8/eloquent-relationships#updating-many-to-many-relationships
          */
         $post->cuisines()->sync($cuisines);
+    }
+
+    public static function updateImages(request $request, Post $post)
+    {
+
+        //Generate filenames
+        $img_1 = null;
+        $img_2 = null;
+        $img_3 = null;
+        $img_4 = null;
+        $img_5 = null;
+        $img_title = null;
+        //return $request->img_1;
+
+        if ($request->hasFile('img_1')) {
+            $img_1 = time() . '.1.' . $request->img_1->getClientOriginalExtension();
+            $request->img_1->move(public_path('images'), $img_1);
+            $post->img_1 = $img_1;
+        }
+        if ($request->hasFile('img_2')) {
+            $img_2 = time() . '.2.' . $request->img_2->getClientOriginalExtension();
+            $request->img_2->move(public_path('images'), $img_2);
+            $post->img_2 = $img_2;
+        }
+        if ($request->hasFile('img_3')) {
+            $img_3 = time() . '.3.' . $request->img_3->getClientOriginalExtension();
+            $request->img_3->move(public_path('images'), $img_3);
+            $post->img_3 = $img_3;
+        }
+        if ($request->hasFile('img_4')) {
+            $img_4 = time() . '.4.' . $request->img_4->getClientOriginalExtension();
+            $request->img_4->move(public_path('images'), $img_4);
+            $post->img_4 = $img_4;
+        }
+        if ($request->hasFile('img_5')) {
+            $img_5 = time() . '.5.' . $request->img_5->getClientOriginalExtension();
+            $request->img_5->move(public_path('images'), $img_5);
+            $post->img_5 = $img_5;
+        }
+        if ($request->hasFile('img_6')) {
+            $img_6 = time() . '.6.' . $request->img_6->getClientOriginalExtension();
+            $request->img_6->move(public_path('images'), $img_6);
+            $post->img_6 = $img_6;
+        }
+        if ($request->hasFile('img_title')) {
+            $img_title = time() . '.t.' . $request->img_title->getClientOriginalExtension();
+            $request->img_title->move(public_path('images'), $img_title);
+            $post->img_title = $img_title;
+        }
+        if ($request->hasFile('img_logo')) {
+            $img_logo = time() . '.l.' . $request->img_logo->getClientOriginalExtension();
+            $request->img_logo->move(public_path('images'), $img_logo);
+            $post->img_logo = $img_logo;
+        }
+
+        /*
+        try{
+        $img_1 = time().'.1.'.$request->img_1->getClientOriginalExtension();
+        $img_2 = time().'.2.'.$request->img_2->getClientOriginalExtension();
+        $img_3 = time().'.3.'.$request->img_3->getClientOriginalExtension();
+        $img_4 = time().'.4.'.$request->img_4->getClientOriginalExtension();
+        $img_5 = time().'.5.'.$request->img_5->getClientOriginalExtension();
+        $img_title = time().'.t.'.$request->img_title->getClientOriginalExtension();
+        
+        //Move Images
+        $request->img_1->move(public_path('images'), $img_1);
+        $request->img_2->move(public_path('images'), $img_2);
+        $request->img_3->move(public_path('images'), $img_3);
+        $request->img_4->move(public_path('images'), $img_4);
+        $request->img_5->move(public_path('images'), $img_5);
+        $request->img_title->move(public_path('images'), $img_title);
+        }
+        catch (error $e) {}
+        
+        //Store names to db
+        $post->img_1 = $img_1;
+        $post->img_2 = $img_2;
+        $post->img_3 = $img_3;
+        $post->img_4 = $img_4;
+        $post->img_title = $img_title;
+        */
+        $post->save();
     }
 
     /**

@@ -4,7 +4,13 @@ use Carbon\Carbon;
 @include('layout.header')
 @include('layout.navigation')
 {{-- Header --}}
-<div class="jumbotron shadow-sm" style="background: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.2)), url('{{asset('images/restaurants/food.jpg')}}'); background-size:cover; background-attachment:fixed;">
+<div class="jumbotron shadow-sm" 
+@if($post->img_title)
+style="background: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.2)), url('{{url('images/'.$post->img_title)}}'); background-size:cover; background-attachment:fixed;"
+@else
+style="background: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.2)), url('{{asset('images/restaurants/food.jpg')}}'); background-size:cover; background-attachment:fixed;"
+@endif
+>
     <div class="container text-white">
         <h1 class="display-3">{{$post->restaurant_name}}</h1>
         <p>{{$post->subtitle}}</p>
@@ -128,6 +134,7 @@ use Carbon\Carbon;
     </div>
 </div> {{-- Ende dieses Containers --}}
 
+@if($post->summary)
 <div class="container-fluid mb-3 p-3 " style="background-color:inherit;">
     <div class="container">
         {{-- Headline --}}
@@ -138,44 +145,59 @@ use Carbon\Carbon;
         </div>
     </div>
 </div>
+@endif
 
 <div class="container">
 
 {{-- Gallery --}}
-{{-- <div class="row pb-5 equal-height">
+<div class="row pb-5 equal-height">
+    @if($post->img_1)
     <div class="col-xs-4 col-md-2">
         <div class="thumbnail">
-            <img src="{{ asset('images/restaurants/food.jpg')}}" class="img-fullsize" alt="Responsive image" data-gallery-src="{{asset('images/restaurants/food.jpg')}}">
+            <img src="{{url('/images/'.$post->img_1)}}" class="img-fullsize" alt="Responsive image" data-gallery-src="{{url('images/'.$post->img_1)}}">
         </div>
     </div>
+    @endif
+    @if($post->img_2)
     <div class="col-xs-4 col-md-2">
         <div class="thumbnail">
-            <img src="{{ asset('images/restaurants/res-1.jpg')}}" class="img-fullsize" alt="Responsive image" data-gallery-src="{{ asset('images/restaurants/res-1.jpg')}}">
+        <img src="{{url('/images/'.$post->img_2)}}" class="img-fullsize" alt="Responsive image" data-gallery-src="{{url('images/'.$post->img_2)}}">
         </div>
     </div>
+    @endif
+    @if($post->img_3)
     <div class="col-xs-4 col-md-2">
         <div class="thumbnail">
-            <img src="{{ asset('images/restaurants/res-2.jpg')}}" class="img-fullsize" alt="Responsive image" data-gallery-src="{{ asset('images/restaurants/res-2.jpg')}}">
+        <img src="{{url('/images/'.$post->img_3)}}" class="img-fullsize" alt="Responsive image" data-gallery-src="{{url('images/'.$post->img_3)}}">
         </div>
     </div>
+    @endif
+    @if($post->img_4)
     <div class="col-xs-4 col-md-2">
         <div class="thumbnail">
-            <img src="{{ asset('images/restaurants/res-3.jpg')}}" class="img-fluid img-thumbnail" alt="Responsive image" data-gallery-src="{{ asset('images/restaurants/res-3.jpg')}}">
+        <img src="{{url('/images/'.$post->img_4)}}" class="img-fullsize" alt="Responsive image" data-gallery-src="{{url('images/'.$post->img_4)}}">
         </div>
     </div>
+    @endif
+    @if($post->img_5)
     <div class="col-xs-4 col-md-2">
         <div class="thumbnail">
-            <img src="{{ asset('images/restaurants/res-4.jpg')}}" class="img-fluid img-thumbnail" alt="Responsive image" data-gallery-src="{{ asset('images/restaurants/res-4.jpg')}}">
+        <img src="{{url('/images/'.$post->img_5)}}" class="img-fullsize" alt="Responsive image" data-gallery-src="{{url('images/'.$post->img_5)}}">
         </div>
     </div>
+    @endif
+    @if($post->img_6)
     <div class="col-xs-4 col-md-2">
         <div class="thumbnail">
-            <img src="{{ asset('images/restaurants/res-5.jpg')}}" class="img-fluid img-thumbnail" alt="Responsive image" data-gallery-src="{{ asset('images/restaurants/res-5.jpg')}}">
+        <img src="{{url('/images/'.$post->img_6)}}" class="img-fullsize" alt="Responsive image" data-gallery-src="{{url('images/'.$post->img_6)}}">
         </div>
     </div>
-</div> --}}
+    @endif
+</div>
+</div>
 
 {{-- Review / Categories --}}
+<div class="container">
 <div class="row">
     <div class="col-md-12">
         <h3>Food Quality</h3>

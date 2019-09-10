@@ -11,7 +11,7 @@
     </div>
     @include('components.messages')
 
-    <form method="POST" action="{{route('posts.update',$post)}}">
+    <form method="POST" action="{{route('posts.update',$post)}}" enctype="multipart/form-data">
 
         @csrf
         <input type="hidden" name="_method" value="put" />
@@ -80,7 +80,7 @@
             <div class="col-md-12">
                 <h4 class="pl-3">Edit Location</h4>
                 <p>The following location is currently selected. </p>
-                <p class="font-weight-600 text-xl-left">{{$post->place_name}}, {{$post->place_adress}}</b></p>
+                <h5 class="font-weight-600 text-xl-left">{{$post->place_name}}, {{$post->place_adress}}</b></h5>
                 <p>To change it, please enter a new location. </p>
                 @include('components.map.create')
                 <input type="hidden" class="form-control" id="place_location" name="place_location" value="{{$post->place_location}}">
@@ -316,11 +316,11 @@
                         <label class="form-check-label" for="price2"> 50 - 100 DKK</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" id="price3" type="radio" name="price" value="3"{{$post->pricerange=='3'?'checked':''}}>
+                <input class="form-check-input" id="price3" type="radio" name="price" value="3" {{$post->pricerange=='3'?'checked':''}}>
                 <label class="form-check-label" for="price3"> 100 - 150 DKK</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" id="price4" type="radio" name="price" value="4"{{$post->pricerange=='4'?'checked':''}}>
+                <input class="form-check-input" id="price4" type="radio" name="price" value="4" {{$post->pricerange=='4'?'checked':''}}>
                 <label class="form-check-label" for="price4"> > 150 DKK</label>
             </div>
         </div>
@@ -362,45 +362,6 @@
     </div>
     <div class="row">
         <div class="col-md-6">
-            <div class="row p-3" id="options_price">
-                <div class="col-md-3">
-                    Price Range *
-                </div>
-                <div class="col-md-9">
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input @error('pricerange') is-invalid @enderror" type="radio" name="pricerange" value="1" id="pricerange_1" @if(!old('pricerange') && $post->pricerange==1)
-                        checked
-                        @endif
-                        {{old('pricerange')==1?'checked':''}}>
-                        <label class="form-check-label" for="exampleRadios2">
-                            €
-                        </label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input @error('pricerange') is-invalid @enderror" type="radio" name="pricerange" id="pricerange_2" value="2" @if(!old('pricerange') && $post->pricerange==2)
-                        checked
-                        @endif
-                        {{old('pricerange')==2?'checked':''}}>
-                        <label class="form-check-label" for="exampleRadios2">
-                            €€
-                        </label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input @error('pricerange') is-invalid @enderror" type="radio" name="pricerange" id="pricerange_3" value="3" @if(!old('pricerange') && $post->pricerange==3)
-                        checked
-                        @endif
-                        {{old('pricerange')==3?'checked':''}}>
-                        <label class="form-check-label" for="exampleRadios2">
-                            €€€
-                        </label>
-                    </div>
-                    @error('pricerange')
-                    <div class="invalid-feedback">
-                        {{$message}}
-                    </div>
-                    @enderror
-                </div>
-            </div>
 
             <div class="row p-3" id="options_vegan">
                 <div class="col-md-3">
@@ -579,6 +540,129 @@
                 {{$message}}
             </div>
             @enderror
+        </div>
+    </div>
+</div>
+
+{{-- Gallery --}}
+<div class="container">
+    {{-- Preview existing images --}}
+    <div class="row mb-5 equal-height">
+        <div class="col-md-8">
+            Title Image
+            @if($post->img_title)
+            <div class="thumbnail">
+                <img src="{{url('/images/'.$post->img_title)}}" class="img-fullsize" alt="Responsive image" data-gallery-src="{{url('images/'.$post->img_title)}}">
+            </div>
+            @endif
+        </div>
+        <div class="col-md-4">
+            Logo / Index Image
+            @if($post->img_logo)
+            <div class="thumbnail">
+                <img src="{{url('/images/'.$post->img_logo)}}" class="img-fullsize" alt="Responsive image" data-gallery-src="{{url('images/'.$post->img_logo)}}">
+            </div>
+            @endif
+        </div>
+    </div>
+    <div class="row mb-5 equal-height">
+        <div class="col-md-2">
+            Image 1
+            @if($post->img_1)
+            <div class="thumbnail">
+                <img src="{{url('/images/'.$post->img_1)}}" class="img-fullsize" alt="Responsive image" data-gallery-src="{{url('images/'.$post->img_1)}}">
+            </div>
+            @endif
+        </div>
+        <div class="col-md-2">
+            Image 2
+            @if($post->img_2)
+            <div class="thumbnail">
+                <img src="{{url('/images/'.$post->img_2)}}" class="img-fullsize" alt="Responsive image" data-gallery-src="{{url('images/'.$post->img_2)}}">
+            </div>
+            @endif
+        </div>
+        <div class="col-md-2">
+            Image 3
+            @if($post->img_3)
+            <div class="thumbnail">
+                <img src="{{url('/images/'.$post->img_3)}}" class="img-fullsize" alt="Responsive image" data-gallery-src="{{url('images/'.$post->img_3)}}">
+            </div>
+            @endif
+        </div>
+        <div class="col-md-2">
+            Image 4
+            @if($post->img_4)
+            <div class="thumbnail">
+                <img src="{{url('/images/'.$post->img_4)}}" class="img-fullsize" alt="Responsive image" data-gallery-src="{{url('images/'.$post->img_4)}}">
+            </div>
+            @endif
+        </div>
+        <div class="col-md-2">
+            Image 5
+            @if($post->img_5)
+            <div class="thumbnail">
+                <img src="{{url('/images/'.$post->img_5)}}" class="img-fullsize" alt="Responsive image" data-gallery-src="{{url('images/'.$post->img_5)}}">
+            </div>
+            @endif
+        </div>
+        <div class="col-md-2">
+            Image 6
+            @if($post->img_6)
+            <div class="thumbnail">
+                <img src="{{url('/images/'.$post->img_6)}}" class="img-fullsize" alt="Responsive image" data-gallery-src="{{url('images/'.$post->img_6)}}">
+            </div>
+            @endif
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-12">
+            <p>To replace the above images, please upload new images in the according slots.</p>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <label class="form-check-label" for="img_1">Image 1</label>
+            <input type="file" class="form-control-file" id="img_1" name="img_1">
+        </div>
+        <div class="col-md-4">
+            <label class="form-check-label" for="img_2">Image 2</label>
+            <input type="file" class="form-control-file" id="img_2" name="img_2">
+        </div>
+        <div class="col-md-4">
+            <label class="form-check-label" for="img_3">Image 3</label>
+            <input type="file" class="form-control-file" id="img_3" name="img_3">
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <label class="form-check-label" for="img_4">Image 4</label>
+            <input type="file" class="form-control-file" id="img_4" name="img_4">
+        </div>
+        <div class="col-md-4">
+            <label class="form-check-label" for="img_5">Image 5</label>
+            <input type="file" class="form-control-file" id="img_5" name="img_5">
+        </div>
+        <div class="col-md-4">
+            <label class="form-check-label" for="img_5">Image 6</label>
+            <input type="file" class="form-control-file" id="img_6" name="img_6">
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <label class="form-check-label" for="img_title">Title Image</label>
+            <input type="file" class="form-control-file" id="img_title" name="img_title">
+        </div>
+        <div class="col-md-4">
+            <label class="form-check-label" for="img_title">Logo / Index Image</label>
+            <input type="file" class="form-control-file" id="img_logo" name="img_logo">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <p>Pictures may not exceed 5 MB. The following file types are accepted: .jpeg, .jpg, .png, .svg.
         </div>
     </div>
 </div>

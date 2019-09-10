@@ -11,7 +11,7 @@
     </div>
     @include('components.messages')
 
-    <form method="POST" action="{{route('posts.store')}}">
+    <form method="POST" action="{{route('posts.store')}}" enctype="multipart/form-data">
         @csrf
 
         {{-- <div class="container">
@@ -130,15 +130,7 @@
                             @enderror
                         </td>
                         <td>
-                            <input type="checkbox" name="mo_closed" class="form-control-input @error('mo_closed') is-invalid @enderror" value="1" 
-                            @if(!is_null(old('mo_closed')))
-                                
-                                @if(old('mo_closed')==1)
-                                checked
-                                @endif
-                            @else
-                            checked
-                            @endif>
+                            <input type="checkbox" name="mo_closed" class="form-control-input @error('mo_closed') is-invalid @enderror" value="1" @if(!is_null(old('mo_closed'))) @if(old('mo_closed')==1) checked @endif @else checked @endif>
                             @error('mo_closed')
                             <div class="invalid-feedback">
                                 {{$message}}
@@ -165,16 +157,7 @@
                             @enderror
                         </td>
                         <td>
-                            <input type="checkbox" name="tu_closed" class="form-control-input @error('tu_closed') is-invalid @enderror" value="1"
-                            @if(!is_null(old('tu_closed')))
-                                
-                                @if(old('tu_closed')==1)
-                                checked
-                                @endif
-                            @else
-                            checked
-                            @endif
-                            >
+                            <input type="checkbox" name="tu_closed" class="form-control-input @error('tu_closed') is-invalid @enderror" value="1" @if(!is_null(old('tu_closed'))) @if(old('tu_closed')==1) checked @endif @else checked @endif>
                             @error('tu_closed')
                             <div class="invalid-feedback">
                                 {{$message}}
@@ -201,16 +184,7 @@
                             @enderror
                         </td>
                         <td>
-                            <input type="checkbox" name="we_closed" class="form-control-input @error('we_closed') is-invalid @enderror" value="1"
-                            @if(!is_null(old('we_closed')))
-                                
-                                @if(old('we_closed')==1)
-                                checked
-                                @endif
-                            @else
-                            checked
-                            @endif
-                            >
+                            <input type="checkbox" name="we_closed" class="form-control-input @error('we_closed') is-invalid @enderror" value="1" @if(!is_null(old('we_closed'))) @if(old('we_closed')==1) checked @endif @else checked @endif>
                             @error('we_closed')
                             <div class="invalid-feedback">
                                 {{$message}}
@@ -237,16 +211,7 @@
                             @enderror
                         </td>
                         <td>
-                            <input type="checkbox" name="th_closed" class="form-control-input @error('th_closed') is-invalid @enderror" value="1" 
-                            @if(!is_null(old('th_closed')))
-                                
-                                @if(old('th_closed')==1)
-                                checked
-                                @endif
-                            @else
-                            checked
-                            @endif
-                            >
+                            <input type="checkbox" name="th_closed" class="form-control-input @error('th_closed') is-invalid @enderror" value="1" @if(!is_null(old('th_closed'))) @if(old('th_closed')==1) checked @endif @else checked @endif>
                             @error('th_closed')
                             <div class="invalid-feedback">
                                 {{$message}}
@@ -273,16 +238,7 @@
                             @enderror
                         </td>
                         <td>
-                            <input type="checkbox" name="fr_closed" class="form-control-input @error('fr_closed') is-invalid @enderror" value="1" 
-                            @if(!is_null(old('fr_closed')))
-                                
-                                @if(old('fr_closed')==1)
-                                checked
-                                @endif
-                            @else
-                            checked
-                            @endif
-                            >
+                            <input type="checkbox" name="fr_closed" class="form-control-input @error('fr_closed') is-invalid @enderror" value="1" @if(!is_null(old('fr_closed'))) @if(old('fr_closed')==1) checked @endif @else checked @endif>
                             @error('fr_closed')
                             <div class="invalid-feedback">
                                 {{$message}}
@@ -309,16 +265,7 @@
                             @enderror
                         </td>
                         <td>
-                            <input type="checkbox" name="sa_closed" class="form-control-input @error('sa_closed') is-invalid @enderror" value="1" 
-                            @if(!is_null(old('sa_closed')))
-                                
-                                @if(old('sa_closed')==1)
-                                checked
-                                @endif
-                            @else
-                            checked
-                            @endif
-                            >
+                            <input type="checkbox" name="sa_closed" class="form-control-input @error('sa_closed') is-invalid @enderror" value="1" @if(!is_null(old('sa_closed'))) @if(old('sa_closed')==1) checked @endif @else checked @endif>
                             @error('sa_closed')
                             <div class="invalid-feedback">
                                 {{$message}}
@@ -345,16 +292,7 @@
                             @enderror
                         </td>
                         <td>
-                            <input type="checkbox" name="so_closed" class="form-control-input @error('so_closed') is-invalid @enderror" value="1" 
-                            @if(!is_null(old('so_closed')))
-                                
-                                @if(old('so_closed')==1)
-                                checked
-                                @endif
-                            @else
-                            checked
-                            @endif
-                            >
+                            <input type="checkbox" name="so_closed" class="form-control-input @error('so_closed') is-invalid @enderror" value="1" @if(!is_null(old('so_closed'))) @if(old('so_closed')==1) checked @endif @else checked @endif>
                             @error('so_closed')
                             <div class="invalid-feedback">
                                 {{$message}}
@@ -371,27 +309,26 @@
 
 {{-- Pricerange --}}
 <div class="container">
-<div class="row">
-    <div class="col-md-12 pl-3">
-    <h4>Price for one meal</h4>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" id="price1" type="radio" name="price" value="1">
-            <label class="form-check-label" for="price1"> < 50 DKK</label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" id="price2" type="radio" name="price" value="2">
-            <label class="form-check-label" for="price2"> 50 - 100 DKK</label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" id="price3" type="radio" name="price" value="3">
-            <label class="form-check-label" for="price3"> 100 - 150 DKK</label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" id="price4" type="radio" name="price" value="4">
-            <label class="form-check-label" for="price4"> > 150 DKK</label>
+    <div class="row">
+        <div class="col-md-12 pl-3">
+            <h4>Price for one meal</h4>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" id="price1" type="radio" name="price" value="1">
+                <label class="form-check-label" for="price1">
+                    < 50 DKK</label> </div> <div class="form-check form-check-inline">
+                        <input class="form-check-input" id="price2" type="radio" name="price" value="2">
+                        <label class="form-check-label" for="price2"> 50 - 100 DKK</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" id="price3" type="radio" name="price" value="3">
+                <label class="form-check-label" for="price3"> 100 - 150 DKK</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" id="price4" type="radio" name="price" value="4">
+                <label class="form-check-label" for="price4"> > 150 DKK</label>
+            </div>
         </div>
     </div>
-</div>
 </div>
 
 <hr />
@@ -649,6 +586,52 @@
                 {{$message}}
             </div>
             @enderror
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <label class="form-check-label" for="img_1">Image 1</label>
+            <input type="file" class="form-control-file" id="img_1" name="img_1">
+        </div>
+        <div class="col-md-4">
+            <label class="form-check-label" for="img_2">Image 2</label>
+            <input type="file" class="form-control-file" id="img_2" name="img_2">
+        </div>
+        <div class="col-md-4">
+            <label class="form-check-label" for="img_3">Image 3</label>
+            <input type="file" class="form-control-file" id="img_3" name="img_3">
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <label class="form-check-label" for="img_4">Image 4</label>
+            <input type="file" class="form-control-file" id="img_4" name="img_4">
+        </div>
+        <div class="col-md-4">
+            <label class="form-check-label" for="img_5">Image 5</label>
+            <input type="file" class="form-control-file" id="img_5" name="img_5">
+        </div>
+        <div class="col-md-4">
+            <label class="form-check-label" for="img_5">Image 6</label>
+            <input type="file" class="form-control-file" id="img_6" name="img_6">
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <label class="form-check-label" for="img_title">Title Image</label>
+            <input type="file" class="form-control-file" id="img_title" name="img_title">
+        </div>
+        <div class="col-md-4">
+            <label class="form-check-label" for="img_title">Logo / Index Image</label>
+            <input type="file" class="form-control-file" id="img_logo" name="img_logo">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <p>Pictures may not exceed 5 MB. The following file types are accepted: .jpeg, .jpg, .png, .svg.
         </div>
     </div>
 </div>

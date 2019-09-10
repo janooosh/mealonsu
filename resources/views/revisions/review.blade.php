@@ -7,7 +7,13 @@ use Carbon\carbon;
 @include('layout.header')
 @include('layout.navigation')
 {{-- Header --}}
-<div class="jumbotron shadow-sm" style="background: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.2)), url('{{asset('images/restaurants/food.jpg')}}'); background-size:cover; background-attachment:fixed;">
+<div class="jumbotron shadow-sm" 
+@if($post->img_title)
+style="background: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.2)), url('{{url('images/'.$post->img_title)}}'); background-size:cover; background-attachment:fixed;"
+@else
+style="background: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.2)), url('{{asset('images/restaurants/food.jpg')}}'); background-size:cover; background-attachment:fixed;"
+@endif
+>
     <div class="container text-white">
         <h1 class="display-3">{{$post->restaurant_name}}</h1>
         <p>{{$post->subtitle}}</p>
@@ -100,19 +106,18 @@ use Carbon\carbon;
                 <div class="row">
                     <div class="col-11">
                         <p>
-                        A menu costs around 
-                        <b>
-                        @if($post->pricerange==1)
-                        < 50
-                        @elseif($post->pricerange==2)
-                        50 - 100
-                        @elseif($post->pricerange==3)
-                        100 - 150
-                        @else
-                        > 150
-                        @endif
-                        </b>
-                        DKK.
+                            A menu costs around
+                            <b>
+                                @if($post->pricerange==1)
+                                < 50 @elseif($post->pricerange==2)
+                                    50 - 100
+                                    @elseif($post->pricerange==3)
+                                    100 - 150
+                                    @else
+                                    > 150
+                                    @endif
+                            </b>
+                            DKK.
                         </p>
                     </div>
                 </div>
@@ -136,7 +141,7 @@ use Carbon\carbon;
         {{-- Map --}}
         <div class="col-md-6">
             @include('components.map.show')
-            <p class="mt-2 text-center" >{{$post->place_name}}, {{$post->place_adress}}</p>
+            <p class="mt-2 text-center">{{$post->place_name}}, {{$post->place_adress}}</p>
             {{--<div class="embed-responsive embed-responsive-16by9">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2249.5505644667724!2d12.531604716109225!3d55.679415205116946!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465253bc8f589777%3A0x1e7e22f569fd25c2!2sShakedown+Burger+%26+Shakes!5e0!3m2!1sde!2sdk!4v1562746098919!5m2!1sde!2sdk" width="600" height="450" style="border:0" allowfullscreen></iframe>
             </div> --}}
@@ -155,41 +160,55 @@ use Carbon\carbon;
     </div>
 </div>
 
+{{-- Gallery --}}
 <div class="container">
+<div class="row pb-5 equal-height">
+    @if($post->img_1)
+    <div class="col-xs-4 col-md-2">
+        <div class="thumbnail">
+            <img src="{{url('/images/'.$post->img_1)}}" class="img-fullsize" alt="Responsive image" data-gallery-src="{{url('images/'.$post->img_1)}}">
+        </div>
+    </div>
+    @endif
+    @if($post->img_2)
+    <div class="col-xs-4 col-md-2">
+        <div class="thumbnail">
+        <img src="{{url('/images/'.$post->img_2)}}" class="img-fullsize" alt="Responsive image" data-gallery-src="{{url('images/'.$post->img_2)}}">
+        </div>
+    </div>
+    @endif
+    @if($post->img_3)
+    <div class="col-xs-4 col-md-2">
+        <div class="thumbnail">
+        <img src="{{url('/images/'.$post->img_3)}}" class="img-fullsize" alt="Responsive image" data-gallery-src="{{url('images/'.$post->img_3)}}">
+        </div>
+    </div>
+    @endif
+    @if($post->img_4)
+    <div class="col-xs-4 col-md-2">
+        <div class="thumbnail">
+        <img src="{{url('/images/'.$post->img_4)}}" class="img-fullsize" alt="Responsive image" data-gallery-src="{{url('images/'.$post->img_4)}}">
+        </div>
+    </div>
+    @endif
+    @if($post->img_5)
+    <div class="col-xs-4 col-md-2">
+        <div class="thumbnail">
+        <img src="{{url('/images/'.$post->img_5)}}" class="img-fullsize" alt="Responsive image" data-gallery-src="{{url('images/'.$post->img_5)}}">
+        </div>
+    </div>
+    @endif
+    @if($post->img_6)
+    <div class="col-xs-4 col-md-2">
+        <div class="thumbnail">
+        <img src="{{url('/images/'.$post->img_6)}}" class="img-fullsize" alt="Responsive image" data-gallery-src="{{url('images/'.$post->img_6)}}">
+        </div>
+    </div>
+    @endif
+</div>
+</div>
 
-    {{-- Gallery --}}
-    {{-- <div class="row pb-5 equal-height">
-        <div class="col-xs-4 col-md-2">
-            <div class="thumbnail">
-                <img src="{{ asset('images/restaurants/food.jpg')}}" class="img-fullsize" alt="Responsive image" data-gallery-src="{{asset('images/restaurants/food.jpg')}}">
-            </div>
-        </div>
-        <div class="col-xs-4 col-md-2">
-            <div class="thumbnail">
-                <img src="{{ asset('images/restaurants/res-1.jpg')}}" class="img-fullsize" alt="Responsive image" data-gallery-src="{{ asset('images/restaurants/res-1.jpg')}}">
-            </div>
-        </div>
-        <div class="col-xs-4 col-md-2">
-            <div class="thumbnail">
-                <img src="{{ asset('images/restaurants/res-2.jpg')}}" class="img-fullsize" alt="Responsive image" data-gallery-src="{{ asset('images/restaurants/res-2.jpg')}}">
-            </div>
-        </div>
-        <div class="col-xs-4 col-md-2">
-            <div class="thumbnail">
-                <img src="{{ asset('images/restaurants/res-3.jpg')}}" class="img-fluid img-thumbnail" alt="Responsive image" data-gallery-src="{{ asset('images/restaurants/res-3.jpg')}}">
-            </div>
-        </div>
-        <div class="col-xs-4 col-md-2">
-            <div class="thumbnail">
-                <img src="{{ asset('images/restaurants/res-4.jpg')}}" class="img-fluid img-thumbnail" alt="Responsive image" data-gallery-src="{{ asset('images/restaurants/res-4.jpg')}}">
-            </div>
-        </div>
-        <div class="col-xs-4 col-md-2">
-            <div class="thumbnail">
-                <img src="{{ asset('images/restaurants/res-5.jpg')}}" class="img-fluid img-thumbnail" alt="Responsive image" data-gallery-src="{{ asset('images/restaurants/res-5.jpg')}}">
-            </div>
-        </div>
-    </div> --}}
+<div class="container">
 
     {{-- Review / Categories --}}
     <div class="row">
