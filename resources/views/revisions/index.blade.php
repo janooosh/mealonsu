@@ -29,12 +29,12 @@
                     <div class="list-group">
                         @foreach($posts as $post)
                         <div class="list-group-item list-group-item-action mb-1 shadow-sm">
-                            <div class="row">
+                            <div class="row h-100">
                                 <div class="col-3 col-md-2">
                                     @if($post->img_logo)
-                                    <img src="{{ url('images/'.$post->img_logo)}}" class="img-fluid" />
+                                    <img src="{{ url('images/'.$post->img_logo)}}" style="height:100%;" class="img-fluid" />
                                     @else
-                                    <img src="{{ asset('images/restaurants/food.jpg')}}" class="img-fluid" />
+                                    <img src="{{ asset('images/restaurants/food.jpg')}}" style="height:100%;" class="img-fluid" />
                                     @endif
                                 </div>
                                 <div class="col-3 col-md-5">

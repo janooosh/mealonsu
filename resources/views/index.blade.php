@@ -136,9 +136,9 @@ use Carbon\carbon;
                                 <div class="col-3 col-md-2">
                                     
                                     @if($post->img_logo)
-                                    <img src="{{ url('images/'.$post->img_logo)}}" style="max-height:100%;" class="img-fluid" />
+                                    <img src="{{ url('images/'.$post->img_logo)}}" style="height:100%;" class="img-fluid" />
                                     @else
-                                    <img src="{{ asset('images/restaurants/food.jpg')}}" class="img-fluid" />
+                                    <img src="{{ asset('images/restaurants/food.jpg')}}" style="height:100%;" class="img-fluid" />
                                     @endif
 
                                 </div>
