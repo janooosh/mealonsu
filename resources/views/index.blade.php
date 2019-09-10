@@ -1,4 +1,5 @@
 <?php
+
 use Carbon\carbon;
 ?>
 @include('layout.header')
@@ -52,8 +53,9 @@ use Carbon\carbon;
                     <div class="container mb-1 p-3 shadow-sm" style="background-color: white;">
                         <select name="price" class="browser-default custom-select">
                             <option value="0">Choose A Pricerange</option>
-                            <option value="1" {{$display_filter->contains('pricerange',1)?'selected':''}}> < 50 DKK</option>
-                            <option value="2" {{$display_filter->contains('pricerange',2)?'selected':''}}> 50 - 100 DKK</option>
+                            <option value="1" {{$display_filter->contains('pricerange',1)?'selected':''}}>
+                                < 50 DKK</option> <option value="2" {{$display_filter->contains('pricerange',2)?'selected':''}}> 50 - 100 DKK
+                            </option>
                             <option value="3" {{$display_filter->contains('pricerange',3)?'selected':''}}> 100 - 150 DKK</option>
                             <option value="4" {{$display_filter->contains('pricerange',4)?'selected':''}}> > 150 DKK</option>
                         </select>
@@ -106,14 +108,14 @@ use Carbon\carbon;
                         </div>
                         <div class="col-md-3">
                             <button type="submit" value="filter_submit" class="btn btn-outline-primary"><i class="fas fa-hamburger mr-2"></i>Apply Filter</button>
-                            
+
                         </div>
                         {{-- SORTER - Still To-Do --}}
                         <div class="col-md-1">
                             <button type="button" class="btn btn-dark" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-sort"></i>
                             </button>
-                            
+
                             <div name="sorter" class="dropdown-menu">
                                 <button class="dropdown-item" type="submit" name="sort_name">Name</button>
                                 <button class="dropdown-item" type="submit" name="sort_creation">Creation</button>
@@ -132,7 +134,11 @@ use Carbon\carbon;
                         <a href="{{route('posts.show',$post)}}" class="list-group-item list-group-item-action mb-1 shadow-sm">
                             <div class="row">
                                 <div class="col-3 col-md-2">
+                                    @if($post->img_logo)
+                                    <img src="{{ url('images/'.$post->img_logo)}}" class="img-fluid" />
+                                    @else
                                     <img src="{{ asset('images/restaurants/food.jpg')}}" class="img-fluid" />
+                                    @endif
                                 </div>
                                 <div class="col-6 col-md-8">
                                     <h5>{{$post->restaurant_name}}</h5>
