@@ -363,37 +363,6 @@
     <div class="row">
         <div class="col-md-6">
 
-            {{-- <div class="row p-3" id="options_price">
-                <div class="col-md-3">
-                    Price Range *
-                </div>
-                <div class="col-md-9">
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input @error('pricerange') is-invalid @enderror" type="radio" name="pricerange" value="1" id="pricerange_1" {{old('pricerange')==1?'checked':''}}>
-            <label class="form-check-label" for="exampleRadios2">
-                €
-            </label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input @error('pricerange') is-invalid @enderror" type="radio" name="pricerange" id="pricerange_2" value="2" {{old('pricerange')==2?'checked':''}}>
-            <label class="form-check-label" for="exampleRadios2">
-                €€
-            </label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input @error('pricerange') is-invalid @enderror" type="radio" name="pricerange" id="pricerange_3" value="3" {{old('pricerange')==3?'checked':''}}>
-            <label class="form-check-label" for="exampleRadios2">
-                €€€
-            </label>
-        </div>
-        @error('pricerange')
-        <div class="invalid-feedback">
-            {{$message}}
-        </div>
-        @enderror
-    </div>
-</div> --}}
-
 <div class="row p-3" id="options_vegetarian">
     <div class="col-md-3">
         Vegetarian-Friendly
@@ -409,6 +378,7 @@
         </div>
     </div>
 </div>
+
 <div class="row p-3" id="options_vegan">
     <div class="col-md-3">
         Vegan-Friendly
@@ -424,6 +394,7 @@
         </div>
     </div>
 </div>
+
 <div class="row p-3" id="options_date">
     <div class="col-md-3">
         Suited For Dates
@@ -439,6 +410,87 @@
         </div>
     </div>
 </div>
+
+<div class="row p-3" id="options_transport">
+    <div class="col-md-3">
+        Public Transportation
+    </div>
+    <div class="col-md-9">
+        <div class="form-check form-check-inline">
+            <input class="form-check-input @error('is_transport') is-invalid @enderror" type="checkbox" name="is_transport" value="1" {{old('is_transport')==1?'checked':''}}">
+            @error('is_transport')
+            <div class="invalid-feedback">
+                {{$message}}
+            </div>
+            @enderror
+        </div>
+    </div>
+</div>
+
+<div class="row p-3" id="options_groups">
+    <div class="col-md-3">
+        Suited for Groups
+    </div>
+    <div class="col-md-9">
+        <div class="form-check form-check-inline">
+            <input class="form-check-input @error('is_groups') is-invalid @enderror" type="checkbox" name="is_groups" value="1" {{old('is_groups')==1?'checked':''}}">
+            @error('is_groups')
+            <div class="invalid-feedback">
+                {{$message}}
+            </div>
+            @enderror
+        </div>
+    </div>
+</div>
+
+<div class="row p-3" id="options_outside">
+    <div class="col-md-3">
+        Has an outdoor area
+    </div>
+    <div class="col-md-9">
+        <div class="form-check form-check-inline">
+            <input class="form-check-input @error('is_outside') is-invalid @enderror" type="checkbox" name="is_outside" value="1" {{old('is_outside')==1?'checked':''}}">
+            @error('is_outside')
+            <div class="invalid-feedback">
+                {{$message}}
+            </div>
+            @enderror
+        </div>
+    </div>
+</div>
+
+<div class="row p-3" id="options_takeawayonly">
+    <div class="col-md-3">
+        Takeaway Only
+    </div>
+    <div class="col-md-9">
+        <div class="form-check form-check-inline">
+            <input class="form-check-input @error('is_takeawayonly') is-invalid @enderror" type="checkbox" name="is_takeawayonly" value="1" {{old('is_takeawayonly')==1?'checked':''}}">
+            @error('is_takeawayonly')
+            <div class="invalid-feedback">
+                {{$message}}
+            </div>
+            @enderror
+        </div>
+    </div>
+</div>
+
+<div class="row p-3" id="options_studying">
+    <div class="col-md-3">
+        Suited For Studying
+    </div>
+    <div class="col-md-9">
+        <div class="form-check form-check-inline">
+            <input class="form-check-input @error('is_studying') is-invalid @enderror" type="checkbox" name="is_studying" value="1" {{old('is_studying')==1?'checked':''}}">
+            @error('is_studying')
+            <div class="invalid-feedback">
+                {{$message}}
+            </div>
+            @enderror
+        </div>
+    </div>
+</div>
+
 </div>
 <div class="col-md-6">
     <div class="row p-3" id="options_menu">
@@ -532,6 +584,21 @@
             @enderror
         </div>
     </div>
+
+    <div class="row p-3" id="social_twitter">
+        <div class="col-md-3">
+            Tripadvisor
+        </div>
+        <div class="col-md-9">
+            <input type="text" name="social_tripadvisor" class="form-control @error('social_tripadvisor') is-invalid @enderror" placeholder="Tripadvisor URL" value="{{old('social_tripadvisor')}}" />
+            @error('social_tripadvisor')
+            <div class="invalid-feedback">
+                {{$message}}
+            </div>
+            @enderror
+        </div>
+    </div>
+
 </div>
 <hr />
 {{-- Section Reviews --}}

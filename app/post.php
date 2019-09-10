@@ -12,7 +12,7 @@ use App\Http\Controllers\PostController;
 class post extends Model
 {
     protected $fillable = [
-        'status','user_id','restaurant_name','subtitle','pricerange','is_vegan','is_vegetarian','is_date','url_homepage','url_menu','url_reservation','url_delivery','social_facebook','social_instagram','social_twitter','summary','review_food','review_style','review_service','is_draft','is_approved','is_declined','correction_id','place_location','place_adress','place_name','place_icon'
+        'status','user_id','restaurant_name','subtitle','pricerange','is_vegan','is_vegetarian','is_date','url_homepage','url_menu','url_reservation','url_delivery','social_facebook','social_instagram','social_twitter','summary','review_food','review_style','review_service','is_draft','is_approved','is_declined','correction_id','place_location','place_adress','place_name','place_icon','img_1','img_2','img_3','img_4','img_5','img_6','img_title','img_logo','is_transport','is_groups','is_outside','is_takeawayonly','is_studying','social_tripadvisor'
     ];
 
     public function openings()

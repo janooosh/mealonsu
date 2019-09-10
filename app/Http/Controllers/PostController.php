@@ -785,6 +785,12 @@ class PostController extends Controller
             'fr_closed' => 'boolean',
             'sa_closed' => 'boolean',
             'su_closed' => 'boolean',
+            'is_transport' => 'boolean',
+            'is_groups' => 'boolean',
+            'is_outside' => 'boolean',
+            'is_takeawayonly' => 'boolean',
+            'is_studying' => 'boolean',
+            'social_tripadvisor' => 'nullable|url',
             'cuisine.*' => 'exists:cuisines,id', //Validates cuisine, .* as there are multiple inputs (name = "cuisine[]" in the views)
             'img_1' => 'image|mimes:jpeg,png,jpg,svg|max:5200',
             'img_2' => 'image|mimes:jpeg,png,jpg,svg|max:5200',
@@ -863,7 +869,12 @@ class PostController extends Controller
         $target->review_style = $request->review_style;
         $target->review_service = $request->review_service;
         $target->user_id = auth()->user()->id;
-
+        $target->is_transport = $request->is_transport;
+        $target->is_groups = $request->is_groups;
+        $target->is_outside = $request->is_outside;
+        $target->is_takeawayonly = $request->is_takeawayonly;
+        $target->is_studying = $request->is_studying;
+        $target->social_tripadvisor = $request->social_tripadvisor;
         return $target;
     }
 

@@ -363,6 +363,23 @@
     <div class="row">
         <div class="col-md-6">
 
+
+            <div class="row p-3" id="options_vegetarian">
+                <div class="col-md-3">
+                    Vegetarian-Friendly
+                </div>
+                <div class="col-md-9">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input @error('is_vegetarian') is-invalid @enderror" type="checkbox" name="is_vegetarian" value="1" {{ old('is_vegetarian', $post->is_vegetarian) == '1' ? 'checked' : '' }}>
+                        @error('is_vegetarian')
+                        <div class="invalid-feedback">
+                            {{$message}}
+                        </div>
+                        @enderror
+                    </div>
+                </div>
+            </div>
+
             <div class="row p-3" id="options_vegan">
                 <div class="col-md-3">
                     Vegan-Friendly
@@ -378,6 +395,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="row p-3" id="options_date">
                 <div class="col-md-3">
                     Suited For Dates
@@ -393,6 +411,87 @@
                     </div>
                 </div>
             </div>
+
+            <div class="row p-3" id="options_transport">
+                <div class="col-md-3">
+                    Public Transportation
+                </div>
+                <div class="col-md-9">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input @error('is_transport') is-invalid @enderror" type="checkbox" name="is_transport" value="1" {{ old('is_transport', $post->is_transport) == '1' ? 'checked' : '' }}>
+                        @error('is_transport')
+                        <div class="invalid-feedback">
+                            {{$message}}
+                        </div>
+                        @enderror
+                    </div>
+                </div>
+            </div>
+
+            <div class="row p-3" id="options_groups">
+                <div class="col-md-3">
+                    Suited for Groups
+                </div>
+                <div class="col-md-9">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input @error('is_groups') is-invalid @enderror" type="checkbox" name="is_groups" value="1" {{ old('is_groups', $post->is_groups) == '1' ? 'checked' : '' }}>
+                        @error('is_groups')
+                        <div class="invalid-feedback">
+                            {{$message}}
+                        </div>
+                        @enderror
+                    </div>
+                </div>
+            </div>
+
+            <div class="row p-3" id="options_outside">
+                <div class="col-md-3">
+                    Has an outdoor area
+                </div>
+                <div class="col-md-9">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input @error('is_outside') is-invalid @enderror" type="checkbox" name="is_outside" value="1" {{ old('is_outside', $post->is_outside) == '1' ? 'checked' : '' }}>
+                        @error('is_outside')
+                        <div class="invalid-feedback">
+                            {{$message}}
+                        </div>
+                        @enderror
+                    </div>
+                </div>
+            </div>
+
+            <div class="row p-3" id="options_takeawayonly">
+                <div class="col-md-3">
+                    Takeaway Only
+                </div>
+                <div class="col-md-9">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input @error('is_takeawayonly') is-invalid @enderror" type="checkbox" name="is_takeawayonly" value="1" {{ old('is_takeawayonly', $post->is_takeawayonly) == '1' ? 'checked' : '' }}>
+                        @error('is_takeawayonly')
+                        <div class="invalid-feedback">
+                            {{$message}}
+                        </div>
+                        @enderror
+                    </div>
+                </div>
+            </div>
+
+            <div class="row p-3" id="options_studying">
+                <div class="col-md-3">
+                    Suited For Studying
+                </div>
+                <div class="col-md-9">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input @error('is_studying') is-invalid @enderror" type="checkbox" name="is_studying" value="1" {{ old('is_studying', $post->is_studying) == '1' ? 'checked' : '' }}>
+                        @error('is_studying')
+                        <div class="invalid-feedback">
+                            {{$message}}
+                        </div>
+                        @enderror
+                    </div>
+                </div>
+            </div>
+            
         </div>
         <div class="col-md-6">
             <div class="row p-3" id="options_menu">
@@ -480,6 +579,20 @@
         <div class="col-md-9">
             <input type="text" name="social_twitter" class="form-control @error('social_twitter') is-invalid @enderror" placeholder="Twitter Feed URL" value="{{old('social_twitter', $post->social_twitter)}}" />
             @error('social_twitter')
+            <div class="invalid-feedback">
+                {{$message}}
+            </div>
+            @enderror
+        </div>
+    </div>
+
+    <div class="row p-3" id="social_tripadvisor">
+        <div class="col-md-3">
+            Tripadvisor
+        </div>
+        <div class="col-md-9">
+            <input type="text" name="social_tripadvisor" class="form-control @error('social_tripadvisor') is-invalid @enderror" placeholder="Tripadvisor URL" value="{{old('social_tripadvisor', $post->social_tripadvisor)}}" />
+            @error('social_tripadvisor')
             <div class="invalid-feedback">
                 {{$message}}
             </div>

@@ -87,8 +87,14 @@ class HomeController extends Controller
 
         //Fill other options for frontend filter
         $display_filter->prepend(['is_open' => $request->get('is_open')]);
+        $display_filter->prepend(['is_vegetarian' => $request->get('is_vegetarian')]);
+        $display_filter->prepend(['is_transport' => $request->get('is_transport')]);
         $display_filter->prepend(['is_vegan' => $request->get('is_vegan')]);
         $display_filter->prepend(['is_date' => $request->get('is_date')]);
+        $display_filter->prepend(['is_outside' => $request->get('is_outside')]);
+        $display_filter->prepend(['is_takeawayonly' => $request->get('is_takeawayonly')]);
+        $display_filter->prepend(['is_groups' => $request->get('is_groups')]);
+        $display_filter->prepend(['is_studying' => $request->get('is_studying')]);
         $display_filter->prepend(['is_delivery' => $request->get('is_delivery')]);
         $display_filter->prepend(['is_menu' => $request->get('is_menu')]);
         $search_title=$request->get('search_title');
@@ -117,8 +123,26 @@ class HomeController extends Controller
         ->when($request->get('is_vegan'), function($query) {
             $query->where('is_vegan',true);
         })
+        ->when($request->get('is_vegetarian'), function($query) {
+            $query->where('is_vegetarian',true);
+        })
         ->when($request->get('is_date'), function($query) {
             $query->where('is_date',true);
+        })
+        ->when($request->get('is_transport'), function($query) {
+            $query->where('is_transport',true);
+        })
+        ->when($request->get('is_groups'), function($query) {
+            $query->where('is_groups',true);
+        })
+        ->when($request->get('is_studying'), function($query) {
+            $query->where('is_studying',true);
+        })
+        ->when($request->get('is_takeawayonly'), function($query) {
+            $query->where('is_takeawayonly',true);
+        })
+        ->when($request->get('is_outside'), function($query) {
+            $query->where('is_outside',true);
         })
         ->when($request->get('is_delivery'), function($query) {
             $query->whereNotNull('url_delivery');

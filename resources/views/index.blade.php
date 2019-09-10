@@ -71,12 +71,36 @@ use Carbon\carbon;
                             <label class="custom-control-label" for="is_open">Open Now</label>
                         </div>
                         <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="is_vegetarian" name="is_vegetarian" value="1" {{$display_filter->contains('is_vegetarian',true)?'checked':''}}>
+                            <label class="custom-control-label" for="is_vegetarian">Vegetarian Friendly</label>
+                        </div>
+                        <div class="custom-control custom-switch">
                             <input type="checkbox" class="custom-control-input" id="is_vegan" name="is_vegan" value="1" {{$display_filter->contains('is_vegan',true)?'checked':''}}>
                             <label class="custom-control-label" for="is_vegan">Vegan Friendly</label>
                         </div>
                         <div class="custom-control custom-switch">
                             <input type="checkbox" class="custom-control-input" id="is_date" name="is_date" value="1" {{$display_filter->contains('is_date',true)?'checked':''}}>
                             <label class="custom-control-label" for="is_date">Date Friendly</label>
+                        </div>
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="is_transport" name="is_transport" value="1" {{$display_filter->contains('is_transport',true)?'checked':''}}>
+                            <label class="custom-control-label" for="is_transport">Close to public transport</label>
+                        </div>
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="is_groups" name="is_groups" value="1" {{$display_filter->contains('is_groups',true)?'checked':''}}>
+                            <label class="custom-control-label" for="is_groups">Suited for groups</label>
+                        </div>
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="is_studying" name="is_studying" value="1" {{$display_filter->contains('is_studying',true)?'checked':''}}>
+                            <label class="custom-control-label" for="is_studying">Suited for studying</label>
+                        </div>
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="is_outside" name="is_outside" value="1" {{$display_filter->contains('is_outside',true)?'checked':''}}>
+                            <label class="custom-control-label" for="is_outside">Outside Area</label>
+                        </div>
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="is_takeawayonly" name="is_takeawayonly" value="1" {{$display_filter->contains('is_takeawayonly',true)?'checked':''}}>
+                            <label class="custom-control-label" for="is_takeawayonly">Takeaway Only</label>
                         </div>
                         <div class="custom-control custom-switch">
                             <input type="checkbox" class="custom-control-input" id="is_delivery" name="is_delivery" value="1" {{$display_filter->contains('is_delivery',true)?'checked':''}}>
