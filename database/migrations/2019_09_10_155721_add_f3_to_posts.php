@@ -14,11 +14,11 @@ class AddF3ToPosts extends Migration
     public function up()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->boolean('is_transport')->default(false);
-            $table->boolean('is_groups')->default(false);
-            $table->boolean('is_outside')->default(false);
-            $table->boolean('is_takeawayonly')->default(false);
-            $table->boolean('is_studying')->default(false);
+            $table->boolean('is_transport')->nullable();
+            $table->boolean('is_groups')->nullable();
+            $table->boolean('is_outside')->nullable();
+            $table->boolean('is_takeawayonly')->nullable();
+            $table->boolean('is_studying')->nullable();
             $table->string('social_tripadvisor')->nullable();
         });
     }
