@@ -364,7 +364,7 @@
         <div class="col-md-3">
             <div class="row p-3" id="options_vegetarian">
                 <input class="form-check-input @error('is_vegetarian') is-invalid @enderror" type="checkbox" id="is_vegetarian" name="is_vegetarian" value="1" {{old('is_vegetarian')==1?'checked':''}}>
-                <label class="form-check-label" for="is_vegetarian">Is Vegetarian</label>
+                <label class="form-check-label" for="is_vegetarian">Vegetarian Options</label>
                 @error('is_vegetarian')
                 <div class="invalid-feedback">
                     {{$message}}
@@ -374,7 +374,7 @@
 
             <div class="row p-3" id="options_vegan">
                 <input class="form-check-input @error('is_vegan') is-invalid @enderror" type="checkbox" id="is_vegan" name="is_vegan" value="1" {{old('is_vegan')==1?'checked':''}}>
-                <label class="form-check-label" for="is_vegan">Is Vegan</label>
+                <label class="form-check-label" for="is_vegan">Vegan Options</label>
                 @error('is_vegan')
                 <div class="invalid-feedback">
                     {{$message}}

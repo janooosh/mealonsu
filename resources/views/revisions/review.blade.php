@@ -161,9 +161,9 @@ use Carbon\carbon;
                     <div class="col-11">
                         <p>
                             @if($post->is_outside)
-                            Has an outdoor area
+                            Outdoor Area
                             @else
-                            Does not have an outdoor area
+                            No Outdoor Area
                             @endif
                         </p>
                     </div>
