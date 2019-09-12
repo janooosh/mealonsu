@@ -170,20 +170,18 @@ use Carbon\carbon;
                 </div>
 
                 {{-- Takeaway Only --}}
-                <div class="row" style="color:{{!$post->is_takeawayonly?'green':'red'}};">
+                @if($post->is_takeawayonly)
+                <div class="row" style="color:green;">
                     <div class="col-1">
                         <i class="fas fa-shopping-bag"></i>
                     </div>
                     <div class="col-11">
                         <p>
-                            @if(!$post->is_takeawayonly)
-                            Not Only Takeaway
-                            @else
                             Takeaway Only
-                            @endif
                         </p>
                     </div>
                 </div>
+                @endif
 
                 {{-- Studying  --}}
                 <div class="row" style="color:{{$post->is_studying?'green':'red'}};">
