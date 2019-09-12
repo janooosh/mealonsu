@@ -58,7 +58,6 @@ class HomeController extends Controller
             'is_vegan' => 'boolean',
             'is_date' => 'boolean',
             'is_delivery' => 'boolean',
-            'is_menu' => 'boolean',
         ]);
 
         //Init & Build filter collection
@@ -96,7 +95,6 @@ class HomeController extends Controller
         $display_filter->prepend(['is_groups' => $request->get('is_groups')]);
         $display_filter->prepend(['is_studying' => $request->get('is_studying')]);
         $display_filter->prepend(['is_delivery' => $request->get('is_delivery')]);
-        $display_filter->prepend(['is_menu' => $request->get('is_menu')]);
         $search_title=$request->get('search_title');
         
         $cuisines = Cuisine::all();
@@ -146,9 +144,6 @@ class HomeController extends Controller
         })
         ->when($request->get('is_delivery'), function($query) {
             $query->whereNotNull('url_delivery');
-        })
-        ->when($request->get('is_menu'), function($query) {
-            $query->whereNotNull('url_menu');
         })
         ->whereHas('cuisines',function ($query) use ($cuisine_ids) {
             return $query->whereIn('cuisine_id',$cuisine_ids);

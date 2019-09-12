@@ -107,10 +107,6 @@ use Carbon\carbon;
                             <input type="checkbox" class="custom-control-input" id="is_delivery" name="is_delivery" value="1" {{$display_filter->contains('is_delivery',true)?'checked':''}}>
                             <label class="custom-control-label" for="is_delivery">Delivery Service</label>
                         </div>
-                        <div class="custom-control custom-switch">
-                            <input type="checkbox" class="custom-control-input" id="is_menu" name="is_menu" value="1" {{$display_filter->contains('is_menu',true)?'checked':''}}>
-                            <label class="custom-control-label" for="is_menu">Menu Available</label>
-                        </div>
                     </div>
                 </div>
 
