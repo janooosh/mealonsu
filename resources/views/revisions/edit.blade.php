@@ -599,7 +599,7 @@
             </div>
 
             {{-- Section Food Review --}}
-            <h4 class="pl-3">Food Quality</h4>
+            <h4 class="pl-3">Food</h4>
             <div class="row p-3" id="review_food">
                 <div class="col-md-12">
                     <textarea class="@error('review_food') is-invalid @enderror" name="review_food">{{old('review_food', $post->review_food)}}</textarea>

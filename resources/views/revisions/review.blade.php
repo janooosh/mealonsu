@@ -312,7 +312,7 @@ use Carbon\carbon;
     {{-- Review / Categories --}}
     <div class="row">
         <div class="col-md-12">
-            <h3>Food Quality</h3>
+            <h3>Food</h3>
             <p class="pb-4 text-justify">
                 {!! $post->review_food !!}
             </p>
