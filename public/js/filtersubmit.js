@@ -81,30 +81,43 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/js/bottom.js":
-/*!********************************!*\
-  !*** ./resources/js/bottom.js ***!
-  \********************************/
+/***/ "./resources/js/filtersubmit.js":
+/*!**************************************!*\
+  !*** ./resources/js/filtersubmit.js ***!
+  \**************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-//Will be implemented at the end of the body tag
+var forminputs = document.getElementsByTagName("input");
+var formselects = document.getElementsByTagName("select");
+
+for (var x = 0; x < forminputs.length; x++) {
+  forminputs[x].addEventListener('change', function () {
+    this.form.submit();
+  });
+}
+
+for (var x = 0; x < formselects.length; x++) {
+  formselects[x].addEventListener('change', function () {
+    this.form.submit();
+  });
+}
 
 /***/ }),
 
-/***/ 3:
-/*!**************************************!*\
-  !*** multi ./resources/js/bottom.js ***!
-  \**************************************/
+/***/ 1:
+/*!********************************************!*\
+  !*** multi ./resources/js/filtersubmit.js ***!
+  \********************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/jan.haehl/code/booty/resources/js/bottom.js */"./resources/js/bottom.js");
+module.exports = __webpack_require__(/*! /Users/jan.haehl/code/booty/resources/js/filtersubmit.js */"./resources/js/filtersubmit.js");
 
 
 /***/ })

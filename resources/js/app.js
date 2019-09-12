@@ -6,6 +6,7 @@
 
 require('./bootstrap');
 require('@fortawesome/fontawesome-free');
+
 //Quill Editor
 
 //require('../plugins/quill/quill.js'); //In quill.js, configure however you need the editor
@@ -40,5 +41,3 @@ const app = new Vue({
 /**
  * Custom Widgets
  */
-
-

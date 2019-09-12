@@ -4,5 +4,6 @@
     "/css/custom.css": "/css/custom.css",
     "/css/admin.css": "/css/admin.css",
     "/js/bottom.js": "/js/bottom.js",
-    "/js/custom.js": "/js/custom.js"
+    "/js/custom.js": "/js/custom.js",
+    "/js/filtersubmit.js": "/js/filtersubmit.js"
 }

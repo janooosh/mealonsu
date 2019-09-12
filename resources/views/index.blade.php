@@ -14,6 +14,7 @@ use Carbon\carbon;
         }
     }
 </style>
+<script async src="{{asset('js/filtersubmit.js')}}"></script>
 
 {{-- Header --}}
 <div class="jumbotron shadow-sm" style="background: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.2)), url('{{asset('images/header.jpg')}}'); background-size:cover; background-position: center center; background-attachment:fixed;">
