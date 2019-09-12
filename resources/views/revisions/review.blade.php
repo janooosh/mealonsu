@@ -77,106 +77,94 @@ use Carbon\carbon;
             {{-- Infos --}}
             <div id="restaurant_infos">
 
-                <div class="row">
+            <div class="row">
                     <div class="col-md-6">
                         {{-- Vegetarian --}}
-                        <div class="row" style="color:{{$post->is_vegetarian?'green':'red'}};">
+                        @if($post->is_vegetarian)
+                        <div class="row" style="color:green;">
                             <div class="col-1">
                                 <i class="fas fa-seedling"></i>
                             </div>
                             <div class="col-11">
                                 <p>
-                                    @if($post->is_vegetarian)
                                     Vegetarian Options
-                                    @else
-                                    No Vegetarian Options
-                                    @endif
                                 </p>
                             </div>
                         </div>
+                        @endif
 
                         {{-- Vegan --}}
-                        <div class="row" style="color:{{$post->is_vegan?'green':'red'}};">
+                        @if($post->is_vegan)
+                        <div class="row" style="color:green;">
                             <div class="col-1">
                                 <i class="fas fa-seedling"></i>
                             </div>
                             <div class="col-11">
                                 <p>
-                                    @if($post->is_vegan)
                                     Vegan Options
-                                    @else
-                                    No Vegan Options
-                                    @endif
                                 </p>
                             </div>
                         </div>
+                        @endif
 
                         {{-- Date --}}
+                        @if($post->is_date)
                         <div class="row" style="color:{{$post->is_date?'green':'red'}};">
                             <div class="col-1">
                                 <i class="fas fa-heart"></i>
                             </div>
                             <div class="col-11">
-                                <p>
-                                    @if($post->is_date)
+                                <p>     
                                     Suited for dates
-                                    @else
-                                    Not very suited for dates
-                                    @endif
                                 </p>
                             </div>
                         </div>
+                        @endif
 
                         {{-- Publit Transport --}}
-                        <div class="row" style="color:{{$post->is_transport?'green':'red'}};">
+                        @if($post->is_transport)
+                        <div class="row" style="color:green;">
                             <div class="col-1">
                                 <i class="fas fa-bus"></i>
                             </div>
                             <div class="col-11">
                                 <p>
-                                    @if($post->is_transport)
                                     Close to public transportation
-                                    @else
-                                    Not close to public transportation
-                                    @endif
                                 </p>
                             </div>
                         </div>
+                        @endif
                     </div>
 
                     <div class="col-md-6">
 
                         {{-- Groups --}}
-                        <div class="row" style="color:{{$post->is_groups?'green':'red'}};">
+                        @if($post->is_groups)
+                        <div class="row" style="color:green;">
                             <div class="col-1">
                                 <i class="fas fa-users"></i>
                             </div>
                             <div class="col-11">
-                                <p>
-                                    @if($post->is_groups)
-                                    Suited for groups
-                                    @else
-                                    Not suited for groups
-                                    @endif
+                                <p>        
+                                    Suited for Groups
                                 </p>
                             </div>
                         </div>
+                        @endif
 
                         {{-- Outdoor --}}
-                        <div class="row" style="color:{{$post->is_outside?'green':'red'}};">
+                        @if($post->is_outside)
+                        <div class="row" style="color:green;">
                             <div class="col-1">
                                 <i class="fas fa-sun"></i>
                             </div>
                             <div class="col-11">
-                                <p>
-                                    @if($post->is_outside)
+                                <p>      
                                     Outdoor Area
-                                    @else
-                                    No Outdoor Area
-                                    @endif
                                 </p>
                             </div>
                         </div>
+                        @endif
 
                         {{-- Takeaway Only --}}
                         @if($post->is_takeawayonly)
@@ -193,20 +181,18 @@ use Carbon\carbon;
                         @endif
 
                         {{-- Studying  --}}
-                        <div class="row" style="color:{{$post->is_studying?'green':'red'}};">
+                        @if($post->is_studying)
+                        <div class="row" style="color:green;">
                             <div class="col-1">
                                 <i class="fas fa-book-reader"></i>
                             </div>
                             <div class="col-11">
                                 <p>
-                                    @if($post->is_studying)
                                     Suited for studying
-                                    @else
-                                    Not suited for studying
-                                    @endif
                                 </p>
                             </div>
                         </div>
+                        @endif
                     </div>
                 </div>
 
