@@ -199,8 +199,10 @@ style="background: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.2)), url('{{asset
                         50 - 100
                         @elseif($post->pricerange==3)
                         100 - 150
+                        @elseif($post->pricerange==4)
+                        150 - 200
                         @else
-                        > 150
+                        200 - 250
                         @endif
                         </b>
                         DKK.

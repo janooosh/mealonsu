@@ -749,7 +749,7 @@ class PostController extends Controller
             'restaurant_name' => 'required|max:30',
             'subtitle' => 'max:60',
             'seo' => 'max:60',
-            'price' => 'required|min:0|max:4', //not required due to publish/draft difference, but we need to theck it before publishing (filter)
+            'price' => 'required|min:0|max:5', //not required due to publish/draft difference, but we need to theck it before publishing (filter)
             'is_vegan' => 'boolean',
             'is_vegetarian' => 'boolean',
             'is_date' => 'boolean',

@@ -210,8 +210,10 @@ use Carbon\carbon;
                                     50 - 100
                                     @elseif($post->pricerange==3)
                                     100 - 150
+                                    @elseif($post->pricerange==4)
+                                    150 - 200
                                     @else
-                                    > 150
+                                    200 - 250
                                     @endif
                             </b>
                             DKK.

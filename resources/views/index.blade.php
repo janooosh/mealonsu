@@ -58,7 +58,8 @@ use Carbon\carbon;
                                 < 50 DKK</option> <option value="2" {{$display_filter->contains('pricerange',2)?'selected':''}}> 50 - 100 DKK
                             </option>
                             <option value="3" {{$display_filter->contains('pricerange',3)?'selected':''}}> 100 - 150 DKK</option>
-                            <option value="4" {{$display_filter->contains('pricerange',4)?'selected':''}}> > 150 DKK</option>
+                            <option value="4" {{$display_filter->contains('pricerange',4)?'selected':''}}> 150 - 200 DKK</option>
+                            <option value="5" {{$display_filter->contains('pricerange',5)?'selected':''}}> 200 - 250 DKK</option>
                         </select>
                     </div>
                 </div>

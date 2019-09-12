@@ -53,7 +53,7 @@ class HomeController extends Controller
         //Validate inputs
         $request->validate([
             'cuisine.*' => 'exists:cuisines,id',
-            'price' => 'min:1|max:4',
+            'price' => 'min:1|max:5',
             'is_open' => 'boolean',
             'is_date' => 'boolean',
             'is_delivery' => 'boolean',

@@ -314,10 +314,11 @@
             <h4>Price for one meal</h4>
             <div class="form-check form-check-inline">
                 <input class="form-check-input" id="price1" type="radio" name="price" value="1">
-                <label class="form-check-label" for="price1">
-                    < 50 DKK</label> </div> <div class="form-check form-check-inline">
-                        <input class="form-check-input" id="price2" type="radio" name="price" value="2">
-                        <label class="form-check-label" for="price2"> 50 - 100 DKK</label>
+                <label class="form-check-label" for="price1"> < 50 DKK</label> 
+            </div> 
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" id="price2" type="radio" name="price" value="2">
+                <label class="form-check-label" for="price2"> 50 - 100 DKK</label>
             </div>
             <div class="form-check form-check-inline">
                 <input class="form-check-input" id="price3" type="radio" name="price" value="3">
@@ -325,7 +326,11 @@
             </div>
             <div class="form-check form-check-inline">
                 <input class="form-check-input" id="price4" type="radio" name="price" value="4">
-                <label class="form-check-label" for="price4"> > 150 DKK</label>
+                <label class="form-check-label" for="price4">150 - 200 DKK</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" id="price5" type="radio" name="price" value="5">
+                <label class="form-check-label" for="price5">200 - 250 DKK</label>
             </div>
         </div>
     </div>
