@@ -352,7 +352,6 @@
     </div>
 
 </div>
-
 <div class="container mt-1">
     {{-- Section Options --}}
     <div class="row">
@@ -360,138 +359,92 @@
             <h4 class="pl-3">Options</h4>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-6">
-
-
+    <div class="row p-3">
+        <div class="col-md-3">
             <div class="row p-3" id="options_vegetarian">
-                <div class="col-md-3">
-                    Vegetarian-Friendly
+                <input class="form-check-input @error('is_vegetarian') is-invalid @enderror" type="checkbox" id="is_vegetarian" name="is_vegetarian" value="1" {{ old('is_vegetarian', $post->is_vegetarian) == '1' ? 'checked' : '' }}>
+                <label class="form-check-label" for="is_vegetarian">Is Vegetarian</label>
+                @error('is_vegetarian')
+                <div class="invalid-feedback">
+                    {{$message}}
                 </div>
-                <div class="col-md-9">
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input @error('is_vegetarian') is-invalid @enderror" type="checkbox" name="is_vegetarian" value="1" {{ old('is_vegetarian', $post->is_vegetarian) == '1' ? 'checked' : '' }}>
-                        @error('is_vegetarian')
-                        <div class="invalid-feedback">
-                            {{$message}}
-                        </div>
-                        @enderror
-                    </div>
-                </div>
+                @enderror
             </div>
 
             <div class="row p-3" id="options_vegan">
-                <div class="col-md-3">
-                    Vegan-Friendly
+                <input class="form-check-input @error('is_vegan') is-invalid @enderror" type="checkbox" id="is_vegan" name="is_vegan" value="1" {{ old('is_vegan', $post->is_vegan) == '1' ? 'checked' : '' }}>
+                <label class="form-check-label" for="is_vegan">Is Vegan</label>
+                @error('is_vegan')
+                <div class="invalid-feedback">
+                    {{$message}}
                 </div>
-                <div class="col-md-9">
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input @error('is_vegan') is-invalid @enderror" type="checkbox" name="is_vegan" value="1" {{ old('is_vegan', $post->is_vegan) == '1' ? 'checked' : '' }}>
-                        @error('is_vegan')
-                        <div class="invalid-feedback">
-                            {{$message}}
-                        </div>
-                        @enderror
-                    </div>
-                </div>
-            </div>
-
-            <div class="row p-3" id="options_date">
-                <div class="col-md-3">
-                    Suited For Dates
-                </div>
-                <div class="col-md-9">
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input @error('is_date') is-invalid @enderror" type="checkbox" name="is_date" value="1" {{ old('is_date', $post->is_date) == '1' ? 'checked' : '' }}>
-                        @error('is_date')
-                        <div class="invalid-feedback">
-                            {{$message}}
-                        </div>
-                        @enderror
-                    </div>
-                </div>
-            </div>
-
-            <div class="row p-3" id="options_transport">
-                <div class="col-md-3">
-                    Public Transportation
-                </div>
-                <div class="col-md-9">
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input @error('is_transport') is-invalid @enderror" type="checkbox" name="is_transport" value="1" {{ old('is_transport', $post->is_transport) == '1' ? 'checked' : '' }}>
-                        @error('is_transport')
-                        <div class="invalid-feedback">
-                            {{$message}}
-                        </div>
-                        @enderror
-                    </div>
-                </div>
-            </div>
-
-            <div class="row p-3" id="options_groups">
-                <div class="col-md-3">
-                    Suited for Groups
-                </div>
-                <div class="col-md-9">
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input @error('is_groups') is-invalid @enderror" type="checkbox" name="is_groups" value="1" {{ old('is_groups', $post->is_groups) == '1' ? 'checked' : '' }}>
-                        @error('is_groups')
-                        <div class="invalid-feedback">
-                            {{$message}}
-                        </div>
-                        @enderror
-                    </div>
-                </div>
-            </div>
-
-            <div class="row p-3" id="options_outside">
-                <div class="col-md-3">
-                    Has an outdoor area
-                </div>
-                <div class="col-md-9">
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input @error('is_outside') is-invalid @enderror" type="checkbox" name="is_outside" value="1" {{ old('is_outside', $post->is_outside) == '1' ? 'checked' : '' }}>
-                        @error('is_outside')
-                        <div class="invalid-feedback">
-                            {{$message}}
-                        </div>
-                        @enderror
-                    </div>
-                </div>
+                @enderror
             </div>
 
             <div class="row p-3" id="options_takeawayonly">
-                <div class="col-md-3">
-                    Takeaway Only
+                <input class="form-check-input @error('is_takeawayonly') is-invalid @enderror" type="checkbox" name="is_takeawayonly" value="1" {{ old('is_takeawayonly', $post->is_takeawayonly) == '1' ? 'checked' : '' }}>
+                <label class="form-check-label" for="is_takeawayonly">Takeaway Only</label>
+                @error('is_takeawayonly')
+                <div class="invalid-feedback">
+                    {{$message}}
                 </div>
-                <div class="col-md-9">
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input @error('is_takeawayonly') is-invalid @enderror" type="checkbox" name="is_takeawayonly" value="1" {{ old('is_takeawayonly', $post->is_takeawayonly) == '1' ? 'checked' : '' }}>
-                        @error('is_takeawayonly')
-                        <div class="invalid-feedback">
-                            {{$message}}
-                        </div>
-                        @enderror
-                    </div>
+                @enderror
+            </div>
+
+            <div class="row p-3" id="options_outside">
+                <input class="form-check-input @error('is_outside') is-invalid @enderror" type="checkbox" id="is_outside" name="is_outside" value="1" {{ old('is_outside', $post->is_outside) == '1' ? 'checked' : '' }}>
+                <label class="form-check-label" for="is_outside">Outside Area</label>
+                @error('is_takeawayonly')
+                <div class="invalid-feedback">
+                    {{$message}}
                 </div>
+                @enderror
+            </div>
+        </div>
+        {{-- Second Column --}}
+        <div class="col-md-3">
+            <div class="row p-3" id="options_date">
+                <input class="form-check-input @error('is_date') is-invalid @enderror" type="checkbox" id="is_date" name="is_date" value="1" {{ old('is_date', $post->is_date) == '1' ? 'checked' : '' }}>
+                <label class="form-check-label" for="is_date">Suited For Dates</label>
+
+                @error('is_date')
+                <div class="invalid-feedback">
+                    {{$message}}
+                </div>
+                @enderror
+            </div>
+
+            <div class="row p-3" id="options_transport">
+                <input class="form-check-input @error('is_transport') is-invalid @enderror" type="checkbox" id="is_transport" name="is_transport" value="1" {{ old('is_transport', $post->is_transport) == '1' ? 'checked' : '' }}>
+                <label class="form-check-label" for="is_transport">Public Transportation</label>
+                @error('is_transport')
+                <div class="invalid-feedback">
+                    {{$message}}
+                </div>
+                @enderror
+            </div>
+
+            <div class="row p-3" id="options_groups">
+                <input class="form-check-input @error('is_groups') is-invalid @enderror" type="checkbox" id="is_groups" name="is_groups" value="1" {{ old('is_groups', $post->is_groups) == '1' ? 'checked' : '' }}>
+                <label class="form-check-label" for="is_groups">Suited For Groups</label>
+
+                @error('is_groups')
+                <div class="invalid-feedback">
+                    {{$message}}
+                </div>
+                @enderror
             </div>
 
             <div class="row p-3" id="options_studying">
-                <div class="col-md-3">
-                    Suited For Studying
+                <input class="form-check-input @error('is_studying') is-invalid @enderror" type="checkbox" id="is_studying" name="is_studying" value="1" {{ old('is_studying', $post->is_studying) == '1' ? 'checked' : '' }}>
+                <label class="form-check-label" for="is_studying">Suited For Studying</label>
+
+                @error('is_studying')
+                <div class="invalid-feedback">
+                    {{$message}}
                 </div>
-                <div class="col-md-9">
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input @error('is_studying') is-invalid @enderror" type="checkbox" name="is_studying" value="1" {{ old('is_studying', $post->is_studying) == '1' ? 'checked' : '' }}>
-                        @error('is_studying')
-                        <div class="invalid-feedback">
-                            {{$message}}
-                        </div>
-                        @enderror
-                    </div>
-                </div>
+                @enderror
             </div>
-            
         </div>
         <div class="col-md-6">
             <div class="row p-3" id="options_menu">
@@ -499,7 +452,7 @@
                     Online Menu
                 </div>
                 <div class="col-md-9">
-                    <input type="text" class="form-control @error('url_menu') is-invalid @enderror" name="url_menu" placeholder="Menu URL" value="{{old('url_menu', $post->url_menu)}}" />
+                    <input type="text" class="form-control @error('url_menu') is-invalid @enderror" name="url_menu" placeholder="Menu URL" value="{{old('url_menu')}}" />
                     @error('url_menu')
                     <div class="invalid-feedback">
                         {{$message}}
@@ -513,7 +466,7 @@
                     Reservation Link
                 </div>
                 <div class="col-md-9">
-                    <input type="text" name="url_reservation" class="form-control @error('url_reservation') is-invalid @enderror" placeholder="Reservation URL" value="{{old('url_reservation', $post->url_reservation)}}" />
+                    <input type="text" name="url_reservation" class="form-control @error('url_reservation') is-invalid @enderror" placeholder="Reservation URL" value="{{old('url_reservation')}}" />
                     @error('url_reservation')
                     <div class="invalid-feedback">
                         {{$message}}
@@ -527,7 +480,7 @@
                     Delivery Link
                 </div>
                 <div class="col-md-9">
-                    <input type="text" name="url_delivery" class="form-control @error('url_delivery') is-invalid @enderror" placeholder="Delivery URL" value="{{old('url_delivery', $post->url_delivery)}}" />
+                    <input type="text" name="url_delivery" class="form-control @error('url_delivery') is-invalid @enderror" placeholder="Delivery URL" value="{{old('url_delivery')}}" />
                     @error('url_delivery')
                     <div class="invalid-feedback">
                         {{$message}}
@@ -539,6 +492,7 @@
         </div>
     </div>
 </div>
+
 <hr />
 {{-- Section Social --}}
 <div class="container">
