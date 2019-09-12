@@ -1,30 +1,30 @@
 <?php
+
 use Carbon\Carbon;
 ?>
 @include('layout.header')
 @include('layout.navigation')
 {{-- Header --}}
-<div class="jumbotron shadow-sm" 
-@if($post->img_title)
-style="background: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.2)), url('{{url('images/'.$post->img_title)}}'); background-size:cover; background-attachment:fixed;"
-@else
-style="background: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.2)), url('{{asset('images/restaurants/food.jpg')}}'); background-size:cover; background-attachment:fixed;"
-@endif
->
+<div class="jumbotron shadow-sm" @if($post->img_title)
+    style="background: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.2)), url('{{url('images/'.$post->img_title)}}'); background-size:cover; background-attachment:fixed;"
+    @else
+    style="background: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.2)), url('{{asset('images/restaurants/food.jpg')}}'); background-size:cover; background-attachment:fixed;"
+    @endif
+    >
     <div class="container text-white">
         <h1 class="display-3">{{$post->restaurant_name}}</h1>
         <p>{{$post->subtitle}}</p>
         @if($post->social_facebook)
-            <a href="{{$post->social_facebook}}" title="Facebook Page of {{$post->restaurant_name}}" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="{{$post->social_facebook}}" title="Facebook Page of {{$post->restaurant_name}}" target="_blank"><i class="fab fa-facebook"></i></a>
         @endif
         @if($post->social_instagram)
-            <a href="{{$post->social_instagram}}" title="Instagram Profile of {{$post->restaurant_name}}" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="{{$post->social_instagram}}" title="Instagram Profile of {{$post->restaurant_name}}" target="_blank"><i class="fab fa-instagram"></i></a>
         @endif
         @if($post->social_twitter)
-            <a href="{{$post->social_twitter}}" title="Twitter Feed of {{$post->restaurant_name}}" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="{{$post->social_twitter}}" title="Twitter Feed of {{$post->restaurant_name}}" target="_blank"><i class="fab fa-twitter"></i></a>
         @endif
         @if($post->social_tripadvisor)
-            <a href="{{$post->social_tripadvisor}}" title="Tripadvisor Site of {{$post->restaurant_name}}" target="_blank"><i class="fab fa-tripadvisor"></i></a>
+        <a href="{{$post->social_tripadvisor}}" title="Tripadvisor Site of {{$post->restaurant_name}}" target="_blank"><i class="fab fa-tripadvisor"></i></a>
         @endif
     </div>
 </div>
@@ -33,12 +33,19 @@ style="background: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.2)), url('{{asset
 <div class="container mb-3">
 
     {{-- Main --}}
+    {{-- Cuisine Row --}}
+    <div class="row">
+        <div class="col-md-12">
+            @foreach($post->cuisines as $cuisine)
+            <span class="border border-info rounded-lg pl-1 pr-1">{{$cuisine->name}}</span>
+            @endforeach
+        </div>
+    </div>
+
+
     <div class="row">
         {{-- Left Column --}}
         <div class="col-md-6">
-            @foreach($post->cuisines as $cuisine) 
-                <span class="border border-info rounded-lg pl-1 pr-1">{{$cuisine->name}}</span>
-            @endforeach
             {{-- Opening Hours --}}
             <table class="table table-borderless table-sm">
                 <thead>
@@ -59,153 +66,160 @@ style="background: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.2)), url('{{asset
 
             {{-- Infos --}}
             <div id="restaurant_infos">
+                <div class="row">
+                    <div class="col-md-6">
+                        {{-- Vegetarian --}}
+                        <div class="row" style="color:{{$post->is_vegetarian?'green':'red'}};">
+                            <div class="col-1">
+                                <i class="fas fa-seedling"></i>
+                            </div>
+                            <div class="col-11">
+                                <p>
+                                    @if($post->is_vegetarian)
+                                    Vegetarian Options
+                                    @else
+                                    No Vegetarian Options
+                                    @endif
+                                </p>
+                            </div>
+                        </div>
 
-            {{-- Vegetarian --}}
-                <div class="row" style="color:{{$post->is_vegetarian?'green':'red'}};">
-                    <div class="col-1" >
-                        <i class="fas fa-seedling"></i>
+                        {{-- Vegan --}}
+                        <div class="row" style="color:{{$post->is_vegan?'green':'red'}};">
+                            <div class="col-1">
+                                <i class="fas fa-seedling"></i>
+                            </div>
+                            <div class="col-11">
+                                <p>
+                                    @if($post->is_vegan)
+                                    Vegan Options
+                                    @else
+                                    No Vegan Options
+                                    @endif
+                                </p>
+                            </div>
+                        </div>
+
+                        {{-- Date --}}
+                        <div class="row" style="color:{{$post->is_date?'green':'red'}};">
+                            <div class="col-1">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <div class="col-11">
+                                <p>
+                                    @if($post->is_date)
+                                    Suited for dates
+                                    @else
+                                    Not very suited for dates
+                                    @endif
+                                </p>
+                            </div>
+                        </div>
+
+                        {{-- Publit Transport --}}
+                        <div class="row" style="color:{{$post->is_transport?'green':'red'}};">
+                            <div class="col-1">
+                                <i class="fas fa-bus"></i>
+                            </div>
+                            <div class="col-11">
+                                <p>
+                                    @if($post->is_transport)
+                                    Close to public transportation
+                                    @else
+                                    Not close to public transportation
+                                    @endif
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-11">
-                        <p>
-                        @if($post->is_vegetarian)
-                            Offers vegetarian food
-                        @else
-                            Does not offer vegetarian food
+
+                    <div class="col-md-6">
+
+                        {{-- Groups --}}
+                        <div class="row" style="color:{{$post->is_groups?'green':'red'}};">
+                            <div class="col-1">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="col-11">
+                                <p>
+                                    @if($post->is_groups)
+                                    Suited for groups
+                                    @else
+                                    Not suited for groups
+                                    @endif
+                                </p>
+                            </div>
+                        </div>
+
+                        {{-- Outdoor --}}
+                        <div class="row" style="color:{{$post->is_outside?'green':'red'}};">
+                            <div class="col-1">
+                                <i class="fas fa-sun"></i>
+                            </div>
+                            <div class="col-11">
+                                <p>
+                                    @if($post->is_outside)
+                                    Outdoor Area
+                                    @else
+                                    No Outdoor Area
+                                    @endif
+                                </p>
+                            </div>
+                        </div>
+
+                        {{-- Takeaway Only --}}
+                        @if($post->is_takeawayonly)
+                        <div class="row" style="color:green;">
+                            <div class="col-1">
+                                <i class="fas fa-shopping-bag"></i>
+                            </div>
+                            <div class="col-11">
+                                <p>
+                                    Takeaway Only
+                                </p>
+                            </div>
+                        </div>
                         @endif
-                        </p>
+
+                        {{-- Studying  --}}
+                        <div class="row" style="color:{{$post->is_studying?'green':'red'}};">
+                            <div class="col-1">
+                                <i class="fas fa-book-reader"></i>
+                            </div>
+                            <div class="col-11">
+                                <p>
+                                    @if($post->is_studying)
+                                    Suited for studying
+                                    @else
+                                    Not suited for studying
+                                    @endif
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                {{-- Vegan --}}
-                <div class="row" style="color:{{$post->is_vegan?'green':'red'}};">
-                    <div class="col-1" >
-                        <i class="fas fa-seedling"></i>
-                    </div>
-                    <div class="col-11">
-                        <p>
-                        @if($post->is_vegan)
-                            Offers vegan food
-                        @else
-                            Does not offer vegan food
-                        @endif
-                        </p>
-                    </div>
-                </div>
 
-                {{-- Date --}}
-                <div class="row" style="color:{{$post->is_date?'green':'red'}};">
-                    <div class="col-1" >
-                        <i class="fas fa-heart"></i>
-                    </div>
-                    <div class="col-11">
-                        <p>
-                        @if($post->is_date)
-                            Suited for dates
-                        @else
-                            Not very suited for dates
-                        @endif
-                        </p>
-                    </div>
-                </div>
 
-                {{-- Publit Transport --}}
-                <div class="row" style="color:{{$post->is_transport?'green':'red'}};">
-                    <div class="col-1" >
-                        <i class="fas fa-bus"></i>
-                    </div>
-                    <div class="col-11">
-                        <p>
-                        @if($post->is_transport)
-                            Close to public transportation
-                        @else
-                            Not close to public transportation
-                        @endif
-                        </p>
-                    </div>
-                </div>
 
-                {{-- Groups --}}
-                <div class="row" style="color:{{$post->is_groups?'green':'red'}};">
-                    <div class="col-1" >
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <div class="col-11">
-                        <p>
-                        @if($post->is_groups)
-                            Suited for groups
-                        @else
-                            Not suited for groups
-                        @endif
-                        </p>
-                    </div>
-                </div>
-
-                {{-- Outdoor --}}
-                <div class="row" style="color:{{$post->is_outside?'green':'red'}};">
-                    <div class="col-1" >
-                        <i class="fas fa-sun"></i>
-                    </div>
-                    <div class="col-11">
-                        <p>
-                        @if($post->is_outside)
-                            Outdoor Area
-                        @else
-                            No Outdoor Area
-                        @endif
-                        </p>
-                    </div>
-                </div>
-
-                {{-- Takeaway Only --}}
-                @if($post->is_takeawayonly)
-                <div class="row" style="color:green;">
-                    <div class="col-1" >
-                        <i class="fas fa-shopping-bag"></i>
-                    </div>
-                    <div class="col-11">
-                        <p>
-                            Takeaway Only
-                        </p>
-                    </div>
-                </div>
-                @endif
-
-                {{-- Studying  --}}
-                <div class="row" style="color:{{$post->is_studying?'green':'red'}};">
-                    <div class="col-1" >
-                        <i class="fas fa-book-reader"></i>
-                    </div>
-                    <div class="col-11">
-                        <p>
-                        @if($post->is_studying)
-                            Suited for studying
-                        @else
-                            Not suited for studying
-                        @endif
-                        </p>
-                    </div>
-                </div>
-
-                
                 {{-- Pricerange --}}
                 <div class="row">
                     <div class="col-11">
                         <p>
-                        A menu costs around 
-                        <b>
-                        @if($post->pricerange==1)
-                        < 50
-                        @elseif($post->pricerange==2)
-                        50 - 100
-                        @elseif($post->pricerange==3)
-                        100 - 150
-                        @elseif($post->pricerange==4)
-                        150 - 200
-                        @else
-                        200 - 250
-                        @endif
-                        </b>
-                        DKK.
+                            A menu costs around
+                            <b>
+                                @if($post->pricerange==1)
+                                < 50 @elseif($post->pricerange==2)
+                                    50 - 100
+                                    @elseif($post->pricerange==3)
+                                    100 - 150
+                                    @elseif($post->pricerange==4)
+                                    150 - 200
+                                    @else
+                                    200 - 250
+                                    @endif
+                            </b>
+                            DKK.
                         </p>
                     </div>
                 </div>
@@ -215,13 +229,13 @@ style="background: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.2)), url('{{asset
             {{-- Buttons --}}
             <div id="restaurant_buttons">
                 @if($post->url_menu)
-                    <a href="{{$post->url_menu}}" target="_blank" role="button" class="btn btn-outline-dark mr-4"><i class="fa fa-utensils mr-2"></i>Menu</a>
+                <a href="{{$post->url_menu}}" target="_blank" role="button" class="btn btn-outline-dark mr-4"><i class="fa fa-utensils mr-2"></i>Menu</a>
                 @endif
                 @if($post->url_reservation)
-                    <a href="{{$post->url_reservation}}" target="_blank" role="button" class="btn btn-outline-dark mr-4"><i class="fa fa-ticket-alt mr-2"></i>Reservation</a>
+                <a href="{{$post->url_reservation}}" target="_blank" role="button" class="btn btn-outline-dark mr-4"><i class="fa fa-ticket-alt mr-2"></i>Reservation</a>
                 @endif
                 @if($post->url_delivery)
-                    <a href="{{$post->url_delivery}}" target="_blank" role="button" class="btn btn-outline-dark"><i class="fa fa-biking mr-2"></i>Delivery</a>
+                <a href="{{$post->url_delivery}}" target="_blank" role="button" class="btn btn-outline-dark"><i class="fa fa-biking mr-2"></i>Delivery</a>
                 @endif
             </div>
 
@@ -229,9 +243,9 @@ style="background: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.2)), url('{{asset
         {{-- Map --}}
         <div class="col-md-6">
 
-                @include('components.map.show')
-                {{--<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2249.5505644667724!2d12.531604716109225!3d55.679415205116946!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465253bc8f589777%3A0x1e7e22f569fd25c2!2sShakedown+Burger+%26+Shakes!5e0!3m2!1sde!2sdk!4v1562746098919!5m2!1sde!2sdk" width="600" height="450" style="border:0" allowfullscreen></iframe> --}}
-                    <p class="mt-2 text-center" >{{$post->place_name}} {{$post->place_adress}}</p>
+            @include('components.map.show')
+            {{--<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2249.5505644667724!2d12.531604716109225!3d55.679415205116946!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465253bc8f589777%3A0x1e7e22f569fd25c2!2sShakedown+Burger+%26+Shakes!5e0!3m2!1sde!2sdk!4v1562746098919!5m2!1sde!2sdk" width="600" height="450" style="border:0" allowfullscreen></iframe> --}}
+            <p class="mt-2 text-center">{{$post->place_name}} {{$post->place_adress}}</p>
         </div>
     </div>
 </div> {{-- Ende dieses Containers --}}
@@ -251,75 +265,75 @@ style="background: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.2)), url('{{asset
 
 <div class="container">
 
-{{-- Gallery --}}
-<div class="row pb-5 equal-height">
-    @if($post->img_1)
-    <div class="col-xs-4 col-md-2">
-        <div class="thumbnail">
-            <img src="{{url('/images/'.$post->img_1)}}" class="img-fullsize" alt="Responsive image" data-gallery-src="{{url('images/'.$post->img_1)}}">
+    {{-- Gallery --}}
+    <div class="row pb-5 equal-height">
+        @if($post->img_1)
+        <div class="col-xs-4 col-md-2">
+            <div class="thumbnail">
+                <img src="{{url('/images/'.$post->img_1)}}" class="img-fullsize" alt="Responsive image" data-gallery-src="{{url('images/'.$post->img_1)}}">
+            </div>
         </div>
-    </div>
-    @endif
-    @if($post->img_2)
-    <div class="col-xs-4 col-md-2">
-        <div class="thumbnail">
-        <img src="{{url('/images/'.$post->img_2)}}" class="img-fullsize" alt="Responsive image" data-gallery-src="{{url('images/'.$post->img_2)}}">
+        @endif
+        @if($post->img_2)
+        <div class="col-xs-4 col-md-2">
+            <div class="thumbnail">
+                <img src="{{url('/images/'.$post->img_2)}}" class="img-fullsize" alt="Responsive image" data-gallery-src="{{url('images/'.$post->img_2)}}">
+            </div>
         </div>
-    </div>
-    @endif
-    @if($post->img_3)
-    <div class="col-xs-4 col-md-2">
-        <div class="thumbnail">
-        <img src="{{url('/images/'.$post->img_3)}}" class="img-fullsize" alt="Responsive image" data-gallery-src="{{url('images/'.$post->img_3)}}">
+        @endif
+        @if($post->img_3)
+        <div class="col-xs-4 col-md-2">
+            <div class="thumbnail">
+                <img src="{{url('/images/'.$post->img_3)}}" class="img-fullsize" alt="Responsive image" data-gallery-src="{{url('images/'.$post->img_3)}}">
+            </div>
         </div>
-    </div>
-    @endif
-    @if($post->img_4)
-    <div class="col-xs-4 col-md-2">
-        <div class="thumbnail">
-        <img src="{{url('/images/'.$post->img_4)}}" class="img-fullsize" alt="Responsive image" data-gallery-src="{{url('images/'.$post->img_4)}}">
+        @endif
+        @if($post->img_4)
+        <div class="col-xs-4 col-md-2">
+            <div class="thumbnail">
+                <img src="{{url('/images/'.$post->img_4)}}" class="img-fullsize" alt="Responsive image" data-gallery-src="{{url('images/'.$post->img_4)}}">
+            </div>
         </div>
-    </div>
-    @endif
-    @if($post->img_5)
-    <div class="col-xs-4 col-md-2">
-        <div class="thumbnail">
-        <img src="{{url('/images/'.$post->img_5)}}" class="img-fullsize" alt="Responsive image" data-gallery-src="{{url('images/'.$post->img_5)}}">
+        @endif
+        @if($post->img_5)
+        <div class="col-xs-4 col-md-2">
+            <div class="thumbnail">
+                <img src="{{url('/images/'.$post->img_5)}}" class="img-fullsize" alt="Responsive image" data-gallery-src="{{url('images/'.$post->img_5)}}">
+            </div>
         </div>
-    </div>
-    @endif
-    @if($post->img_6)
-    <div class="col-xs-4 col-md-2">
-        <div class="thumbnail">
-        <img src="{{url('/images/'.$post->img_6)}}" class="img-fullsize" alt="Responsive image" data-gallery-src="{{url('images/'.$post->img_6)}}">
+        @endif
+        @if($post->img_6)
+        <div class="col-xs-4 col-md-2">
+            <div class="thumbnail">
+                <img src="{{url('/images/'.$post->img_6)}}" class="img-fullsize" alt="Responsive image" data-gallery-src="{{url('images/'.$post->img_6)}}">
+            </div>
         </div>
+        @endif
     </div>
-    @endif
-</div>
 </div>
 
 {{-- Review / Categories --}}
 <div class="container">
-<div class="row">
-    <div class="col-md-12">
-        <h3>Food</h3>
-        <p class="pb-4 text-justify">
-            {!! $post->review_food !!}
-        </p>
-        <hr />
-        <h3>Style, Location & Interior</h3>
-        <p class="pb-4 text-justify">
-            {!! $post->review_style !!}
-        </p>
-        <hr />
-        <h3>Service</h3>
-        <p class="pb-4 text-justify">
-            {!! $post->review_service !!}
-        </p>
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Food</h3>
+            <p class="pb-4 text-justify">
+                {!! $post->review_food !!}
+            </p>
+            <hr />
+            <h3>Style, Location & Interior</h3>
+            <p class="pb-4 text-justify">
+                {!! $post->review_style !!}
+            </p>
+            <hr />
+            <h3>Service</h3>
+            <p class="pb-4 text-justify">
+                {!! $post->review_service !!}
+            </p>
+        </div>
     </div>
-</div>
 
-{{-- Review / Categories / accordion layout
+    {{-- Review / Categories / accordion layout
     <div class="row">
         <div class="col-md-12">
             <div class="accordion" id="accordionExample">
@@ -379,7 +393,7 @@ style="background: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.2)), url('{{asset
             <div class="col-10">
                 <h5>{{$post->author->firstname}}</h5>
                 <p>Published on {{Carbon::parse($post->updated_at)->format('d.m.y, h:i')}}</p>
-                
+
             </div>
         </div>
 
