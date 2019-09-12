@@ -76,10 +76,6 @@ use Carbon\carbon;
                             <label class="custom-control-label" for="is_vegetarian">Vegetarian Options</label>
                         </div>
                         <div class="custom-control custom-switch">
-                            <input type="checkbox" class="custom-control-input" id="is_vegan" name="is_vegan" value="1" {{$display_filter->contains('is_vegan',true)?'checked':''}}>
-                            <label class="custom-control-label" for="is_vegan">Vegan Options</label>
-                        </div>
-                        <div class="custom-control custom-switch">
                             <input type="checkbox" class="custom-control-input" id="is_date" name="is_date" value="1" {{$display_filter->contains('is_date',true)?'checked':''}}>
                             <label class="custom-control-label" for="is_date">Date Friendly</label>
                         </div>
