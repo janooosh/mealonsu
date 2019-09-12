@@ -55,7 +55,6 @@ class HomeController extends Controller
             'cuisine.*' => 'exists:cuisines,id',
             'price' => 'min:1|max:4',
             'is_open' => 'boolean',
-            'is_vegan' => 'boolean',
             'is_date' => 'boolean',
             'is_delivery' => 'boolean',
         ]);
@@ -88,7 +87,6 @@ class HomeController extends Controller
         $display_filter->prepend(['is_open' => $request->get('is_open')]);
         $display_filter->prepend(['is_vegetarian' => $request->get('is_vegetarian')]);
         $display_filter->prepend(['is_transport' => $request->get('is_transport')]);
-        $display_filter->prepend(['is_vegan' => $request->get('is_vegan')]);
         $display_filter->prepend(['is_date' => $request->get('is_date')]);
         $display_filter->prepend(['is_outside' => $request->get('is_outside')]);
         $display_filter->prepend(['is_takeawayonly' => $request->get('is_takeawayonly')]);
@@ -117,9 +115,6 @@ class HomeController extends Controller
         ->whereHas('isLive')
         ->when($request->get('price'), function($query) use($request) {
             $query->where('pricerange',$request->get('price'));
-        })
-        ->when($request->get('is_vegan'), function($query) {
-            $query->where('is_vegan',true);
         })
         ->when($request->get('is_vegetarian'), function($query) {
             $query->where('is_vegetarian',true);
