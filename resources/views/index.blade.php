@@ -64,41 +64,6 @@ use Carbon\carbon;
                     </div>
                 </div>
 
-                {{-- Filter / Noise --}}
-                <div class="mb-4" id="filter_noise">
-                    <h4><i class="fas fa-coins mr-2"></i> Noise Level</h4>
-
-                    <div class="container mb-1 p-3 shadow-sm" style="background-color: white;">
-                        <select name="noise" class="browser-default custom-select">
-                            <option value="0">Choose An Option</option>
-                            <option value="1" {{$display_filter->contains('noise',1)?'selected':''}}> Low</option>
-                            <option value="2" {{$display_filter->contains('noise',2)?'selected':''}}> Medium</option>
-                            <option value="3" {{$display_filter->contains('noise',3)?'selected':''}}> High</option>
-                        </select>
-                    </div>
-                </div>
-
-
-                {{-- Filter / District --}}
-                <div class="mb-4" id="filter_price">
-                    <h4><i class="fas fa-coins mr-2"></i> District</h4>
-
-                    <div class="container mb-1 p-3 shadow-sm" style="background-color: white;">
-                        <select name="district" class="browser-default custom-select">
-                            <option>Choose An Option</option>
-                            <option value="Amager" {{$display_filter->contains('district','Amager')?'selected':''}}>Amager</option>
-                            <option value="Frederiksberg" {{$display_filter->contains('district','Frederiksberg')?'selected':''}}>Frederiksberg</option>
-                            <option value="Indre By" {{$display_filter->contains('district','Indre By')?'selected':''}}>Indre By</option>
-                            <option value="Nordvest" {{$display_filter->contains('district','Nordvest')?'selected':''}}>Nordvest</option>
-                            <option value="Nørrebro" {{$display_filter->contains('district','Nørrebro')?'selected':''}}>Nørrebro</option>
-                            <option value="Østerbro" {{$display_filter->contains('district','Østerbro')?'selected':''}}>Østerbro</option>
-                            <option value="Sydhavn" {{$display_filter->contains('district','Sydhavn')?'selected':''}}>Sydhavn</option>
-                            <option value="Valby" {{$display_filter->contains('district','Valby')?'selected':''}}>Valby</option>
-                            <option value="Vanløse" {{$display_filter->contains('district','Vanløse')?'selected':''}}>Vanløse</option>
-                            <option value="Vesterbro" {{$display_filter->contains('district','Vesterbro')?'selected':''}}>Vesterbro</option>
-                        </select>
-                    </div>
-                </div>
 
                 {{-- Filter / Options --}}
                 <div class="mb-4" id="filter_options">

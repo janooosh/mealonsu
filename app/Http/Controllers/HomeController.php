@@ -123,13 +123,13 @@ class HomeController extends Controller
         $posts = post::where('is_draft',false)
         ->where('is_declined',false)
         ->whereHas('isLive')
-        ->when($request->get('price'), function($query) use($request) {
+        ->when($request->get('price')>0, function($query) use($request) {
             $query->where('pricerange',$request->get('price'));
         })
         ->when($request->get('noise'), function($query) use($request) {
             $query->where('noise',$request->get('noise'));
         })
-        ->when($request->get('district'), function($query) use($request) {
+        ->when($request->get('district')!='', function($query) use($request) {
             $query->where('district',$request->get('district'));
         })
         ->when($request->get('is_vegetarian'), function($query) {
