@@ -75,6 +75,47 @@
         </div>
         @enderror
     </div>
+</div>
+<div class="row p-3" id="general_district">
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-3">
+                District
+            </div>
+            <div class="col-md-9">
+                <select name="district" class="browser-default custom-select">
+                    <option>Choose An Option</option>
+                    <option value="Amager" {{$post->district=='Amager'?'selected':''}}>Amager</option>
+                    <option value="Frederiksberg" {{$post->district=='Frederiksberg'?'selected':''}}>Frederiksberg</option>
+                    <option value="Indre By" {{$post->district=='Indre By'?'selected':''}}>Indre By</option>
+                    <option value="Nordvest" {{$post->district=='Nordvest'?'selected':''}}>Nordvest</option>
+                    <option value="Nørrebro" {{$post->district=='Nørrebro'?'selected':''}}>Nørrebro</option>
+                    <option value="Østerbro" {{$post->district=='Østerbro'?'selected':''}}>Østerbro</option>
+                    <option value="Sydhavn" {{$post->district=='Sydhavn'?'selected':''}}>Sydhavn</option>
+                    <option value="Valby" {{$post->district=='Valby'?'selected':''}}>Valby</option>
+                    <option value="Valby" {{$post->district=='Vanløse'?'selected':''}}>Vanløse</option>
+                    <option value="Vesterbro" {{$post->district=='Vesterbro'?'selected':''}}>Vesterbro</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-3">
+                Noise Level
+            </div>
+            <div class="col-md-9">
+                <select name="noise" class="browser-default custom-select">
+                    <option value="0">Choose An Option</option>
+                    <option value="1" {{$post->noise=='1'?'selected':''}}>Low</option>
+                    <option value="2" {{$post->noise=='2'?'selected':''}}>Medium</option>
+                    <option value="3" {{$post->noise=='3'?'selected':''}}>High</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
     <div class="container mt-3">
         <div class="row">
             <div class="col-md-12">

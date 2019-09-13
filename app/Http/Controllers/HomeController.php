@@ -83,6 +83,11 @@ class HomeController extends Controller
             } */
         }
 
+        //Fill Noise
+        if($request->get('noise')>0) {
+            $display_filter->prepend(['noise' => $request->get('noise')]);
+        }
+
         //Fill other options for frontend filter
         $display_filter->prepend(['is_open' => $request->get('is_open')]);
         $display_filter->prepend(['is_vegetarian' => $request->get('is_vegetarian')]);
@@ -93,6 +98,7 @@ class HomeController extends Controller
         $display_filter->prepend(['is_groups' => $request->get('is_groups')]);
         $display_filter->prepend(['is_studying' => $request->get('is_studying')]);
         $display_filter->prepend(['is_delivery' => $request->get('is_delivery')]);
+        $display_filter->prepend(['district' => $request->get('district')]);
         $search_title=$request->get('search_title');
         
         $cuisines = Cuisine::all();
@@ -115,6 +121,12 @@ class HomeController extends Controller
         ->whereHas('isLive')
         ->when($request->get('price'), function($query) use($request) {
             $query->where('pricerange',$request->get('price'));
+        })
+        ->when($request->get('noise'), function($query) use($request) {
+            $query->where('noise',$request->get('noise'));
+        })
+        ->when($request->get('district'), function($query) use($request) {
+            $query->where('district',$request->get('district'));
         })
         ->when($request->get('is_vegetarian'), function($query) {
             $query->where('is_vegetarian',true);

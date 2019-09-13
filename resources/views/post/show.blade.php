@@ -207,6 +207,27 @@ use Carbon\Carbon;
                     </div>
                 </div>
 
+                {{-- Noise --}}
+                @if($post->noise)
+                <div class="row">
+                    <div class="col-11">
+                        <p>
+                            Noise Level: 
+                            <b>
+                                @if($post->noise==1)
+                                Low
+                                @elseif($post->noise==2)
+                                Medium
+                                @elseif($post->noise==3)
+                                High
+                                @endif
+                            </b>
+                            
+                        </p>
+                    </div>
+                </div>
+                @endif
+
             </div>
 
             {{-- Buttons --}}
@@ -228,7 +249,10 @@ use Carbon\Carbon;
 
             @include('components.map.show')
             {{--<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2249.5505644667724!2d12.531604716109225!3d55.679415205116946!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465253bc8f589777%3A0x1e7e22f569fd25c2!2sShakedown+Burger+%26+Shakes!5e0!3m2!1sde!2sdk!4v1562746098919!5m2!1sde!2sdk" width="600" height="450" style="border:0" allowfullscreen></iframe> --}}
-            <p class="mt-2 text-center">{{$post->place_name}} {{$post->place_adress}}</p>
+            <p class="mt-2 text-left">{{$post->place_name}} {{$post->place_adress}}</p>
+            @if($post->district)
+            <p>District: {{$post->district}}</p>
+            @endif
         </div>
     </div>
 </div> {{-- Ende dieses Containers --}}
@@ -239,7 +263,7 @@ use Carbon\Carbon;
         {{-- Headline --}}
         <div class="row pb-3">
             <div class="col-md-12">
-                <h5><p class="font-weight-bold">Jo {!!$post->summary!!}</p></h5>
+                <h5><p class="font-weight-bold">{!!$post->summary!!}</p></h5>
             </div>
         </div>
     </div>

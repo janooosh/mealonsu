@@ -77,22 +77,63 @@
         </div>
         @enderror
     </div>
-    {{-- </div>
-            </div>
-        </div> --}}
-    <div class="container mt-3">
+</div>
+
+<div class="row p-3" id="general_district">
+    <div class="col-md-6">
         <div class="row">
-            <div class="col-md-12">
-                @include('components.map.create')
-                <input type="hidden" class="form-control" id="place_location" name="place_location" value="">
-                <input type="hidden" class="form-control" id="place_adress" name="place_adress" value="">
-                <input type="hidden" class="form-control" id="place_name" name="place_name" value="">
-                <input type="hidden" class="form-control" id="place_icon" name="place_icon" value="">
-
-
+            <div class="col-md-3">
+                District
+            </div>
+            <div class="col-md-9">
+                <select name="district" class="browser-default custom-select">
+                    <option>Choose An Option</option>
+                    <option value="Amager" {{old('district')=='Amager'?'selected':''}}>Amager</option>
+                    <option value="Frederiksberg" {{old('district')=='Frederiksberg'?'selected':''}}>Frederiksberg</option>
+                    <option value="Indre By" {{old('district')=='Indre By'?'selected':''}}>Indre By</option>
+                    <option value="Nordvest" {{old('district')=='Nordvest'?'selected':''}}>Nordvest</option>
+                    <option value="Nørrebro" {{old('district')=='Nørrebro'?'selected':''}}>Nørrebro</option>
+                    <option value="Østerbro" {{old('district')=='Østerbro'?'selected':''}}>Østerbro</option>
+                    <option value="Sydhavn" {{old('district')=='Sydhavn'?'selected':''}}>Sydhavn</option>
+                    <option value="Valby" {{old('district')=='Valby'?'selected':''}}>Valby</option>
+                    <option value="Vanløse" {{old('district')=='Vanløse'?'selected':''}}>Vanløse</option>
+                    <option value="Vesterbro" {{old('district')=='Vesterbro'?'selected':''}}>Vesterbro</option>
+                </select>
             </div>
         </div>
     </div>
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-3">
+                Noise Level
+            </div>
+            <div class="col-md-9">
+                <select name="noise" class="browser-default custom-select">
+                    <option value="0">Choose An Option</option>
+                    <option value="1" {{old('noise')=='1'?'selected':''}}>Low</option>
+                    <option value="2" {{old('noise')=='2'?'selected':''}}>Medium</option>
+                    <option value="3" {{old('noise')=='3'?'selected':''}}>High</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+{{-- </div> --}}
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-md-12">
+            @include('components.map.create')
+            <input type="hidden" class="form-control" id="place_location" name="place_location" value="">
+            <input type="hidden" class="form-control" id="place_adress" name="place_adress" value="">
+            <input type="hidden" class="form-control" id="place_name" name="place_name" value="">
+            <input type="hidden" class="form-control" id="place_icon" name="place_icon" value="">
+
+
+        </div>
+    </div>
+</div>
 </div>
 </div>
 <hr />
@@ -314,11 +355,10 @@
             <h4>Price for one meal</h4>
             <div class="form-check form-check-inline">
                 <input class="form-check-input" id="price1" type="radio" name="price" value="1">
-                <label class="form-check-label" for="price1"> < 50 DKK</label> 
-            </div> 
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" id="price2" type="radio" name="price" value="2">
-                <label class="form-check-label" for="price2"> 50 - 100 DKK</label>
+                <label class="form-check-label" for="price1">
+                    < 50 DKK</label> </div> <div class="form-check form-check-inline">
+                        <input class="form-check-input" id="price2" type="radio" name="price" value="2">
+                        <label class="form-check-label" for="price2"> 50 - 100 DKK</label>
             </div>
             <div class="form-check form-check-inline">
                 <input class="form-check-input" id="price3" type="radio" name="price" value="3">

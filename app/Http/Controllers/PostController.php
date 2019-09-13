@@ -799,7 +799,9 @@ class PostController extends Controller
             'img_5' => 'image|mimes:jpeg,png,jpg,svg|max:5200',
             'img_6' => 'image|mimes:jpeg,png,jpg,svg|max:5200',
             'img_title' => 'image|mimes:jpeg,png,jpg,svg|max:5200',
-            'img_logo' => 'image|mimes:jpeg,png,jpg,svg|max:5200'
+            'img_logo' => 'image|mimes:jpeg,png,jpg,svg|max:5200',
+            'noise' => 'integer|max:3',
+            'district' => '',
         ]);
 
         //Custom Validation, save errors in $errors []
@@ -875,6 +877,8 @@ class PostController extends Controller
         $target->is_takeawayonly = $request->is_takeawayonly;
         $target->is_studying = $request->is_studying;
         $target->social_tripadvisor = $request->social_tripadvisor;
+        $target->noise = $request->noise;
+        $target->district = $request->district;
         return $target;
     }
 
