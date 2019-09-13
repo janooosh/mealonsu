@@ -69,7 +69,7 @@ use Carbon\carbon;
                     <h4><i class="fas fa-coins mr-2"></i> Noise Level</h4>
 
                     <div class="container mb-1 p-3 shadow-sm" style="background-color: white;">
-                        <select name="price" class="browser-default custom-select">
+                        <select name="noise" class="browser-default custom-select">
                             <option value="0">Choose An Option</option>
                             <option value="1" {{$display_filter->contains('noise',1)?'selected':''}}> Low</option>
                             <option value="2" {{$display_filter->contains('noise',2)?'selected':''}}> Medium</option>
@@ -84,7 +84,7 @@ use Carbon\carbon;
                     <h4><i class="fas fa-coins mr-2"></i> District</h4>
 
                     <div class="container mb-1 p-3 shadow-sm" style="background-color: white;">
-                        <select name="price" class="browser-default custom-select">
+                        <select name="district" class="browser-default custom-select">
                             <option>Choose An Option</option>
                             <option value="Amager" {{$display_filter->contains('district','Amager')?'selected':''}}>Amager</option>
                             <option value="Frederiksberg" {{$display_filter->contains('district','Frederiksberg')?'selected':''}}>Frederiksberg</option>
