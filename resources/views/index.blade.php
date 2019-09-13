@@ -86,7 +86,7 @@ use Carbon\carbon;
 
                     <div class="container mb-1 p-3 shadow-sm" style="background-color: white;">
                         <select name="district" class="browser-default custom-select">
-                            <option>Choose An Option</option>
+                            <option value="" >Choose An Option</option>
                             <option value="Amager" {{$display_filter->contains('district','Amager')?'selected':''}}>Amager</option>
                             <option value="Frederiksberg" {{$display_filter->contains('district','Frederiksberg')?'selected':''}}>Frederiksberg</option>
                             <option value="Indre By" {{$display_filter->contains('district','Indre By')?'selected':''}}>Indre By</option>
