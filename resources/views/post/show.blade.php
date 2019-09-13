@@ -15,16 +15,13 @@ use Carbon\Carbon;
         <h1 class="display-3">{{$post->restaurant_name}}</h1>
         <p>{{$post->subtitle}}</p>
         @if($post->social_facebook)
-        <a href="{{$post->social_facebook}}" title="Facebook Page of {{$post->restaurant_name}}" target="_blank"><i class="fab fa-facebook"></i></a>
+        <h2><a href="{{$post->social_facebook}}" title="Facebook Page of {{$post->restaurant_name}}" target="_blank"><i class="fab fa-facebook"></i></a></h2>
         @endif
         @if($post->social_instagram)
-        <a href="{{$post->social_instagram}}" title="Instagram Profile of {{$post->restaurant_name}}" target="_blank"><i class="fab fa-instagram"></i></a>
+        <h2><a href="{{$post->social_instagram}}" title="Instagram Profile of {{$post->restaurant_name}}" target="_blank"><i class="fab fa-instagram"></i></a></h2>
         @endif
         @if($post->social_twitter)
-        <a href="{{$post->social_twitter}}" title="Twitter Feed of {{$post->restaurant_name}}" target="_blank"><i class="fab fa-twitter"></i></a>
-        @endif
-        @if($post->social_tripadvisor)
-        <a href="{{$post->social_tripadvisor}}" title="Tripadvisor Site of {{$post->restaurant_name}}" target="_blank"><i class="fab fa-tripadvisor"></i></a>
+        <h2><a href="{{$post->social_twitter}}" title="Twitter Feed of {{$post->restaurant_name}}" target="_blank"><i class="fab fa-twitter"></i></a></h2>
         @endif
     </div>
 </div>
@@ -192,7 +189,7 @@ use Carbon\Carbon;
                 <div class="row">
                     <div class="col-11">
                         <p>
-                            A menu costs around
+                            $
                             <b>
                                 @if($post->pricerange==1)
                                 < 50 @elseif($post->pricerange==2)
@@ -242,7 +239,7 @@ use Carbon\Carbon;
         {{-- Headline --}}
         <div class="row pb-3">
             <div class="col-md-12">
-                <blockquote class="blockquote">{!!$post->summary!!}</blockquote>
+                <h5><p class="font-weight-bold">Jo {!!$post->summary!!}</p></h5>
             </div>
         </div>
     </div>
@@ -303,19 +300,13 @@ use Carbon\Carbon;
     <div class="row">
         <div class="col-md-12">
             <h3>Food</h3>
-            <p class="pb-4 text-justify">
                 {!! $post->review_food !!}
-            </p>
             <hr />
             <h3>Style, Location & Interior</h3>
-            <p class="pb-4 text-justify">
                 {!! $post->review_style !!}
-            </p>
             <hr />
             <h3>Service</h3>
-            <p class="pb-4 text-justify">
                 {!! $post->review_service !!}
-            </p>
         </div>
     </div>
 

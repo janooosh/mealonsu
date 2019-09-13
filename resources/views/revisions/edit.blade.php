@@ -551,34 +551,6 @@
                     @enderror
                 </div>
             </div>
-
-            <div class="row p-3" id="social_tripadvisor">
-                <div class="col-md-3">
-                    Tripadvisor
-                </div>
-                <div class="col-md-9">
-                    <input type="text" name="social_tripadvisor" class="form-control @error('social_tripadvisor') is-invalid @enderror" placeholder="Tripadvisor URL" value="{{old('social_tripadvisor', $post->social_tripadvisor)}}" />
-                    @error('social_tripadvisor')
-                    <div class="invalid-feedback">
-                        {{$message}}
-                    </div>
-                    @enderror
-                </div>
-            </div>
-
-            <div class="row p-3" id="social_twitter">
-                <div class="col-md-3">
-                    Tripadvisor
-                </div>
-                <div class="col-md-9">
-                    <input type="text" name="social_tripadvisor" class="form-control @error('social_tripadvisor') is-invalid @enderror" placeholder="Tripadvisor URL" value="{{old('social_tripadvisor', $post->social_tripadvisor)}}" />
-                    @error('social_tripadvisor')
-                    <div class="invalid-feedback">
-                        {{$message}}
-                    </div>
-                    @enderror
-                </div>
-            </div>
             
         </div>
         <hr />
@@ -592,7 +564,7 @@
                     <textarea class="@error('summary') is-invalid @enderror" name="summary">{{old('summary', $post->summary)}}</textarea>
                     @error('summary')
                     <div class="invalid-feedback">
-                        {{$message}}
+                        {{message}}
                     </div>
                     @enderror
                 </div>
