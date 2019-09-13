@@ -70,7 +70,7 @@ use Carbon\carbon;
 
                     <div class="container mb-1 p-3 shadow-sm" style="background-color: white;">
                         <select name="noise" class="browser-default custom-select">
-                            <option>Choose An Option</option>
+                            <option value="0">Choose An Option</option>
                             <option value="1" {{$display_filter->contains('noise',1)?'selected':''}}> Low</option>
                             <option value="2" {{$display_filter->contains('noise',2)?'selected':''}}> Medium</option>
                             <option value="3" {{$display_filter->contains('noise',3)?'selected':''}}> High</option>
