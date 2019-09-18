@@ -106,10 +106,10 @@ use Carbon\carbon;
                 <div class="mb-4" id="filter_options">
                     <h4><i class="fas fa-sliders-h mr-2"></i> Options</h4>
                     <div class="container mb-1 p-3 shadow-sm" style="background-color: white;">
-                        <div class="custom-control custom-switch">
+                        {{-- <div class="custom-control custom-switch">
                             <input type="checkbox" class="custom-control-input" id="is_open" name="is_open" value="1" {{$display_filter->contains('is_open',true)?'checked':''}}>
                             <label class="custom-control-label" for="is_open">Open Now</label>
-                        </div>
+                        </div> --}}
                         <div class="custom-control custom-switch">
                             <input type="checkbox" class="custom-control-input" id="is_vegetarian" name="is_vegetarian" value="1" {{$display_filter->contains('is_vegetarian',true)?'checked':''}}>
                             <label class="custom-control-label" for="is_vegetarian">Vegetarian Options</label>
@@ -144,10 +144,6 @@ use Carbon\carbon;
                         </div>
                     </div>
                 </div>
-
-                <div class="mb-4">
-                    <button type="submit" value="filter_submit" class="btn btn-outline-primary"><i class="fas fa-hamburger mr-2"></i>Apply Filter</button>
-                </div>
             </div>
 
             {{-- Right Column: Results view --}}
@@ -159,12 +155,8 @@ use Carbon\carbon;
                 <div class="container" id="restaurant_results">
                     {{-- Search Field --}}
                     <div class="row">
-                        <div class="col-md-8">
+                        <div class="col-md-11">
                             <input type="text" class="form-control mb-3" id="search_title" name="search_title" value="{{$search_title}}" placeholder="Search...">
-                        </div>
-                        <div class="col-md-3">
-                            <button type="submit" value="filter_submit" class="btn btn-outline-primary"><i class="fas fa-hamburger mr-2"></i>Apply Filter</button>
-
                         </div>
                         {{-- SORTER - Still To-Do --}}
                         <div class="col-md-1">
