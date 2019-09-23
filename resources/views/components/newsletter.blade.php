@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <h1 class="pb-3">mealonsu@gmail.com</h1>
+                {{--<h1 class="pb-3">mealonsu@gmail.com</h1>--}}
                 <a role="button" class="btn btn-outline-light btn-lg" href="mailto:mealonsu@gmail.com"><i class="fa fa-paper-plane mr-2"></i>Contact Us</a>
             </div>
             {{--<div class="col-md-6">

@@ -55,7 +55,7 @@ use App\Http\Controllers\HomeController;
 
                     <div class="container mb-1 p-3 shadow-sm" style="background-color: white;">
                         <select name="price" class="browser-default custom-select">
-                            <option value="0">Choose A Priceerange</option>
+                            <option value="0">Choose A Pricerange</option>
                             <option value="1" {{$display_filter->contains('pricerange',1)?'selected':''}}>
                                 < 50 DKK</option> <option value="2" {{$display_filter->contains('pricerange',2)?'selected':''}}> 50 - 100 DKK
                             </option>
@@ -69,7 +69,7 @@ use App\Http\Controllers\HomeController;
 
                 {{-- Filter / Noise --}}
                 <div class="mb-4" id="filter_noise">
-                    <h4><i class="fas fa-coins mr-2"></i> Noise Level</h4>
+                    <h4><i class="fas fa-bullhorn mr-2"></i> Noise Level</h4>
 
                     <div class="container mb-1 p-3 shadow-sm" style="background-color: white;">
                         <select name="noise" class="browser-default custom-select">
@@ -84,7 +84,7 @@ use App\Http\Controllers\HomeController;
 
                 {{-- Filter / District --}}
                 <div class="mb-4" id="filter_price">
-                    <h4><i class="fas fa-coins mr-2"></i> District</h4>
+                    <h4><i class="fas fa-city mr-2"></i> District</h4>
 
                     <div class="container mb-1 p-3 shadow-sm" style="background-color: white;">
                         <select name="district" class="browser-default custom-select">
@@ -185,12 +185,17 @@ use App\Http\Controllers\HomeController;
                             <div name="sorter" class="dropdown-menu">
                                 <button class="dropdown-item" type="submit" name="sort_name">Name</button>
                                 <button class="dropdown-item" type="submit" name="sort_creation">Creation</button>
+                                <button class="dropdown-item" type="submit" name="sort_pricerange">Pricerange</button>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-11">
-                            <p>{{count($posts)}} results. </p>
+                            @if(count($posts)<1)
+                            <p>We are sorry, there are no restaurants matching your selection criteria.</p>
+                            @else
+                            <p>{{count($posts)}} results.
+                            @endif
                         </div>
                     </div>
 
@@ -218,7 +223,12 @@ use App\Http\Controllers\HomeController;
                                     <p class="font-weight-lighter m-0">{{$post->place_adress}}</p>
                                 </div>
                                 <div class="col-3 col-md-2 text-right">
-                                    <span class="font-weight-lighter">{{carbon::parse($post->created_at)->format('d.m.y')}}</span>
+                                    <span class="font-weight-lighter">
+                                        @for($i=0;$i<$post->pricerange;$i++)
+                                        <i class="fas fa-coins"></i>
+                                        @endfor
+                                    </span>
+                                    
                                 </div>
                             </div>
                         </a>

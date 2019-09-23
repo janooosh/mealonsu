@@ -140,11 +140,10 @@ class HomeController extends Controller
        
         $search_title=$request->get('search_title');
         
-        $cuisines = Cuisine::whereHas('posts')
-        ->orderBy(function($cuisine) {
+        $cuisines = Cuisine::whereHas('posts')->get()
+        ->sortBy(function($cuisine) {
             return $cuisine->posts->count();
-        })
-        ->get();
+        });
 
         //$cuisines = Cuisine::orderBy('posts')->get();
         
@@ -210,6 +209,9 @@ class HomeController extends Controller
         })
         ->when($request->has('sort_creation'), function ($query) {
             $query->orderBy('created_at');
+        })
+        ->when($request->has('sort_pricerange'), function($query) {
+            $query->orderBy('pricerange');
         })
         ->get();
 

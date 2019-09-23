@@ -9,14 +9,14 @@ use \App\Http\Controllers\UserController;
   <div class="collapse navbar-collapse ml-3" id="navbarText">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="{{route('posts.index')}}">My Reviews</a>
+        <a class="nav-link" href="{{route('posts.index')}}">My Recommendations</a>
       </li>
       @if(UserController::hasRole(2))
       <li class="nav-item">
         <a class="nav-link" href="{{route('revisions.index')}}">Revisions</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{route('posts.all')}}">All Reviews</a>
+        <a class="nav-link" href="{{route('posts.all')}}">All Recommendations</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{{route('cuisines.index')}}">Cuisines</a>
