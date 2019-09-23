@@ -25,6 +25,7 @@ use App\Http\Controllers\HomeController;
     </div>
 </div>
 
+
 {{-- Main Container --}}
 <form method="post" action="{{route('filter.post')}}">
     @csrf
@@ -88,7 +89,7 @@ use App\Http\Controllers\HomeController;
 
                     <div class="container mb-1 p-3 shadow-sm" style="background-color: white;">
                         <select name="district" class="browser-default custom-select">
-                            <option value="" >Choose An Option</option>
+                            <option value="">Choose An Option</option>
                             <option value="Amager" {{$display_filter->contains('district','Amager')?'selected':''}}>Amager</option>
                             <option value="Frederiksberg" {{$display_filter->contains('district','Frederiksberg')?'selected':''}}>Frederiksberg</option>
                             <option value="Indre By" {{$display_filter->contains('district','Indre By')?'selected':''}}>Indre By</option>
@@ -110,144 +111,161 @@ use App\Http\Controllers\HomeController;
                     <div class="container mb-1 p-3 shadow-sm" style="background-color: white;">
                         {{-- <div class="custom-control custom-switch">
                             <input type="checkbox" class="custom-control-input" id="is_open" name="is_open" value="1" {{$display_filter->contains('is_open',true)?'checked':''}}>
-                            <label class="custom-control-label" for="is_open">Open Now</label>
-                        </div> --}}
-                        @if(HomeController::filter_available('is_vegetarian'))
-                        <div class="custom-control custom-switch">
-                            <input type="checkbox" class="custom-control-input" id="is_vegetarian" name="is_vegetarian" value="1" {{$display_filter->contains('is_vegetarian',true)?'checked':''}}>
-                            <label class="custom-control-label" for="is_vegetarian">Vegetarian Options</label>
-                        </div>
-                        @endif
-                        @if(HomeController::filter_available('is_date'))
-                        <div class="custom-control custom-switch">
-                            <input type="checkbox" class="custom-control-input" id="is_date" name="is_date" value="1" {{$display_filter->contains('is_date',true)?'checked':''}}>
-                            <label class="custom-control-label" for="is_date">Date Friendly</label>
-                        </div>
-                        @endif
-                        @if(HomeController::filter_available('is_transport'))
-                        <div class="custom-control custom-switch">
-                            <input type="checkbox" class="custom-control-input" id="is_transport" name="is_transport" value="1" {{$display_filter->contains('is_transport',true)?'checked':''}}>
-                            <label class="custom-control-label" for="is_transport">Close to public transport</label>
-                        </div>
-                        @endif
-                        @if(HomeController::filter_available('is_groups'))
-                        <div class="custom-control custom-switch">
-                            <input type="checkbox" class="custom-control-input" id="is_groups" name="is_groups" value="1" {{$display_filter->contains('is_groups',true)?'checked':''}}>
-                            <label class="custom-control-label" for="is_groups">Suited for groups</label>
-                        </div>
-                        @endif
-                        @if(HomeController::filter_available('is_studying'))
-                        <div class="custom-control custom-switch">
-                            <input type="checkbox" class="custom-control-input" id="is_studying" name="is_studying" value="1" {{$display_filter->contains('is_studying',true)?'checked':''}}>
-                            <label class="custom-control-label" for="is_studying">Suited for studying</label>
-                        </div>
-                        @endif
-                        @if(HomeController::filter_available('is_outside'))
-                        <div class="custom-control custom-switch">
-                            <input type="checkbox" class="custom-control-input" id="is_outside" name="is_outside" value="1" {{$display_filter->contains('is_outside',true)?'checked':''}}>
-                            <label class="custom-control-label" for="is_outside">Outside Area</label>
-                        </div>
-                        @endif
-                        @if(HomeController::filter_available('is_takeawayonly'))
-                        <div class="custom-control custom-switch">
-                            <input type="checkbox" class="custom-control-input" id="is_takeawayonly" name="is_takeawayonly" value="1" {{$display_filter->contains('is_takeawayonly',true)?'checked':''}}>
-                            <label class="custom-control-label" for="is_takeawayonly">Takeaway Only</label>
-                        </div>
-                        @endif
-                        @if(HomeController::filter_available_value('url_delivery'))
-                        <div class="custom-control custom-switch">
-                            <input type="checkbox" class="custom-control-input" id="is_delivery" name="is_delivery" value="1" {{$display_filter->contains('is_delivery',true)?'checked':''}}>
-                            <label class="custom-control-label" for="is_delivery">Delivery Service</label>
-                        </div>
-                        @endif
+                        <label class="custom-control-label" for="is_open">Open Now</label>
+                    </div> --}}
+                    @if(HomeController::filter_available('is_vegetarian'))
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" id="is_vegetarian" name="is_vegetarian" value="1" {{$display_filter->contains('is_vegetarian',true)?'checked':''}}>
+                        <label class="custom-control-label" for="is_vegetarian">Vegetarian Options</label>
                     </div>
+                    @endif
+                    @if(HomeController::filter_available('is_date'))
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" id="is_date" name="is_date" value="1" {{$display_filter->contains('is_date',true)?'checked':''}}>
+                        <label class="custom-control-label" for="is_date">Date Friendly</label>
+                    </div>
+                    @endif
+                    @if(HomeController::filter_available('is_transport'))
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" id="is_transport" name="is_transport" value="1" {{$display_filter->contains('is_transport',true)?'checked':''}}>
+                        <label class="custom-control-label" for="is_transport">Close to public transport</label>
+                    </div>
+                    @endif
+                    @if(HomeController::filter_available('is_groups'))
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" id="is_groups" name="is_groups" value="1" {{$display_filter->contains('is_groups',true)?'checked':''}}>
+                        <label class="custom-control-label" for="is_groups">Suited for groups</label>
+                    </div>
+                    @endif
+                    @if(HomeController::filter_available('is_studying'))
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" id="is_studying" name="is_studying" value="1" {{$display_filter->contains('is_studying',true)?'checked':''}}>
+                        <label class="custom-control-label" for="is_studying">Suited for studying</label>
+                    </div>
+                    @endif
+                    @if(HomeController::filter_available('is_outside'))
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" id="is_outside" name="is_outside" value="1" {{$display_filter->contains('is_outside',true)?'checked':''}}>
+                        <label class="custom-control-label" for="is_outside">Outside Area</label>
+                    </div>
+                    @endif
+                    @if(HomeController::filter_available('is_takeawayonly'))
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" id="is_takeawayonly" name="is_takeawayonly" value="1" {{$display_filter->contains('is_takeawayonly',true)?'checked':''}}>
+                        <label class="custom-control-label" for="is_takeawayonly">Takeaway Only</label>
+                    </div>
+                    @endif
+                    @if(HomeController::filter_available_value('url_delivery'))
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" id="is_delivery" name="is_delivery" value="1" {{$display_filter->contains('is_delivery',true)?'checked':''}}>
+                        <label class="custom-control-label" for="is_delivery">Delivery Service</label>
+                    </div>
+                    @endif
                 </div>
             </div>
 
-            {{-- Right Column: Results view --}}
-            <div class="col-md-9">
-                {{-- Results for Restaurant --}}
-                <div class="container mb-2" id="filter_results_sorting" style="background-color:white;">
-
-                </div>
-                <div class="container" id="restaurant_results">
-                    {{-- Search Field --}}
+            <div class="m-2" id="reset_filter">
+                <div class="container">
                     <div class="row">
-                        <div class="col-md-11">
-                            <input type="text" class="form-control mb-3" id="search_title" name="search_title" value="{{$search_title}}" placeholder="Search...">
-                        </div>
-                        {{-- SORTER - Still To-Do --}}
-                        <div class="col-md-1">
-                            <button type="button" class="btn btn-dark" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-sort"></i>
-                            </button>
-
-                            <div name="sorter" class="dropdown-menu">
-                                <button class="dropdown-item" type="submit" name="sort_name">Name</button>
-                                <button class="dropdown-item" type="submit" name="sort_creation">Creation</button>
-                                <button class="dropdown-item" type="submit" name="sort_pricerange">Pricerange</button>
-                            </div>
+                        <div class="col-md-12">
+                            <a href="/" role="button" class="btn btn-primary">Reset Filter</a>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-11">
-                            @if(count($posts)<1)
-                            <p>We are sorry, there are no restaurants matching your selection criteria.</p>
+                </div>
+            </div>
+        </div>
+
+        {{-- Right Column: Results view --}}
+        <div class="col-md-9">
+            {{-- Results for Restaurant --}}
+            <div class="container mb-2" id="filter_results_sorting" style="background-color:white;">
+
+            </div>
+            <div class="container" id="restaurant_results">
+                {{-- Search Field --}}
+                <div class="row">
+                    <div class="col-md-11">
+                        <input type="text" class="form-control mb-3" id="search_title" name="search_title" value="{{$search_title}}" placeholder="Search...">
+                    </div>
+                    {{-- SORTER - Still To-Do --}}
+                    <div class="col-md-1">
+                        <button type="button" class="btn btn-dark" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-sort"></i>
+                        </button>
+
+                        <div name="sorter" class="dropdown-menu">
+                            <button class="dropdown-item" type="submit" name="sort_name">Name</button>
+                            <button class="dropdown-item" type="submit" name="sort_creation">Creation</button>
+                            <button class="dropdown-item" type="submit" name="sort_pricerange">Pricerange</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-11">
+                        @if(count($posts)<1) <p>We are sorry, there are no restaurants matching your selection criteria.</p>
                             @else
                             <p>{{count($posts)}} results.
-                            @endif
+                                @endif
+                    </div>
+                </div>
+
+                {{-- Actual Results --}}
+                {{-- Adsense Test Banner--}}
+                <div class="container">
+                    <div class="row mb-2">
+                        <div class="col-md-12">
+                            <img src="{{asset('images/adsense/skyline.png')}}" style="max-height: 200px;" class="img-fluid mx-auto d-block" alt="AdSense">
                         </div>
                     </div>
+                </div>
+                <div class="list-group">
+                    @foreach($posts as $post)
+                    <a href="{{route('posts.show',$post)}}" class="list-group-item list-group-item-action mb-1 shadow-sm">
+                        <div class="row h-100">
+                            <div class="col-3 col-md-2">
 
-                    {{-- Actual Results --}}
-                    <div class="list-group">
-                        @foreach($posts as $post)
-                        <a href="{{route('posts.show',$post)}}" class="list-group-item list-group-item-action mb-1 shadow-sm">
-                            <div class="row h-100">
-                                <div class="col-3 col-md-2">
+                                @if($post->img_logo)
+                                <img src="{{ url('images/'.$post->img_logo)}}" style="max-height:100%;" class="img-fluid" />
+                                @else
+                                <img src="{{ asset('images/restaurants/food.jpg')}}" style="max-height:100%;" class="img-fluid" />
+                                @endif
 
-                                    @if($post->img_logo)
-                                    <img src="{{ url('images/'.$post->img_logo)}}" style="max-height:100%;" class="img-fluid" />
-                                    @else
-                                    <img src="{{ asset('images/restaurants/food.jpg')}}" style="max-height:100%;" class="img-fluid" />
-                                    @endif
-
-                                </div>
-                                <div class="col-6 col-md-8">
-                                    <h5>{{$post->restaurant_name}}</h5>
-                                    <p class="font-weight-lighter m-0">
-                                        @foreach($post->cuisines as $cuisine)
-                                        <span class="border border-info rounded-lg pl-1 pr-1">{{$cuisine->name}}</span>
-                                        @endforeach
-                                    </p>
-                                    <p class="font-weight-lighter m-0">{{$post->place_adress}}</p>
-                                </div>
-                                <div class="col-3 col-md-2 text-right">
-                                    <span class="font-weight-lighter">
-                                        @for($i=0;$i<$post->pricerange;$i++)
+                            </div>
+                            <div class="col-6 col-md-8">
+                                <h5>{{$post->restaurant_name}}</h5>
+                                <p class="font-weight-lighter m-0">
+                                    @foreach($post->cuisines as $cuisine)
+                                    <span class="border border-info rounded-lg pl-1 pr-1">{{$cuisine->name}}</span>
+                                    @endforeach
+                                </p>
+                                <p class="font-weight-lighter m-0">{{$post->place_adress}}</p>
+                            </div>
+                            <div class="col-3 col-md-2 text-right">
+                                <span class="font-weight-lighter">
+                                    @for($i=0;$i<$post->pricerange;$i++)
                                         <i class="fas fa-coins"></i>
                                         @endfor
-                                    </span>
-                                    
-                                </div>
+                                </span>
+
                             </div>
-                        </a>
-                        @endforeach
-                        {{-- The following will display the pagination --}}
-                        
-                        {{-- $posts->links() --}} 
+                        </div>
+                    </a>
+                    @endforeach
+                    {{-- The following will display the pagination --}}
 
-                    </div>
+                    {{-- $posts->links() --}}
+
+                </div>
 
 
 
 
-                </div> {{-- End of Restaurant Results--}}
-            </div> {{-- End of Main Column Right --}}
-        </div> {{-- End of Row --}}
-        <div class="mx-auto">
+            </div> {{-- End of Restaurant Results--}}
+        </div> {{-- End of Main Column Right --}}
+    </div> {{-- End of Row --}}
+    <div class="mx-auto">
 
-        </div>
+    </div>
     </div> {{-- End of Main Container --}}
 </form>
 
