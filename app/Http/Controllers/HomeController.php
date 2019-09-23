@@ -29,7 +29,10 @@ class HomeController extends Controller
     public function index()
     {
         //Get all cuisines and posts, apply pagination to display 5 results per page
-        $cuisines = Cuisine::whereHas('posts')->get();
+        $cuisines = Cuisine::whereHas('posts')->get()
+        ->sortBy(function($cuisine) {
+            return $cuisine->posts->count();
+        },false);
         //$posts = post::paginate(5);
 
         $reviews = Review::with(['posts'=>function($query) {
@@ -39,6 +42,8 @@ class HomeController extends Controller
 
         $posts = Post::where('is_approved',true)
         ->whereHas('isLive')
+        ->where('is_draft',false)
+        ->where('is_approved',true)
         ->paginate(5);
 
         //$filter contains all the filter relevant variables, so the inputs will be adapted accordingly (e.g. switches turned on, checkboxes checked etc.)
@@ -46,6 +51,36 @@ class HomeController extends Controller
         $search_title = "";
         //return view with variables
         return view('index', compact('posts', 'cuisines', 'display_filter','search_title'));
+    }
+
+    /**
+     * Checks if a given filter (identified by its column name) has at least one entry
+     */
+    public static function filter_available($column) {
+        $posts = post::where('is_draft',false)
+        ->where('is_declined',false)
+        ->where('is_approved',true)
+        ->whereHas('isLive')
+        ->where($column,true)
+        ->get();
+
+        if(count($posts)>0) {
+            return true;
+        }
+        return false;
+    }
+    public static function filter_available_value($column) {
+        $posts = post::where('is_draft',false)
+        ->where('is_declined',false)
+        ->where('is_approved',true)
+        ->whereHas('isLive')
+        ->where($column)
+        ->get();
+
+        if(count($posts)>0) {
+            return true;
+        }
+        return false;
     }
 
     public function filter(Request $request)
@@ -105,8 +140,15 @@ class HomeController extends Controller
        
         $search_title=$request->get('search_title');
         
-        $cuisines = Cuisine::all();
+        $cuisines = Cuisine::whereHas('posts')
+        ->orderBy(function($cuisine) {
+            return $cuisine->posts->count();
+        })
+        ->get();
+
+        //$cuisines = Cuisine::orderBy('posts')->get();
         
+
 
         //Building backend filter
         
@@ -122,6 +164,7 @@ class HomeController extends Controller
         }
         $posts = post::where('is_draft',false)
         ->where('is_declined',false)
+        ->where('is_approved',true)
         ->whereHas('isLive')
         ->when($request->get('price')>0, function($query) use($request) {
             $query->where('pricerange',$request->get('price'));
@@ -168,7 +211,11 @@ class HomeController extends Controller
         ->when($request->has('sort_creation'), function ($query) {
             $query->orderBy('created_at');
         })
-        ->paginate(5);
+        ->get();
+
+        //Filter Availability
+
+
 
         //$posts = post::where($post_filter)->paginate(5); 
         return view('index', compact('posts', 'cuisines', 'display_filter','search_title'));

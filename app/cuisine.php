@@ -13,6 +13,6 @@ class cuisine extends Model
 
     public function posts()
     {
-        return $this->belongsToMany(post::class);
+        return $this->belongsToMany(post::class)->where('is_approved',true)->where('is_draft',false)->whereHas('isLive');
     }
 }

@@ -1,7 +1,9 @@
 <?php
 
 use Carbon\carbon;
+use App\Http\Controllers\HomeController;
 ?>
+
 @include('layout.header')
 @include('layout.navigation')
 
@@ -110,38 +112,54 @@ use Carbon\carbon;
                             <input type="checkbox" class="custom-control-input" id="is_open" name="is_open" value="1" {{$display_filter->contains('is_open',true)?'checked':''}}>
                             <label class="custom-control-label" for="is_open">Open Now</label>
                         </div> --}}
+                        @if(HomeController::filter_available('is_vegetarian'))
                         <div class="custom-control custom-switch">
                             <input type="checkbox" class="custom-control-input" id="is_vegetarian" name="is_vegetarian" value="1" {{$display_filter->contains('is_vegetarian',true)?'checked':''}}>
                             <label class="custom-control-label" for="is_vegetarian">Vegetarian Options</label>
                         </div>
+                        @endif
+                        @if(HomeController::filter_available('is_date'))
                         <div class="custom-control custom-switch">
                             <input type="checkbox" class="custom-control-input" id="is_date" name="is_date" value="1" {{$display_filter->contains('is_date',true)?'checked':''}}>
                             <label class="custom-control-label" for="is_date">Date Friendly</label>
                         </div>
+                        @endif
+                        @if(HomeController::filter_available('is_transport'))
                         <div class="custom-control custom-switch">
                             <input type="checkbox" class="custom-control-input" id="is_transport" name="is_transport" value="1" {{$display_filter->contains('is_transport',true)?'checked':''}}>
                             <label class="custom-control-label" for="is_transport">Close to public transport</label>
                         </div>
+                        @endif
+                        @if(HomeController::filter_available('is_groups'))
                         <div class="custom-control custom-switch">
                             <input type="checkbox" class="custom-control-input" id="is_groups" name="is_groups" value="1" {{$display_filter->contains('is_groups',true)?'checked':''}}>
                             <label class="custom-control-label" for="is_groups">Suited for groups</label>
                         </div>
+                        @endif
+                        @if(HomeController::filter_available('is_studying'))
                         <div class="custom-control custom-switch">
                             <input type="checkbox" class="custom-control-input" id="is_studying" name="is_studying" value="1" {{$display_filter->contains('is_studying',true)?'checked':''}}>
                             <label class="custom-control-label" for="is_studying">Suited for studying</label>
                         </div>
+                        @endif
+                        @if(HomeController::filter_available('is_outside'))
                         <div class="custom-control custom-switch">
                             <input type="checkbox" class="custom-control-input" id="is_outside" name="is_outside" value="1" {{$display_filter->contains('is_outside',true)?'checked':''}}>
                             <label class="custom-control-label" for="is_outside">Outside Area</label>
                         </div>
+                        @endif
+                        @if(HomeController::filter_available('is_takeawayonly'))
                         <div class="custom-control custom-switch">
                             <input type="checkbox" class="custom-control-input" id="is_takeawayonly" name="is_takeawayonly" value="1" {{$display_filter->contains('is_takeawayonly',true)?'checked':''}}>
                             <label class="custom-control-label" for="is_takeawayonly">Takeaway Only</label>
                         </div>
+                        @endif
+                        @if(HomeController::filter_available_value('url_delivery'))
                         <div class="custom-control custom-switch">
                             <input type="checkbox" class="custom-control-input" id="is_delivery" name="is_delivery" value="1" {{$display_filter->contains('is_delivery',true)?'checked':''}}>
                             <label class="custom-control-label" for="is_delivery">Delivery Service</label>
                         </div>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -172,7 +190,7 @@ use Carbon\carbon;
                     </div>
                     <div class="row">
                         <div class="col-md-11">
-                            <p>{{$posts->total()}} results. </p>
+                            <p>{{count($posts)}} results. </p>
                         </div>
                     </div>
 
@@ -206,7 +224,8 @@ use Carbon\carbon;
                         </a>
                         @endforeach
                         {{-- The following will display the pagination --}}
-                        {{ $posts->links() }}
+                        
+                        {{-- $posts->links() --}} 
 
                     </div>
 
