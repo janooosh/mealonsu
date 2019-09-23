@@ -42,8 +42,8 @@ class HomeController extends Controller
 
         $posts = Post::where('is_approved',true)
         ->whereHas('isLive')
+        ->where('is_declined',false)
         ->where('is_draft',false)
-        ->where('is_approved',true)
         ->paginate(5);
 
         //$filter contains all the filter relevant variables, so the inputs will be adapted accordingly (e.g. switches turned on, checkboxes checked etc.)
