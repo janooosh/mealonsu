@@ -39,12 +39,11 @@ class HomeController extends Controller
             $query->where('is_approved',1);
         }])->get();
 
-
-        $posts = Post::where('is_approved',true)
-        ->whereHas('isLive')
+        $posts = post::where('is_draft',false)
         ->where('is_declined',false)
-        ->where('is_draft',false)
-        ->paginate(5);
+        ->where('is_approved',true)
+        ->whereHas('isLive')
+        ->get();
 
         //$filter contains all the filter relevant variables, so the inputs will be adapted accordingly (e.g. switches turned on, checkboxes checked etc.)
         $display_filter = collect(); //Empty collection (no filter results initially)
