@@ -38,6 +38,14 @@
         })(window, document, 'script', 'dataLayer', 'GTM-WZ9Z62Q');
     </script>
     <!-- End Google Tag Manager -->
+    <!-- AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-9983146452317820",
+            enable_page_level_ads: true
+        });
+    </script>
 </head>
 
 <body>

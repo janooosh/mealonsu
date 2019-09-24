@@ -12,13 +12,17 @@
 
     <script src="{{ asset('js/app.js')}}" async></script>
     <script src="{{asset('custom/adminnav.js')}}"></script>
-    
+
     {{-- Tiny MCE Editor --}}
     {{--<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"></script>--}}
     <script src="https://cdn.tiny.cloud/1/ahqrzywhp6m8zsa7s17galk60h0wfw8vpmz31op7w1q4btmh/tinymce/5/tinymce.min.js"></script>
-    <script>tinymce.init({selector:'textarea'});</script>
-        <!-- Google Tag Manager -->
-        <script>
+    <script>
+        tinymce.init({
+            selector: 'textarea'
+        });
+    </script>
+    <!-- Google Tag Manager -->
+    <script>
         (function(w, d, s, l, i) {
             w[l] = w[l] || [];
             w[l].push({
@@ -35,9 +39,17 @@
         })(window, document, 'script', 'dataLayer', 'GTM-WZ9Z62Q');
     </script>
     <!-- End Google Tag Manager -->
+    <!-- AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-9983146452317820",
+            enable_page_level_ads: true
+        });
+    </script>
 </head>
 
 <body>
-        <!-- Google Tag Manager (noscript) -->
-        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WZ9Z62Q" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WZ9Z62Q" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
