@@ -166,11 +166,15 @@ class RevisionController extends Controller
             if (count($validation_errors) > 0) {
                 return back()->withInput()->withErrors($validation_errors);
             }
+            //Cuisines empty?
+            if (!$request->cuisine) {
+                return back()->withInput()->withErrors("Please select at least one cuisine");
+            }
 
             //New Post Object
             $newPost = new Post();
             $newPost = PostController::PostAssigner($request, $newPost);
-            
+
             //Location
             $newPost->place_name = $request->place_name;
             $newPost->place_location = $request->place_location;
@@ -207,7 +211,7 @@ class RevisionController extends Controller
             //Opening Hours
             OpeningController::new($request, $newPost->id);
             //update Pictures
-            PostController::updateImages($request,$newPost);
+            PostController::updateImages($request, $newPost);
 
             return redirect()->route('revisions.index')->with('success', 'Post approved and published.');
         }

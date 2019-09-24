@@ -209,6 +209,11 @@ class PostController extends Controller
             return back()->withInput()->withErrors($validation_errors);
         }
 
+        //Cuisines empty?
+        if (!$request->cuisine && $request->action=='Publish') {
+            return back()->withInput()->withErrors("Please select at least one cuisine");
+        }
+
 
         //Create A New Post Object, assume Draft
         $newPost = new Post();
@@ -364,6 +369,8 @@ class PostController extends Controller
      */
     public function update(Request $request, post $post)
     {
+        $action = $request->get('action');
+
         if (!Auth::user()->email_verified_at) {
             return redirect()->to('/email/verify');
         }
@@ -372,6 +379,10 @@ class PostController extends Controller
         $validation_errors = PostController::PostValidate($request);
         if (count($validation_errors) > 0) {
             return back()->withInput()->withErrors($validation_errors);
+        }
+        //Cuisines empty?
+        if (!$request->cuisine && $action=='Publish') {
+            return back()->withInput()->withErrors("Please select at least one cuisine");
         }
 
         //Check Post
@@ -419,7 +430,7 @@ class PostController extends Controller
          * 
          */
 
-        $action = $request->get('action');
+       
 
         //For (1) and (2)
         if ($action == 'Draft') {
@@ -543,7 +554,7 @@ class PostController extends Controller
                 //Update Opening Hours
                 OpeningController::new($request, $newPost->id);
                 //Update Images
-                PostController::updateImages($request,$newPost);
+                PostController::updateImages($request, $newPost);
             }
             //Action is 'publish', but something is wrong with the post
             else {
