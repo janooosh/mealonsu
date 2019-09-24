@@ -127,7 +127,8 @@ class RevisionController extends Controller
             $post->is_approved = 1;
             $post->review->post_id = $post->id;
             $post->review->url = "test";
-            $post->user_id = auth()->user()->id; //Set current user as editor
+            //$post->user_id = auth()->user()->id; //Set current user as editor
+            $post->user_id = $post->user_id; //Set old author
             $post->save();
             //Update Review
             $review->post_id = $post->id;
@@ -188,7 +189,8 @@ class RevisionController extends Controller
 
             //Update Rest
             $newPost->review_id = $post->review->id;
-            $newPost->user_id = Auth::user()->id;
+            //$newPost->user_id = Auth::user()->id;
+            $newPost->user_id = $post->user_id;
             $newPost->is_draft = 0;
             $newPost->is_approved = 1;
             $newPost->save();
