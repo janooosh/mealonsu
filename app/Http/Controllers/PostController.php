@@ -603,9 +603,11 @@ class PostController extends Controller
      * @param  \App\post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(post $post)
+    public function deletePost(post $post)
     {
-        //
+        if($post->isLive) {
+            return "bin live";
+        }
     }
 
     //Show & prepare version history
@@ -650,7 +652,11 @@ class PostController extends Controller
             $post->updated = Carbon::parse($post->updated_at)->format('d.m.y, H:i');
         }
 
-        return view('post.explorer', compact('posts', 'current_post'));
+        if(UserController::isAdmin()) {
+            $can_delete = true;
+        }
+
+        return view('post.explorer', compact('posts', 'current_post','can_delete'));
     }
 
     //Editor View

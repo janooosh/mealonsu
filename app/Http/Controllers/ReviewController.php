@@ -85,8 +85,18 @@ class ReviewController extends Controller
      * @param  \App\Review  $review
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Review $review)
+    public function destroy($review_id)
     {
-        //
+        if(!UserController::isAdmin()) {
+            return back()->withErrors('You are not allowed to delete this review.');
+        }
+        $review = Review::find($review_id);
+
+        $posts = $review->posts;
+        foreach($posts as $post) {
+            $post->delete();
+        }
+        $review->delete();
+        return redirect('/posts')->with('success','Review and posts deleted.');
     }
 }

@@ -6,7 +6,7 @@
         <div class="row p-3">
             <div class="col-md-8">
                 <h1>Explorer</h1>
-                
+
             </div>
             <div class="col-md-4 text-right">
                 {{-- <a href="{{route('posts.show')}}" role="button" class="btn btn-dark"><i class="fas fa-plus-circle mr-2"></i>View Live Version</a> --}}
@@ -16,8 +16,8 @@
 
     @include('components.messages')
     <style>
-        a.active{
-            color:black;
+        a.active {
+            color: black;
         }
     </style>
 
@@ -54,10 +54,17 @@
                                     @endif
                                     <a href="{{route('posts.show',$post)}}" title="View" role="button" class="btn btn-outline-primary btn-sm mb-1"><i class="far fa-eye mr-2"></i>View</a>
                                 </div>
-                                </div>
                             </div>
+                        </div>
                         @endforeach
                         <p>Review Id: {{$current_post->review_id}}</p>
+                        @if($can_delete)
+                        <div class="row">
+                            <div class="col-md-4">
+                               <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteReview"><i class="far fa-trash-alt mr-2"></i>Delete Review</button>
+                            </div>
+                        </div>
+                        @endif
 
                     </div>
 
@@ -67,6 +74,27 @@
     </div>
 
 </div> {{-- End of Main Container --}}
+
+<!-- Modal -->
+<div class="modal fade" id="deleteReview" tabindex="-1" role="dialog" aria-labelledby="deleteReview" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Delete Review</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Do you really want to delete this review and all associated posts? Please note that this action can not be undone.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <a href="{{route('review.delete',$current_post->review_id)}}" title="Delete Post" role="button" class="btn btn-danger mb-1"><i class="far fa-trash-alt mr-2"></i>Delete Review</a>
+      </div>
+    </div>
+  </div>
+</div>
 
 @include('layout.footer')
 @include('layout.end')
