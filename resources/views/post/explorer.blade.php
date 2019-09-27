@@ -52,6 +52,9 @@
                                     @if($post->status == 'Published' || $post->status == 'Draft')
                                     <a href="{{route('posts.edit',$post)}}" title="Edit" role="button" class="btn btn-outline-primary btn-sm mb-1"><i class="fas fa-edit mr-2"></i>Edit</a>
                                     @endif
+                                    @if($post->status == 'Published')
+                                    <a href="{{route('posts.unpublish',$post)}}" title="Unpublish" role="button" class="btn btn-outline-primary btn-sm mb-1"><i class="fas fa-eye-slash mr-2"></i>Unpublish</a>
+                                    @endif
                                     <a href="{{route('posts.show',$post)}}" title="View" role="button" class="btn btn-outline-primary btn-sm mb-1"><i class="far fa-eye mr-2"></i>View</a>
                                 </div>
                             </div>

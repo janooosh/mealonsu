@@ -45,6 +45,7 @@ Route::get('/posts/drafts','PostController@index_draft')->name('posts.draft')->m
 Route::get('/posts/reviews','PostController@index_review')->name('posts.review')->middleware('verified');
 Route::get('/posts/declined','PostController@index_declined')->name('posts.declined')->middleware('verified');
 Route::get('/posts/explore/{current_post}','PostController@explorer')->name('posts.explorer')->middleware('verified');
+Route::get('/posts/unpublish/{post}','PostController@unpublish')->name('posts.unpublish')->middleware('verified');
 Route::get('/reviews/delete/{review_id}','ReviewController@destroy')->name('review.delete')->middleware('verified');
 Route::resource('posts','PostController');
 Route::resource('cuisines','CuisineController')->middleware('verified');

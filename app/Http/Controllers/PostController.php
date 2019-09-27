@@ -610,6 +610,22 @@ class PostController extends Controller
         }
     }
 
+    /**
+     * Editors can unpublish published posts and send them back to be a draft.
+     */
+    public function unpublish(post $post) {
+        //Is Editor?
+        if(!UserController::isRole(auth()->user(),2)) {
+            return back()->withErrors('You are not allowed to unpublish this post.');
+        }
+
+        $post->is_approved = 0;
+        //$post->is_draft = 1;
+        $post->save();
+
+        return redirect('/posts')->with('success','Post successfully unpublished, back to revisions.');
+    }
+
     //Show & prepare version history
     public function explorer(post $current_post)
     {
