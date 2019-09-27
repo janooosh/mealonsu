@@ -19,10 +19,13 @@ class PostController extends Controller
 
     public function index()
     {
-        if (!Auth::user()->email_verified_at) {
-            return redirect()->to('/email/verify');
+        if ($user = Auth::user()) {
+            if (!Auth::user()->email_verified_at) {
+                return redirect()->to('/email/verify');
+            }
+            return $this->index_published();
         }
-        return $this->index_published();
+        return redirect()->route('login');
         //return PostController::IsOpen();
     }
 
@@ -210,7 +213,7 @@ class PostController extends Controller
         }
 
         //Cuisines empty?
-        if (!$request->cuisine && $request->action=='Publish') {
+        if (!$request->cuisine && $request->action == 'Publish') {
             return back()->withInput()->withErrors("Please select at least one cuisine");
         }
 
@@ -381,7 +384,7 @@ class PostController extends Controller
             return back()->withInput()->withErrors($validation_errors);
         }
         //Cuisines empty?
-        if (!$request->cuisine && $action=='Publish') {
+        if (!$request->cuisine && $action == 'Publish') {
             return back()->withInput()->withErrors("Please select at least one cuisine");
         }
 
@@ -430,7 +433,7 @@ class PostController extends Controller
          * 
          */
 
-       
+
 
         //For (1) and (2)
         if ($action == 'Draft') {
@@ -605,7 +608,7 @@ class PostController extends Controller
      */
     public function deletePost(post $post)
     {
-        if($post->isLive) {
+        if ($post->isLive) {
             return "bin live";
         }
     }
@@ -613,9 +616,10 @@ class PostController extends Controller
     /**
      * Editors can unpublish published posts and send them back to be a draft.
      */
-    public function unpublish(post $post) {
+    public function unpublish(post $post)
+    {
         //Is Editor?
-        if(!UserController::isRole(auth()->user(),2)) {
+        if (!UserController::isRole(auth()->user(), 2)) {
             return back()->withErrors('You are not allowed to unpublish this post.');
         }
 
@@ -623,7 +627,7 @@ class PostController extends Controller
         //$post->is_draft = 1;
         $post->save();
 
-        return redirect('/posts')->with('success','Post successfully unpublished, back to revisions.');
+        return redirect('/posts')->with('success', 'Post successfully unpublished, back to revisions.');
     }
 
     //Show & prepare version history
@@ -668,11 +672,11 @@ class PostController extends Controller
             $post->updated = Carbon::parse($post->updated_at)->format('d.m.y, H:i');
         }
 
-        if(UserController::isAdmin()) {
+        if (UserController::isAdmin()) {
             $can_delete = true;
         }
 
-        return view('post.explorer', compact('posts', 'current_post','can_delete'));
+        return view('post.explorer', compact('posts', 'current_post', 'can_delete'));
     }
 
     //Editor View
