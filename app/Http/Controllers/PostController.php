@@ -624,10 +624,10 @@ class PostController extends Controller
         }
 
         $post->is_approved = 0;
-        //$post->is_draft = 1;
+        $post->is_draft = 1;
         $post->save();
 
-        return redirect('/posts')->with('success', 'Post successfully unpublished, back to revisions.');
+        return redirect('/posts')->with('success', 'Post successfully unpublished, it is now a draft for the author.');
     }
 
     //Show & prepare version history
