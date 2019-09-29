@@ -31,7 +31,7 @@ class HomeController extends Controller
         /**
          * Create two collections, top_cuisines (top 5 cuisines) and other_cuisines (all the others that also have at least one published post)
          */
-        $top_cuisines = Cuisine::with('posts')
+        $top_cuisines = Cuisine::whereHas('posts')
         ->withCount('posts')
         ->orderBy('posts_count','desc')
         ->orderBy('name','asc')
@@ -40,7 +40,7 @@ class HomeController extends Controller
 
         $top_cuisines_ids = $top_cuisines->pluck('id');
 
-        $other_cuisines = Cuisine::with('posts')
+        $other_cuisines = Cuisine::whereHas('posts')
         ->orderBy('name','asc')
         ->whereNotIn('id',$top_cuisines_ids)
         ->get();
@@ -113,7 +113,7 @@ class HomeController extends Controller
         /**
          * Create two collections, top_cuisines (top 5 cuisines) and other_cuisines (all the others that also have at least one published post)
          */
-        $top_cuisines = Cuisine::with('posts')
+        $top_cuisines = Cuisine::whereHas('posts')
         ->withCount('posts')
         ->orderBy('posts_count','desc')
         ->orderBy('name','asc')
@@ -122,7 +122,7 @@ class HomeController extends Controller
 
         $top_cuisines_ids = $top_cuisines->pluck('id');
 
-        $other_cuisines = Cuisine::with('posts')
+        $other_cuisines = Cuisine::whereHas('posts')
         ->orderBy('name','asc')
         ->whereNotIn('id',$top_cuisines_ids)
         ->get();
