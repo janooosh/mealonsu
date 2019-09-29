@@ -53,7 +53,6 @@ use App\Http\Controllers\HomeController;
                         <a data-toggle="collapse" href="#collapseCuisines" aria-expanded="false" aria-controls="collapseCuisines">Show more <i class="fas fa-chevron-down"></i></a>
 
                         <div class="collapse" id="collapseCuisines">
-                            <div class="card card-body">
                                 @foreach($other_cuisines as $cuisine)
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="{{$cuisine->id}}" id="c{{$cuisine->id}}" name="cuisine[]" {{$display_filter->contains('cuisine',$cuisine->id)?'checked':''}}>
@@ -62,7 +61,6 @@ use App\Http\Controllers\HomeController;
                                     </label>
                                 </div>
                                 @endforeach
-                            </div>
                         </div>
 
 
