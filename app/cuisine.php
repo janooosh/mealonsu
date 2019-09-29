@@ -15,4 +15,5 @@ class cuisine extends Model
     {
         return $this->belongsToMany(post::class)->where('is_approved',true)->where('is_draft',false)->whereHas('isLive');
     }
+
 }

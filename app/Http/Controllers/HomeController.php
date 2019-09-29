@@ -28,13 +28,24 @@ class HomeController extends Controller
      */
     public function index()
     {
-        //Get all cuisines and posts, apply pagination to display 5 results per page
-        $cuisines = Cuisine::whereHas('posts')->get()
-        ->sortBy(function($cuisine) {
-            return $cuisine->posts->count();
-        },false);
-        //$posts = post::paginate(5);
+        /**
+         * Create two collections, top_cuisines (top 5 cuisines) and other_cuisines (all the others that also have at least one published post)
+         */
+        $top_cuisines = Cuisine::with('posts')
+        ->withCount('posts')
+        ->orderBy('posts_count','desc')
+        ->orderBy('name','asc')
+        ->take(5)
+        ->get();
 
+        $top_cuisines_ids = $top_cuisines->pluck('id');
+
+        $other_cuisines = Cuisine::with('posts')
+        ->orderBy('name','asc')
+        ->whereNotIn('id',$top_cuisines_ids)
+        ->get();
+
+        //Get those reviews
         $reviews = Review::with(['posts'=>function($query) {
             $query->where('is_approved',1);
         }])->get();
@@ -49,7 +60,7 @@ class HomeController extends Controller
         $display_filter = collect(); //Empty collection (no filter results initially)
         $search_title = "";
         //return view with variables
-        return view('index', compact('posts', 'cuisines', 'display_filter','search_title'));
+        return view('index', compact('posts', 'top_cuisines', 'other_cuisines', 'display_filter','search_title'));
     }
 
     /**
@@ -98,6 +109,23 @@ class HomeController extends Controller
 
         $post_filter = array();
         $post_boolean_filter = array();
+
+        /**
+         * Create two collections, top_cuisines (top 5 cuisines) and other_cuisines (all the others that also have at least one published post)
+         */
+        $top_cuisines = Cuisine::with('posts')
+        ->withCount('posts')
+        ->orderBy('posts_count','desc')
+        ->orderBy('name','asc')
+        ->take(5)
+        ->get();
+
+        $top_cuisines_ids = $top_cuisines->pluck('id');
+
+        $other_cuisines = Cuisine::with('posts')
+        ->orderBy('name','asc')
+        ->whereNotIn('id',$top_cuisines_ids)
+        ->get();
 
         //Fill Cuisines
         if ($request->get('cuisine')) {
@@ -219,6 +247,6 @@ class HomeController extends Controller
 
 
         //$posts = post::where($post_filter)->paginate(5); 
-        return view('index', compact('posts', 'cuisines', 'display_filter','search_title'));
+        return view('index', compact('posts', 'top_cuisines', 'other_cuisines' ,'display_filter','search_title'));
     }
 }

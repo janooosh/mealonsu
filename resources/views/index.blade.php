@@ -38,14 +38,33 @@ use App\Http\Controllers\HomeController;
                 <div class="mb-4" id="filter_cuisine">
                     <h4><i class="fas fa-cookie-bite mr-2"></i> Cuisine</h4>
                     <div class="container mb-1 p-3 shadow-sm" style="background-color: white;">
-                        @foreach($cuisines as $cuisine)
+
+                        {{-- Top Results--}}
+                        @foreach($top_cuisines as $cuisine)
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="{{$cuisine->id}}" id="c{{$cuisine->id}}" name="cuisine[]" {{$display_filter->contains('cuisine',$cuisine->id)?'checked':''}}>
                             <label class="form-check-label" for="c{{$cuisine->id}}">
-                                {{$cuisine->name}}
+                                {{$cuisine->name}} ({{count($cuisine->posts)}})
                             </label>
                         </div>
                         @endforeach
+                        {{-- All the others--}}
+                        <hr />
+                        <a data-toggle="collapse" href="#collapseCuisines" aria-expanded="false" aria-controls="collapseCuisines">Show more <i class="fas fa-chevron-down"></i></a>
+
+                        <div class="collapse" id="collapseCuisines">
+                            <div class="card card-body">
+                                @foreach($other_cuisines as $cuisine)
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="{{$cuisine->id}}" id="c{{$cuisine->id}}" name="cuisine[]" {{$display_filter->contains('cuisine',$cuisine->id)?'checked':''}}>
+                                    <label class="form-check-label" for="c{{$cuisine->id}}">
+                                        {{$cuisine->name}} ({{count($cuisine->posts)}})
+                                    </label>
+                                </div>
+                                @endforeach
+                            </div>
+                        </div>
+
 
                     </div>
                 </div>
