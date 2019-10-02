@@ -49,7 +49,7 @@
                                     <p><b>{{$post->status}}</b></p>
                                 </div>
                                 <div class="col-3 col-md-3">
-                                    @if($post->status == 'Published' || $post->status == 'Draft' || $post->status == 'Declined')
+                                    @if($post->status == 'Published' || $post->status == 'Draft')
                                     <a href="{{route('posts.edit',$post)}}" title="Edit" role="button" class="btn btn-outline-primary btn-sm mb-1"><i class="fas fa-edit mr-2"></i>Edit</a>
                                     @endif
                                     @if($post->status == 'Published')
