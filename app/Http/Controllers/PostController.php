@@ -461,6 +461,7 @@ class PostController extends Controller
             elseif ($post->isLive && $post->is_approved) {
                 $newPost = new Post();
                 $newPost = PostController::PostAssigner($request, $newPost);
+                $newPost->user_id = $post->user_id;
                 $newPost->is_draft = true;
                 $newPost->review_id = $post->review_id;
                 //Location
@@ -536,6 +537,7 @@ class PostController extends Controller
                 $newPost = PostController::PostAssigner($request, $newPost);
                 $newPost->review_id = $post->review_id;
                 $newPost->is_draft = false;
+                $newPost->user_id = $post->user_id;
                 $newPost->save();
                 //Location
                 $newPost->place_name = $request->place_name;
