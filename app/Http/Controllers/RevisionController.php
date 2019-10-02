@@ -109,7 +109,6 @@ class RevisionController extends Controller
         $errors = $post->needs_review_errors();
         if ($errors->isEmpty()) {
             $post->is_declined = 1;
-            $post->user_id = auth()->user()->id;
             $post->save();
             return redirect()->route('revisions.index')->with('success', 'Post successfully declined.');
         }
