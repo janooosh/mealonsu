@@ -100,7 +100,7 @@ use Carbon\Carbon;
                                 <i class="fas fa-heart"></i>
                             </div>
                             <div class="col-11">
-                                <p>     
+                                <p>
                                     Suited for dates
                                 </p>
                             </div>
@@ -131,7 +131,7 @@ use Carbon\Carbon;
                                 <i class="fas fa-users"></i>
                             </div>
                             <div class="col-11">
-                                <p>        
+                                <p>
                                     Suited for Groups
                                 </p>
                             </div>
@@ -145,7 +145,7 @@ use Carbon\Carbon;
                                 <i class="fas fa-sun"></i>
                             </div>
                             <div class="col-11">
-                                <p>      
+                                <p>
                                     Outdoor Area
                                 </p>
                             </div>
@@ -212,7 +212,7 @@ use Carbon\Carbon;
                 <div class="row">
                     <div class="col-11">
                         <p>
-                            Noise Level: 
+                            Noise Level:
                             <b>
                                 @if($post->noise==1)
                                 Low
@@ -222,11 +222,20 @@ use Carbon\Carbon;
                                 High
                                 @endif
                             </b>
-                            
+
                         </p>
                     </div>
                 </div>
                 @endif
+
+                {{-- Homepage --}}
+                <div class="row">
+                    <div class="col-11">
+                        @if($post->url_homepage)
+                        <p><a href="{{$post->url_homepage}}" style="color:black!important;" target="_blank">{{$post->url_homepage}}</a></p>
+                        @endif
+                    </div>
+                </div>
 
             </div>
 
@@ -263,7 +272,9 @@ use Carbon\Carbon;
         {{-- Headline --}}
         <div class="row pb-3">
             <div class="col-md-12">
-                <h5><p class="font-weight-bold">{!!$post->summary!!}</p></h5>
+                <h5>
+                    <p class="font-weight-bold">{!!$post->summary!!}</p>
+                </h5>
             </div>
         </div>
     </div>
@@ -324,13 +335,13 @@ use Carbon\Carbon;
     <div class="row">
         <div class="col-md-12">
             <h3>Food</h3>
-                {!! $post->review_food !!}
+            {!! $post->review_food !!}
             <hr />
             <h3>Style, Location & Interior</h3>
-                {!! $post->review_style !!}
+            {!! $post->review_style !!}
             <hr />
             <h3>Service</h3>
-                {!! $post->review_service !!}
+            {!! $post->review_service !!}
         </div>
     </div>
 
