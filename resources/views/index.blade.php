@@ -237,7 +237,7 @@ use App\Http\Controllers\HomeController;
                 </div>
                 <style>
                     figure {
-                        margin: 8px !important;
+                        margin: 5px !important;
                     }
 
                     .img-fluid {
