@@ -902,6 +902,7 @@ class PostController extends Controller
         $target->url_homepage = $request->url_homepage;
         $target->url_menu = $request->url_menu;
         $target->url_reservation = $request->url_reservation;
+        $target->url_delivery = $request->url_delivery;
         $target->social_facebook = $request->social_facebook;
         $target->social_instagram = $request->social_instagram;
         $target->social_twitter = $request->social_twitter;

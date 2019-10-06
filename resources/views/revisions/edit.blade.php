@@ -502,7 +502,7 @@
                     Online Menu
                 </div>
                 <div class="col-md-9">
-                    <input type="text" class="form-control @error('url_menu') is-invalid @enderror" name="url_menu" placeholder="Menu URL" value="{{old('url_menu')}}" />
+                    <input type="text" class="form-control @error('url_menu') is-invalid @enderror" name="url_menu" placeholder="Menu URL" value="{{old('url_menu', $post->url_menu)}}" />
                     @error('url_menu')
                     <div class="invalid-feedback">
                         {{$message}}
@@ -516,7 +516,7 @@
                     Reservation Link
                 </div>
                 <div class="col-md-9">
-                    <input type="text" name="url_reservation" class="form-control @error('url_reservation') is-invalid @enderror" placeholder="Reservation URL" value="{{old('url_reservation')}}" />
+                    <input type="text" name="url_reservation" class="form-control @error('url_reservation') is-invalid @enderror" placeholder="Reservation URL" value="{{old('url_reservation',$post->url_reservation)}}" />
                     @error('url_reservation')
                     <div class="invalid-feedback">
                         {{$message}}
@@ -530,7 +530,7 @@
                     Delivery Link
                 </div>
                 <div class="col-md-9">
-                    <input type="text" name="url_delivery" class="form-control @error('url_delivery') is-invalid @enderror" placeholder="Delivery URL" value="{{old('url_delivery')}}" />
+                    <input type="text" name="url_delivery" class="form-control @error('url_delivery') is-invalid @enderror" placeholder="Delivery URL" value="{{old('url_delivery',$post->url_delivery)}}" />
                     @error('url_delivery')
                     <div class="invalid-feedback">
                         {{$message}}
