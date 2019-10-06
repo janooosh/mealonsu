@@ -295,6 +295,60 @@ use Carbon\carbon;
     </div>
 </div>
 
+{{-- Mobile Gallery --}}
+<div class="container hide-desktop">
+
+    <div class="row text-center text-lg-left">
+
+        @if($post->img_1)
+        <div class="col-lg-3 col-md-4 col-6">
+            <div class="d-block mb-4 h-100">
+                <img class="img-fluid img-thumbnail" src="{{url('images/'.$post->img_1)}}" alt="">
+            </div>
+        </div>
+        @endif
+        @if($post->img_2)
+        <div class="col-lg-3 col-md-4 col-6">
+            <div class="d-block mb-4 h-100">
+                <img class="img-fluid img-thumbnail" src="{{url('images/'.$post->img_2)}}" alt="">
+            </div>
+        </div>
+        @endif
+        @if($post->img_3)
+        <div class="col-lg-3 col-md-4 col-6">
+            <div class="d-block mb-4 h-100">
+                <img class="img-fluid img-thumbnail" src="{{url('images/'.$post->img_3)}}" alt="">
+            </div>
+        </div>
+        @endif
+        @if($post->img_4)
+        <div class="col-lg-3 col-md-4 col-6">
+            <div class="d-block mb-4 h-100">
+                <img class="img-fluid img-thumbnail" src="{{url('images/'.$post->img_4)}}" alt="">
+            </div>
+        </div>
+        @endif
+        @if($post->img_5)
+        <div class="col-lg-3 col-md-4 col-6">
+            <div class="d-block mb-4 h-100">
+                <img class="img-fluid img-thumbnail" src="{{url('images/'.$post->img_5)}}" alt="">
+            </div>
+        </div>
+        @endif
+        @if($post->img_6)
+        <div class="col-lg-3 col-md-4 col-6">
+            <div class="d-block mb-4 h-100">
+                <img class="img-fluid img-thumbnail" src="{{url('images/'.$post->img_6)}}" alt="">
+            </div>
+        </div>
+        @endif
+
+    </div>
+
+</div>
+<!-- /.container -->
+
+
 {{-- Gallery --}}
 <div class="container hide-mobile">
     <div class="row pb-5 equal-height">
