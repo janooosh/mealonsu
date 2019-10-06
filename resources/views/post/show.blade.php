@@ -5,6 +5,20 @@ use Carbon\Carbon;
 @include('layout.header')
 @include('layout.navigation')
 {{-- Header --}}
+<style>
+    @media (max-width: 767px) {
+        .hide-mobile {
+            display: none;
+        }
+    }
+
+    @media (min-width: 768px) {
+        .hide-desktop {
+            display: none;
+        }
+    }
+</style>
+
 <div class="jumbotron shadow-sm" @if($post->img_title)
     style="background: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.2)), url('{{url('images/'.$post->img_title)}}'); background-size:cover; background-attachment:fixed;"
     @else
@@ -281,7 +295,7 @@ use Carbon\Carbon;
 </div>
 @endif
 
-<div class="container">
+<div class="container hide-mobile">
 
     {{-- Gallery --}}
     <div class="row pb-5 equal-height">
