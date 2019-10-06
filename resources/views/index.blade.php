@@ -53,14 +53,14 @@ use App\Http\Controllers\HomeController;
                         <a data-toggle="collapse" href="#collapseCuisines" aria-expanded="false" aria-controls="collapseCuisines">Show more <i class="fas fa-chevron-down"></i></a>
 
                         <div class="collapse" id="collapseCuisines">
-                                @foreach($other_cuisines as $cuisine)
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="{{$cuisine->id}}" id="c{{$cuisine->id}}" name="cuisine[]" {{$display_filter->contains('cuisine',$cuisine->id)?'checked':''}}>
-                                    <label class="form-check-label" for="c{{$cuisine->id}}">
-                                        {{$cuisine->name}} ({{count($cuisine->posts)}})
-                                    </label>
-                                </div>
-                                @endforeach
+                            @foreach($other_cuisines as $cuisine)
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="{{$cuisine->id}}" id="c{{$cuisine->id}}" name="cuisine[]" {{$display_filter->contains('cuisine',$cuisine->id)?'checked':''}}>
+                                <label class="form-check-label" for="c{{$cuisine->id}}">
+                                    {{$cuisine->name}} ({{count($cuisine->posts)}})
+                                </label>
+                            </div>
+                            @endforeach
                         </div>
 
 
@@ -235,18 +235,29 @@ use App\Http\Controllers\HomeController;
                         </div>
                     </div>
                 </div>
+                <style>
+                    figure {
+                        margin: 8px !important;
+                    }
+
+                    .img-fluid {
+                        max-width: 100%;
+                        height: auto;
+                        margin:auto;
+                    }
+                </style>
                 <div class="list-group">
                     @foreach($posts as $post)
                     <a href="{{route('posts.show',$post)}}" class="list-group-item list-group-item-action mb-1 shadow-sm">
-                        <div class="row h-100">
+                        <div class="row">
                             <div class="col-3 col-md-2">
-
-                                @if($post->img_logo)
-                                <img src="{{ url('images/'.$post->img_logo)}}" style="max-height:100%;" class="img-fluid" />
-                                @else
-                                <img src="{{ asset('images/restaurants/food.jpg')}}" style="max-height:100%;" class="img-fluid" />
-                                @endif
-
+                                <figure>
+                                    @if($post->img_logo)
+                                    <img src="{{ url('images/'.$post->img_logo)}}" style="max-height:100%;" class="img-fluid" />
+                                    @else
+                                    <img src="{{ asset('images/restaurants/food.jpg')}}" style="max-height:100%;" class="img-fluid" />
+                                    @endif
+                                </figure>
                             </div>
                             <div class="col-6 col-md-8">
                                 <h5>{{$post->restaurant_name}}</h5>
