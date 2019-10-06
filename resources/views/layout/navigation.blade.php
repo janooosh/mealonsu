@@ -5,13 +5,13 @@
   </button>
   <div class="collapse navbar-collapse ml-3" id="navbarText">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
+      <li class="nav-item">
         <a class="nav-link" href="{{route('home')}}">Home <span class="sr-only">(current)</span></a>
       </li>
-      {{-- <li class="nav-item">
-        <a class="nav-link" href="#">About Us</a>
-      </li>
       <li class="nav-item">
+        <a class="nav-link" href="{{route('about-us')}}">About Us</a>
+      </li>
+      {{--<li class="nav-item">
         <a class="nav-link" href="#">Contact</a>
       </li> --}}
     </ul>

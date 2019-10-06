@@ -65,3 +65,6 @@ Route::post('/revisions/{post}/new','RevisionController@new')->name('revisions.s
 //Route::post('/admin/new','PostController@store')->name('post.store');
 
 Route::get('/test','TestController@tojs');
+Route::get('/about-us', function() {
+    return view('about-us');
+})->name('about-us');
