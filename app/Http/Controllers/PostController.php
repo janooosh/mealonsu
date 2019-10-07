@@ -674,9 +674,11 @@ class PostController extends Controller
             $post->updated = Carbon::parse($post->updated_at)->format('d.m.y, H:i');
         }
 
+        $can_delete = false;
         if (UserController::isAdmin()) {
             $can_delete = true;
         }
+        
 
         return view('post.explorer', compact('posts', 'current_post', 'can_delete'));
     }
