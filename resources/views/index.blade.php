@@ -282,23 +282,11 @@ use App\Http\Controllers\HomeController;
                     </p>
                     <p class="font-weight-lighter m-0 hide-mobile">{{$post->place_adress}}</p>
                 </div>
-                <div class="hide-mobile">
-                    <div class="col-3 col-md-2 text-right">
-                        <span class="font-weight-lighter">
-                            @for($i=0;$i<$post->pricerange;$i++)
-                                <i class="fas fa-coins"></i>
-                                @endfor
-                        </span>
-
-                    </div>
-                </div>
-                <div class="hide-desktop">
                 <div class="col-3 col-md-2 text-right">
                         <span class="font-weight-lighter">
                                 {{$post->pricerange}} x <i class="fas fa-coins"></i>
                         </span>
 
-                </div>
                 </div>
             </div>
         </a>
