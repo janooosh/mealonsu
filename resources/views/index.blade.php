@@ -237,6 +237,18 @@ use App\Http\Controllers\HomeController;
         </div>
     </div>
     --}}
+{{-- Adsense --}}
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- HeaderAd_SearchResults -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-9983146452317820"
+data-ad-slot="7586675356"
+data-ad-format="auto"
+data-full-width-responsive="true"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
     <style>
         figure {
             margin: 5px !important;
