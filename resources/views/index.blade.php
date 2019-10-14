@@ -233,77 +233,87 @@ use App\Http\Controllers\HomeController;
                     <div class="row mb-2">
                         <div class="col-md-12">
                             <img src="{{asset('images/adsense/skyline.png')}}" style="max-height: 200px;" class="img-fluid mx-auto d-block" alt="AdSense">
-                        </div>
+            </div>
+        </div>
+    </div>
+    --}}
+    <style>
+        figure {
+            margin: 5px !important;
+        }
+
+        .img-fluid {
+            max-width: 100%;
+            height: auto;
+            margin: auto;
+        }
+
+        @media (max-width: 767px) {
+            .hide-mobile {
+                display: none;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .hide-desktop {
+                display: none;
+            }
+        }
+    </style>
+    <div class="list-group">
+        @foreach($posts as $post)
+        <a href="{{route('posts.show',$post)}}" class="list-group-item list-group-item-action mb-1 shadow-sm">
+            <div class="row">
+                <div class="col-3 col-md-2">
+                    <figure>
+                        @if($post->img_logo)
+                        <img src="{{ url('images/'.$post->img_logo)}}" style="max-height:100%;" class="img-fluid" />
+                        @else
+                        <img src="{{ asset('images/restaurants/food.jpg')}}" style="max-height:100%;" class="img-fluid" />
+                        @endif
+                    </figure>
+                </div>
+                <div class="col-6 col-md-8">
+                    <h5>{{$post->restaurant_name}}</h5>
+                    <p class="font-weight-lighter m-0">
+                        @foreach($post->cuisines as $cuisine)
+                        <span class="border border-info rounded-lg pl-1 pr-1">{{$cuisine->name}}</span>
+                        @endforeach
+                    </p>
+                    <p class="font-weight-lighter m-0 hide-mobile">{{$post->place_adress}}</p>
+                </div>
+                <div class="hide-mobile">
+                    <div class="col-3 col-md-2 text-right">
+                        <span class="font-weight-lighter">
+                            @for($i=0;$i<$post->pricerange;$i++)
+                                <i class="fas fa-coins"></i>
+                                @endfor
+                        </span>
+
                     </div>
                 </div>
-                --}}
-                <style>
-                    figure {
-                        margin: 5px !important;
-                    }
-
-                    .img-fluid {
-                        max-width: 100%;
-                        height: auto;
-                        margin: auto;
-                    }
-
-                    @media (max-width: 767px) {
-                        .hide-mobile {
-                            display: none;
-                        }
-                    }
-
-                    @media (min-width: 768px) {
-                        .hide-desktop {
-                            display: none;
-                        }
-                    }
-                </style>
-                <div class="list-group">
-                    @foreach($posts as $post)
-                    <a href="{{route('posts.show',$post)}}" class="list-group-item list-group-item-action mb-1 shadow-sm">
-                        <div class="row">
-                            <div class="col-3 col-md-2">
-                                <figure>
-                                    @if($post->img_logo)
-                                    <img src="{{ url('images/'.$post->img_logo)}}" style="max-height:100%;" class="img-fluid" />
-                                    @else
-                                    <img src="{{ asset('images/restaurants/food.jpg')}}" style="max-height:100%;" class="img-fluid" />
-                                    @endif
-                                </figure>
-                            </div>
-                            <div class="col-6 col-md-8">
-                                <h5>{{$post->restaurant_name}}</h5>
-                                <p class="font-weight-lighter m-0">
-                                    @foreach($post->cuisines as $cuisine)
-                                    <span class="border border-info rounded-lg pl-1 pr-1">{{$cuisine->name}}</span>
-                                    @endforeach
-                                </p>
-                                <p class="font-weight-lighter m-0 hide-mobile">{{$post->place_adress}}</p>
-                            </div>
-                            <div class="col-3 col-md-2 text-right">
-                                <span class="font-weight-lighter">
-                                    @for($i=0;$i<$post->pricerange;$i++)
-                                        <i class="fas fa-coins"></i>
-                                        @endfor
-                                </span>
-
-                            </div>
-                        </div>
-                    </a>
-                    @endforeach
-                    {{-- The following will display the pagination --}}
-
-                    {{-- $posts->links() --}}
+                <div class="hide-desktop">
+                <div class="col-3 col-md-2 text-right">
+                        <span class="font-weight-lighter">
+                                {{$post->pricerange}} x <i class="fas fa-coins"></i>
+                        </span>
 
                 </div>
+                </div>
+            </div>
+        </a>
+        @endforeach
+        {{-- The following will display the pagination --}}
+
+        {{-- $posts->links() --}}
+
+    </div>
 
 
 
 
-            </div> {{-- End of Restaurant Results--}}
-        </div> {{-- End of Main Column Right --}}
+    </div> {{-- End of Restaurant Results--}}
+    </div> {{-- End of Main Column Right --}}
     </div> {{-- End of Row --}}
     <div class="mx-auto">
 
