@@ -228,6 +228,7 @@ use App\Http\Controllers\HomeController;
 
                 {{-- Actual Results --}}
                 {{-- Adsense Test Banner--}}
+                {{--
                 <div class="container">
                     <div class="row mb-2">
                         <div class="col-md-12">
@@ -235,6 +236,7 @@ use App\Http\Controllers\HomeController;
                         </div>
                     </div>
                 </div>
+                --}}
                 <style>
                     figure {
                         margin: 5px !important;
