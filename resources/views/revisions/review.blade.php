@@ -245,19 +245,15 @@ use Carbon\carbon;
                         </p>
                     </div>
                 </div>
-                {{-- Homepage --}}
-                <div class="row">
-                    <div class="col-11">
-                        @if($post->url_homepage)
-                        <p><a href="{{$post->url_homepage}}" style="color:black!important;" target="_blank">{{$post->url_homepage}}</a></p>
-                        @endif
-                    </div>
-                </div>
+                
 
             </div>
 
             {{-- Buttons --}}
             <div id="restaurant_buttons">
+             @if($post->url_homepage)
+                <a href="{{$post->url_homepage}}" target="_blank" role="button" class="btn btn-outline-dark mr-4"><i class="fa fa-home mr-2"></i>Homepage</a>
+                @endif
                 @if($post->url_menu)
                 <a href="{{$post->url_menu}}" target="_blank" role="button" class="btn btn-outline-dark mr-4"><i class="fa fa-utensils mr-2"></i>Menu</a>
                 @endif

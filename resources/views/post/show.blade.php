@@ -255,6 +255,9 @@ use Carbon\Carbon;
 
             {{-- Buttons --}}
             <div id="restaurant_buttons">
+                @if($post->url_homepage)
+                <a href="{{$post->url_homepage}}" target="_blank" role="button" class="btn btn-outline-dark mr-4"><i class="fa fa-home mr-2"></i>Homepage</a>
+                @endif
                 @if($post->url_menu)
                 <a href="{{$post->url_menu}}" target="_blank" role="button" class="btn btn-outline-dark mr-4"><i class="fa fa-utensils mr-2"></i>Menu</a>
                 @endif
