@@ -242,14 +242,6 @@ use Carbon\Carbon;
                 </div>
                 @endif
 
-                {{-- Homepage --}}
-                <div class="row">
-                    <div class="col-11">
-                        @if($post->url_homepage)
-                        <p><a href="{{$post->url_homepage}}" style="color:black!important;" target="_blank">{{$post->url_homepage}}</a></p>
-                        @endif
-                    </div>
-                </div>
 
             </div>
 
