@@ -41,7 +41,7 @@ use Carbon\Carbon;
 </div>
 @include('components.messages')
 
-<div class="container-fluid" style="border: 1px solid green;">
+<div class="container-fluid">
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8">
