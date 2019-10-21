@@ -108,9 +108,10 @@ class RevisionController extends Controller
     {
         $errors = $post->needs_review_errors();
         if ($errors->isEmpty()) {
-            $post->is_declined = 1;
+            //$post->is_declined = 1;
+            $post->is_draft = 1;
             $post->save();
-            return redirect()->route('revisions.index')->with('success', 'Post successfully declined.');
+            return redirect()->route('revisions.index')->with('success', 'Post successfully declined & moved back to draft.');
         }
         return redirect()->route('revisions.index')->withErrors($errors);
     }
