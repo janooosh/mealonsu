@@ -1,4 +1,3 @@
-
 <footer id="footer" class="text-center text-white mb-0 pt-3 pb-3" style="background-color:#000;">
     <div class="container">
         <div class="row">
@@ -6,7 +5,7 @@
                 &copy; 2019, MealOnSu
             </div>
             <div class="col-md-4 text-center">
-                <a href="{{route('legal')}}">Legal</a> | <a href="{{route('privacy')}}" >Privacy & Cookie Policy</a>
+                <a href="{{route('legal')}}">Legal</a> | <a href="{{route('privacy')}}">Privacy & Cookie Policy</a>
             </div>
             {{--<div class="col-md-4 text-right">
                 <i class="fab fa-facebook"></i>
