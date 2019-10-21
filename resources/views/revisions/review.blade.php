@@ -30,13 +30,13 @@ use Carbon\carbon;
         <h1 class="display-3">{{$post->restaurant_name}}</h1>
         <p>{{$post->subtitle}}</p>
         @if($post->social_facebook)
-        <h2><a href="{{$post->social_facebook}}" title="Facebook Page of {{$post->restaurant_name}}" target="_blank"><i class="fab fa-facebook"></i></a></h2>
+        <h2><a href="{{$post->social_facebook}}" title="Facebook Page of {{$post->restaurant_name}}" target="_blank" rel="nofollow"><i class="fab fa-facebook"></i></a></h2>
         @endif
         @if($post->social_instagram)
-        <h2><a href="{{$post->social_instagram}}" title="Instagram Profile of {{$post->restaurant_name}}" target="_blank"><i class="fab fa-instagram"></i></a></h2>
+        <h2><a href="{{$post->social_instagram}}" title="Instagram Profile of {{$post->restaurant_name}}" target="_blank" rel="nofollow"><i class="fab fa-instagram"></i></a></h2>
         @endif
         @if($post->social_twitter)
-        <h2><a href="{{$post->social_twitter}}" title="Twitter Feed of {{$post->restaurant_name}}" target="_blank"><i class="fab fa-twitter"></i></a></h2>
+        <h2><a href="{{$post->social_twitter}}" title="Twitter Feed of {{$post->restaurant_name}}" target="_blank" rel="nofollow"><i class="fab fa-twitter"></i></a></h2>
         @endif
     </div>
 </div>
