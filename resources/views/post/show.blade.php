@@ -41,236 +41,250 @@ use Carbon\Carbon;
 </div>
 @include('components.messages')
 
-<div class="container mb-3">
-
-    {{-- Main --}}
-    {{-- Cuisine Row --}}
+<div class="container-fluid" style="border: 1px solid green;">
     <div class="row">
-        <div class="col-md-12">
-            @foreach($post->cuisines as $cuisine)
-            <span class="border border-info rounded-lg pl-1 pr-1">{{$cuisine->name}}</span>
-            @endforeach
-        </div>
-    </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
 
-
-    <div class="row">
-        {{-- Left Column --}}
-        <div class="col-md-6">
-            {{-- Opening Hours --}}
-            <table class="table table-borderless table-sm">
-                <thead>
-                    <th scope="col">Opening Hours</th>
-                    <th scope="col">from</th>
-                    <th scope="col">to</th>
-                </thead>
-                <tbody>
-                    @foreach($post->openings as $opening)
-                    <tr>
-                        <td>{{$opening['day']}}</td>
-                        <td>{{$opening['from']}}</td>
-                        <td>{{$opening['to']}}</td>
-                    </tr>
+            {{-- Main --}}
+            {{-- Cuisine Row --}}
+            <div class="row">
+                <div class="col-md-12">
+                    @foreach($post->cuisines as $cuisine)
+                    <span class="border border-info rounded-lg pl-1 pr-1">{{$cuisine->name}}</span>
                     @endforeach
-                </tbody>
-            </table>
-
-            {{-- Infos --}}
-            <div id="restaurant_infos">
-                <div class="row">
-                    <div class="col-md-6">
-                        {{-- Vegetarian --}}
-                        @if($post->is_vegetarian)
-                        <div class="row" style="color:green;">
-                            <div class="col-1">
-                                <i class="fas fa-seedling"></i>
-                            </div>
-                            <div class="col-11">
-                                <p>
-                                    Vegetarian Options
-                                </p>
-                            </div>
-                        </div>
-                        @endif
-
-                        {{-- Vegan --}}
-                        @if($post->is_vegan)
-                        <div class="row" style="color:green;">
-                            <div class="col-1">
-                                <i class="fas fa-seedling"></i>
-                            </div>
-                            <div class="col-11">
-                                <p>
-                                    Vegan Options
-                                </p>
-                            </div>
-                        </div>
-                        @endif
-
-                        {{-- Date --}}
-                        @if($post->is_date)
-                        <div class="row" style="color:{{$post->is_date?'green':'red'}};">
-                            <div class="col-1">
-                                <i class="fas fa-heart"></i>
-                            </div>
-                            <div class="col-11">
-                                <p>
-                                    Suited for dates
-                                </p>
-                            </div>
-                        </div>
-                        @endif
-
-                        {{-- Publit Transport --}}
-                        @if($post->is_transport)
-                        <div class="row" style="color:green;">
-                            <div class="col-1">
-                                <i class="fas fa-bus"></i>
-                            </div>
-                            <div class="col-11">
-                                <p>
-                                    Close to public transportation
-                                </p>
-                            </div>
-                        </div>
-                        @endif
-                    </div>
-
-                    <div class="col-md-6">
-
-                        {{-- Groups --}}
-                        @if($post->is_groups)
-                        <div class="row" style="color:green;">
-                            <div class="col-1">
-                                <i class="fas fa-users"></i>
-                            </div>
-                            <div class="col-11">
-                                <p>
-                                    Suited for Groups
-                                </p>
-                            </div>
-                        </div>
-                        @endif
-
-                        {{-- Outdoor --}}
-                        @if($post->is_outside)
-                        <div class="row" style="color:green;">
-                            <div class="col-1">
-                                <i class="fas fa-sun"></i>
-                            </div>
-                            <div class="col-11">
-                                <p>
-                                    Outdoor Area
-                                </p>
-                            </div>
-                        </div>
-                        @endif
-
-                        {{-- Takeaway Only --}}
-                        @if($post->is_takeawayonly)
-                        <div class="row" style="color:green;">
-                            <div class="col-1">
-                                <i class="fas fa-shopping-bag"></i>
-                            </div>
-                            <div class="col-11">
-                                <p>
-                                    Takeaway Only
-                                </p>
-                            </div>
-                        </div>
-                        @endif
-
-                        {{-- Studying  --}}
-                        @if($post->is_studying)
-                        <div class="row" style="color:green;">
-                            <div class="col-1">
-                                <i class="fas fa-book-reader"></i>
-                            </div>
-                            <div class="col-11">
-                                <p>
-                                    Suited for studying
-                                </p>
-                            </div>
-                        </div>
-                        @endif
-                    </div>
                 </div>
-
-
-
-
-                {{-- Pricerange --}}
-                <div class="row">
-                    <div class="col-11">
-                        <p>
-                            $
-                            <b>
-                                @if($post->pricerange==1)
-                                < 50 @elseif($post->pricerange==2)
-                                    50 - 100
-                                    @elseif($post->pricerange==3)
-                                    100 - 150
-                                    @elseif($post->pricerange==4)
-                                    150 - 200
-                                    @else
-                                    200 - 250
-                                    @endif
-                            </b>
-                            DKK.
-                        </p>
-                    </div>
-                </div>
-
-                {{-- Noise --}}
-                @if($post->noise)
-                <div class="row">
-                    <div class="col-11">
-                        <p>
-                            Noise Level:
-                            <b>
-                                @if($post->noise==1)
-                                Low
-                                @elseif($post->noise==2)
-                                Medium
-                                @elseif($post->noise==3)
-                                High
-                                @endif
-                            </b>
-
-                        </p>
-                    </div>
-                </div>
-                @endif
-
-
             </div>
 
-            {{-- Buttons --}}
-            <div id="restaurant_buttons">
-                @if($post->url_homepage)
-                <a href="{{$post->url_homepage}}" target="_blank" role="button" class="btn btn-outline-dark mr-4"><i class="fa fa-home mr-2"></i>Homepage</a>
-                @endif
-                @if($post->url_menu)
-                <a href="{{$post->url_menu}}" target="_blank" role="button" class="btn btn-outline-dark mr-4"><i class="fa fa-utensils mr-2"></i>Menu</a>
-                @endif
-                @if($post->url_reservation)
-                <a href="{{$post->url_reservation}}" target="_blank" role="button" class="btn btn-outline-dark mr-4"><i class="fa fa-ticket-alt mr-2"></i>Reservation</a>
-                @endif
-                @if($post->url_delivery)
-                <a href="{{$post->url_delivery}}" target="_blank" role="button" class="btn btn-outline-dark"><i class="fa fa-biking mr-2"></i>Delivery</a>
-                @endif
+
+            <div class="row">
+                {{-- Left Column --}}
+                <div class="col-md-6">
+                    {{-- Opening Hours --}}
+                    <table class="table table-borderless table-sm">
+                        <thead>
+                            <th scope="col">Opening Hours</th>
+                            <th scope="col">from</th>
+                            <th scope="col">to</th>
+                        </thead>
+                        <tbody>
+                            @foreach($post->openings as $opening)
+                            <tr>
+                                <td>{{$opening['day']}}</td>
+                                <td>{{$opening['from']}}</td>
+                                <td>{{$opening['to']}}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+
+                    {{-- Infos --}}
+                    <div id="restaurant_infos">
+                        <div class="row">
+                            <div class="col-md-6">
+                                {{-- Vegetarian --}}
+                                @if($post->is_vegetarian)
+                                <div class="row" style="color:green;">
+                                    <div class="col-1">
+                                        <i class="fas fa-seedling"></i>
+                                    </div>
+                                    <div class="col-11">
+                                        <p>
+                                            Vegetarian Options
+                                        </p>
+                                    </div>
+                                </div>
+                                @endif
+
+                                {{-- Vegan --}}
+                                @if($post->is_vegan)
+                                <div class="row" style="color:green;">
+                                    <div class="col-1">
+                                        <i class="fas fa-seedling"></i>
+                                    </div>
+                                    <div class="col-11">
+                                        <p>
+                                            Vegan Options
+                                        </p>
+                                    </div>
+                                </div>
+                                @endif
+
+                                {{-- Date --}}
+                                @if($post->is_date)
+                                <div class="row" style="color:{{$post->is_date?'green':'red'}};">
+                                    <div class="col-1">
+                                        <i class="fas fa-heart"></i>
+                                    </div>
+                                    <div class="col-11">
+                                        <p>
+                                            Suited for dates
+                                        </p>
+                                    </div>
+                                </div>
+                                @endif
+
+                                {{-- Publit Transport --}}
+                                @if($post->is_transport)
+                                <div class="row" style="color:green;">
+                                    <div class="col-1">
+                                        <i class="fas fa-bus"></i>
+                                    </div>
+                                    <div class="col-11">
+                                        <p>
+                                            Close to public transportation
+                                        </p>
+                                    </div>
+                                </div>
+                                @endif
+                            </div>
+
+                            <div class="col-md-6">
+
+                                {{-- Groups --}}
+                                @if($post->is_groups)
+                                <div class="row" style="color:green;">
+                                    <div class="col-1">
+                                        <i class="fas fa-users"></i>
+                                    </div>
+                                    <div class="col-11">
+                                        <p>
+                                            Suited for Groups
+                                        </p>
+                                    </div>
+                                </div>
+                                @endif
+
+                                {{-- Outdoor --}}
+                                @if($post->is_outside)
+                                <div class="row" style="color:green;">
+                                    <div class="col-1">
+                                        <i class="fas fa-sun"></i>
+                                    </div>
+                                    <div class="col-11">
+                                        <p>
+                                            Outdoor Area
+                                        </p>
+                                    </div>
+                                </div>
+                                @endif
+
+                                {{-- Takeaway Only --}}
+                                @if($post->is_takeawayonly)
+                                <div class="row" style="color:green;">
+                                    <div class="col-1">
+                                        <i class="fas fa-shopping-bag"></i>
+                                    </div>
+                                    <div class="col-11">
+                                        <p>
+                                            Takeaway Only
+                                        </p>
+                                    </div>
+                                </div>
+                                @endif
+
+                                {{-- Studying  --}}
+                                @if($post->is_studying)
+                                <div class="row" style="color:green;">
+                                    <div class="col-1">
+                                        <i class="fas fa-book-reader"></i>
+                                    </div>
+                                    <div class="col-11">
+                                        <p>
+                                            Suited for studying
+                                        </p>
+                                    </div>
+                                </div>
+                                @endif
+                            </div>
+                        </div>
+
+
+
+
+                        {{-- Pricerange --}}
+                        <div class="row">
+                            <div class="col-11">
+                                <p>
+                                    $
+                                    <b>
+                                        @if($post->pricerange==1)
+                                        < 50 @elseif($post->pricerange==2)
+                                            50 - 100
+                                            @elseif($post->pricerange==3)
+                                            100 - 150
+                                            @elseif($post->pricerange==4)
+                                            150 - 200
+                                            @else
+                                            200 - 250
+                                            @endif
+                                    </b>
+                                    DKK.
+                                </p>
+                            </div>
+                        </div>
+
+                        {{-- Noise --}}
+                        @if($post->noise)
+                        <div class="row">
+                            <div class="col-11">
+                                <p>
+                                    Noise Level:
+                                    <b>
+                                        @if($post->noise==1)
+                                        Low
+                                        @elseif($post->noise==2)
+                                        Medium
+                                        @elseif($post->noise==3)
+                                        High
+                                        @endif
+                                    </b>
+
+                                </p>
+                            </div>
+                        </div>
+                        @endif
+
+
+                    </div>
+
+                    {{-- Buttons --}}
+                    <div id="restaurant_buttons">
+                        @if($post->url_homepage)
+                        <a href="{{$post->url_homepage}}" target="_blank" role="button" class="btn btn-outline-dark mr-4"><i class="fa fa-home mr-2"></i>Homepage</a>
+                        @endif
+                        @if($post->url_menu)
+                        <a href="{{$post->url_menu}}" target="_blank" role="button" class="btn btn-outline-dark mr-4"><i class="fa fa-utensils mr-2"></i>Menu</a>
+                        @endif
+                        @if($post->url_reservation)
+                        <a href="{{$post->url_reservation}}" target="_blank" role="button" class="btn btn-outline-dark mr-4"><i class="fa fa-ticket-alt mr-2"></i>Reservation</a>
+                        @endif
+                        @if($post->url_delivery)
+                        <a href="{{$post->url_delivery}}" target="_blank" role="button" class="btn btn-outline-dark"><i class="fa fa-biking mr-2"></i>Delivery</a>
+                        @endif
+                    </div>
+
+                </div>
+                {{-- Map --}}
+                <div class="col-md-6">
+
+                    @include('components.map.show')
+                    {{--<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2249.5505644667724!2d12.531604716109225!3d55.679415205116946!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465253bc8f589777%3A0x1e7e22f569fd25c2!2sShakedown+Burger+%26+Shakes!5e0!3m2!1sde!2sdk!4v1562746098919!5m2!1sde!2sdk" width="600" height="450" style="border:0" allowfullscreen></iframe> --}}
+                    <p class="mt-2 text-left">{{$post->place_name}} {{$post->place_adress}}</p>
+                    @if($post->district)
+                    <p>District: {{$post->district}}</p>
+                    @endif
+                </div>
             </div>
 
         </div>
-        {{-- Map --}}
-        <div class="col-md-6">
-
-            @include('components.map.show')
-            {{--<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2249.5505644667724!2d12.531604716109225!3d55.679415205116946!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465253bc8f589777%3A0x1e7e22f569fd25c2!2sShakedown+Burger+%26+Shakes!5e0!3m2!1sde!2sdk!4v1562746098919!5m2!1sde!2sdk" width="600" height="450" style="border:0" allowfullscreen></iframe> --}}
-            <p class="mt-2 text-left">{{$post->place_name}} {{$post->place_adress}}</p>
-            @if($post->district)
-            <p>District: {{$post->district}}</p>
-            @endif
+        <div class="col-md-2">
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- SidebarAd_OverviewAndRestaurants -->
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9983146452317820" data-ad-slot="7906578860" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
         </div>
     </div>
 </div> {{-- Ende dieses Containers --}}
