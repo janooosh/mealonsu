@@ -325,9 +325,9 @@ class PostController extends Controller
          * - is_draft = false && is_approved = false (then it is in review)
          */
         //Declined?
-        /*if ($post->is_declined) {
+        if ($post->is_declined) {
             return back()->withErrors('The post can not be edited, as it has been declined.');
-        } */
+        }
         //Old Version
         //No draft, is approved, not live (old version)
         if (!$post->is_draft && $post->is_approved && !$post->isLive) {
