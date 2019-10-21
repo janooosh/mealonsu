@@ -212,9 +212,8 @@ use Carbon\carbon;
                         <p>
                             $
                             <b>
-                                @if($post->pricerange==1)
-                                < 50 @elseif($post->pricerange==2)
-                                    50 - 100
+                                    @if($post->pricerange==2)
+                                    < 100 
                                     @elseif($post->pricerange==3)
                                     100 - 150
                                     @elseif($post->pricerange==4)
