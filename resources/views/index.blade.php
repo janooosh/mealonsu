@@ -255,7 +255,7 @@ use App\Http\Controllers\HomeController;
                                 @foreach($posts as $post)
                                 <a href="{{route('posts.show',$post)}}" class="list-group-item list-group-item-action mb-1 shadow-sm">
                                     <div class="row">
-                                        <div class="col-3 col-md-2">
+                                        <div class="col-3 col-md-2" style="margin-top:-3px!important">
                                             <figure>
                                                 @if($post->img_logo)
                                                 <img src="{{ url('images/'.$post->img_logo)}}" style="max-height:100%;" class="img-fluid" />
