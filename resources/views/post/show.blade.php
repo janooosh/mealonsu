@@ -278,12 +278,12 @@ use Carbon\Carbon;
 
         </div>
         <div class="col-md-2">
-            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            {{--<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
             <!-- SidebarAd_OverviewAndRestaurants -->
             <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9983146452317820" data-ad-slot="7906578860" data-ad-format="auto" data-full-width-responsive="true"></ins>
             <script>
                 (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
+            </script> --}}
         </div>
     </div>
 </div> {{-- Ende dieses Containers --}}
